@@ -2,5 +2,5 @@ function processInput() {
 
 //var input = document.querySelector("#input").value;
 
-document.write(5 + 6);
+document.write(55 + 6);
 }
