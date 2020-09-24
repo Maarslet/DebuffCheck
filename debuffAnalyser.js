@@ -23,8 +23,9 @@ function processInput() {
       fightData.open("Get", baseURL + "/fights/" + logID + "?" + API.slice(1,API.length), "false");//.then(response => {response.data});
       fightData.send(null);
     console.log(fightData);
-    console.log(fightData.response());
-    fightData = JSON.parse(fightData.response());
+    console.log(fightData.response.length);
+    console.log(fightData.response.slice(0,10));
+    fightData = JSON.parse(fightData.response.slice(0,10));
   document.getElementById("page").innerHTML = fightData; return
   document.getElementById("page").innerHTML = "Checkpoint 0";
   var debuffData = fetch(baseURL + "/events/debuffs/" + logID + "?start=0&end=100000000&hostility=1&wipes=2&filter=encounterID%21%3D0" + API);
