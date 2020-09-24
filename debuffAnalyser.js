@@ -19,7 +19,7 @@ function processInput() {
   var fightData = UrlFetchApp.fetch(baseURL + "/fights/" + logID + "?" + API.slice(1,API.length));
   fightData = fightData.getContentText();
   fightData = JSON.parse(fightData);
-  
+  document.getElementById("page").innerHTML = "Checkpoint 0";
   var debuffData = UrlFetchApp.fetch(baseURL + "/events/debuffs/" + logID + "?start=0&end=100000000&hostility=1&wipes=2&filter=encounterID%21%3D0" + API);
   debuffData = debuffData.getContentText();
   debuffData = JSON.parse(debuffData);
