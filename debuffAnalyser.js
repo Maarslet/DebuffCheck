@@ -22,6 +22,7 @@ function processInput() {
   var fightData = new XMLHttpRequest();
       fightData.open("Get", baseURL + "/fights/" + logID + "?" + API.slice(1,API.length), "false");//.then(response => {response.data});
       fightData.send(null);
+    if (fightData.status === 200) {}
     console.log(fightData);
     console.log(fightData.readyState);
     console.log(fightData.responseURL);
