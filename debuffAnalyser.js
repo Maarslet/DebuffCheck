@@ -23,8 +23,8 @@ function processInput() {
       fightData.open("Get", baseURL + "/fights/" + logID + "?" + API.slice(1,API.length), "false");//.then(response => {response.data});
       fightData.send(null);
     console.log(fightData);
-    console.log(fightData.response.length);
-    console.log(fightData.response.slice(0,10));
+    console.log(fightData.readyState);
+    console.log(fightData.responseURL);
     fightData = JSON.parse(fightData);
   document.getElementById("page").innerHTML = fightData; return
   document.getElementById("page").innerHTML = "Checkpoint 0";
