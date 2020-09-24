@@ -146,7 +146,7 @@ function processInput() {
   var idx = 0;
   var timeAt = 0;
   var output = new Array;
-  output[0] = "<table><tr><th colspan="4">" + "Report ID: " + logID + "</th></tr>";
+  output[0] = "<table><tr><th colspan='4'>" + "Report ID: " + logID + "</th></tr>";
   count = 0;
   for (var i=0; i<uniqueStamps.length; i++) {
     idx = timestampList.indexOf(uniqueStamps[i]);
@@ -156,8 +156,8 @@ function processInput() {
         currentBoss = bossNames[j];
         currentStart = bossStarts[j];
         if (i!==0) 
-          output.push("<tr><th colspan="4"></th></tr>")
-        output.push("<tr><th colspan="4">" + "--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---" + "</th></tr>")
+          output.push("<tr><th colspan='4'></th></tr>")
+        output.push("<tr><th colspan='4'>" + "--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---" + "</th></tr>")
         console.log(" ")
         console.log("--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---")
       }
