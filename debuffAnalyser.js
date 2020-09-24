@@ -146,6 +146,8 @@ function processInput() {
   var idx = 0;
   var timeAt = 0;
   var output = new Array;
+  var rb = "</td><td>" + " removed by " + "</td><td>";
+  var tdtr = "</td></tr>";
   output[0] = "<table><tr><th colspan='4'>" + "Report ID: " + logID + "</th></tr>";
   count = 0;
   for (var i=0; i<uniqueStamps.length; i++) {
@@ -169,11 +171,11 @@ function processInput() {
         count++;
     }
     
-    timeAt = (debuffEdit[idx].timestamp-currentStart)/1000;
+    timeAt = "<tr><td>" + (debuffEdit[idx].timestamp-currentStart)/1000 + "</td><td>";
     if (count==2) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff") {
         if (debuffEdit[idx].ability.name!==debuffEdit[idx+1].ability.name) {
-          console.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name) }}
+          output.push(timeAt + debuffEdit[idx].ability.name + rb + debuffEdit[idx+1].ability.name) + tdtr}}
       else
         console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type)   
     }
