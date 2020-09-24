@@ -16,17 +16,17 @@ function processInput() {
   var baseURL = "https://classic.warcraftlogs.com:443/v1/report";
   var filter = "&filter=encounterID%20%21%3D%200%20";
   try {
-  var fightData = UrlFetchApp.fetch(baseURL + "/fights/" + logID + "?" + API.slice(1,API.length));
+  var fightData = fetch(baseURL + "/fights/" + logID + "?" + API.slice(1,API.length));
   fightData = fightData.getContentText();
   fightData = JSON.parse(fightData);
   document.getElementById("page").innerHTML = "Checkpoint 0";
-  var debuffData = UrlFetchApp.fetch(baseURL + "/events/debuffs/" + logID + "?start=0&end=100000000&hostility=1&wipes=2&filter=encounterID%21%3D0" + API);
+  var debuffData = fetch(baseURL + "/events/debuffs/" + logID + "?start=0&end=100000000&hostility=1&wipes=2&filter=encounterID%21%3D0" + API);
   debuffData = debuffData.getContentText();
   debuffData = JSON.parse(debuffData);
   
   var nextTime = debuffData.nextPageTimestamp;
   while (nextTime>1) {
-    var dataadd = UrlFetchApp.fetch(baseURL + "/events/debuffs/" + logID + "?start=" + nextTime + "&end=100000000&hostility=1&wipes=2&filter=encounterID%21%3D0" + API);
+    var dataadd = fetch(baseURL + "/events/debuffs/" + logID + "?start=" + nextTime + "&end=100000000&hostility=1&wipes=2&filter=encounterID%21%3D0" + API);
     dataadd = dataadd.getContentText();
     dataadd = JSON.parse(dataadd);
     debuffData.events = debuffData.events.concat(dataadd.events);
