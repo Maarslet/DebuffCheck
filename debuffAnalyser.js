@@ -97,7 +97,7 @@ function processInput() {
       if (debuffEdit[i].timestamp == timestampList[j])
         count++;
     }
-    if (count < 2)
+    if (count < 1)
       debuffEdit.splice(i,1);
   }
   
