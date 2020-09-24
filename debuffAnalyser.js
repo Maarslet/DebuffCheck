@@ -141,6 +141,7 @@ function processInput() {
   var idx = 0;
   var timeAt = 0;
   var output = new Array;
+  output[0] = ("Report ID: " + logID);
   count = 0;
   for (var i=0; i<uniqueStamps.length; i++) {
     idx = timestampList.indexOf(uniqueStamps[i]);
