@@ -137,6 +137,7 @@ function processInput() {
   var currentStart = 0;
   var idx = 0;
   var timeAt = 0;
+  var output = new Array;
   count = 0;
   for (var i=0; i<uniqueStamps.length; i++) {
     idx = timestampList.indexOf(uniqueStamps[i]);
@@ -145,8 +146,8 @@ function processInput() {
       if (uniqueStamps[i]>bossStarts[j] && uniqueStamps[i]<bossEnds[j] && bossNames[j]!==currentBoss) {
         currentBoss = bossNames[j];
         currentStart = bossStarts[j];
-        Logger.log(" ")
-        Logger.log("--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---")
+        output.push(" ")
+        output.push("--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---")
       }
     }
     
@@ -255,6 +256,7 @@ function processInput() {
     else
        Logger.log(timeAt + ": " + count)
   }
+  document.getElementById("page").innerHTML = output;
 }
 
 
