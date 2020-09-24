@@ -17,24 +17,20 @@ function processInput() {
   var filter = "&filter=encounterID%20%21%3D%200%20";
   try {
   var fightData = new XMLHttpRequest();
-      fightData.open("Get", baseURL + "/fights/" + logID + "?" + API.slice(1,API.length), false);
-      fightData.send(null);
-    console.log(fightData);
-    console.log(fightData.readyState);
-    console.log(fightData.response);
+    fightData.open("Get", baseURL + "/fights/" + logID + "?" + API.slice(1,API.length), false);
+    fightData.send(null);
     fightData = JSON.parse(fightData.response);
-    console.log(fightData);
-  document.getElementById("page").innerHTML = fightData; return
-  document.getElementById("page").innerHTML = "Checkpoint 0";
-  var debuffData = fetch(baseURL + "/events/debuffs/" + logID + "?start=0&end=100000000&hostility=1&wipes=2&filter=encounterID%21%3D0" + API);
-  debuffData = debuffData.getContentText();
-  debuffData = JSON.parse(debuffData);
+  var debuffData = new XMLHttpRequest();
+    debuffData.open("Get", baseURL + "/events/debuffs/" + logID + "?start=0&end=100000000&hostility=1&wipes=2&filter=encounterID%21%3D0" + API, false);
+    debuffData.send(null);
+    debuffData = JSON.parse(debuffData.response);
   
   var nextTime = debuffData.nextPageTimestamp;
   while (nextTime>1) {
-    var dataadd = fetch(baseURL + "/events/debuffs/" + logID + "?start=" + nextTime + "&end=100000000&hostility=1&wipes=2&filter=encounterID%21%3D0" + API);
-    dataadd = dataadd.getContentText();
-    dataadd = JSON.parse(dataadd);
+    var dataadd = new XMLHttpRequest();
+    dataadd.open("Get", baseURL + "/events/debuffs/" + logID + "?start=" + nextTime + "&end=100000000&hostility=1&wipes=2&filter=encounterID%21%3D0" + API, false);
+    dataadd.send(null);
+    dataadd = JSON.parse(dataadd.response);
     debuffData.events = debuffData.events.concat(dataadd.events);
     nextTime = dataadd.nextPageTimestamp;
   }
