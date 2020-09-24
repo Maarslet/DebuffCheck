@@ -157,6 +157,8 @@ function processInput() {
         currentStart = bossStarts[j];
         output.push(" ")
         output.push("--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---")
+        console.log(" ")
+        console.log("--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---")
       }
     }
     
