@@ -268,7 +268,7 @@ function processInput() {
     else
        console.log(timeAt + ": " + count)
   }
-  document.getElementById("page").innerHTML = output </table>;
+  document.getElementById("page").innerHTML = output.push("</table>");
   console.log(output)
 }
 
