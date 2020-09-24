@@ -20,7 +20,7 @@ function processInput() {
   //fightData = fightData.getContentText();
   //fightData = fightData.json();
   var fightData = axios.get(baseURL + "/fights/" + logID + "?" + API.slice(1,API.length));
-    fightData = fightData.data;
+    //fightData = fightData.data;
     console.log(fightData);
   document.getElementById("page").innerHTML = fightData; return
   document.getElementById("page").innerHTML = "Checkpoint 0";
