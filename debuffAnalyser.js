@@ -20,7 +20,7 @@ function processInput() {
   //fightData = fightData.getContentText();
   //fightData = fightData.json();
   var fightData = new Array;
-    axios.get(baseURL + "/fights/" + logID + "?" + API.slice(1,API.length)).then(fightData = response => {fightData = (response.data);});
+    axios.get(baseURL + "/fights/" + logID + "?" + API.slice(1,API.length)).then(response => {fightData = response;});
     //fightData = fightData.data;
     console.log(fightData);
   document.getElementById("page").innerHTML = fightData; return
