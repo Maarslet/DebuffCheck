@@ -22,7 +22,7 @@ function processInput() {
   var fightData = new XMLHttpRequest();
       fightData.open("Get", baseURL + "/fights/" + logID + "?" + API.slice(1,API.length), "false");//.then(response => {response.data});
       fightData.send(null);
-    fightData = json.parse(fightData.responseText);
+    fightData = JSON.parse(fightData.responseText);
     console.log(fightData);
     console.log(fightData.data);
     console.log(fightData.responseText);
