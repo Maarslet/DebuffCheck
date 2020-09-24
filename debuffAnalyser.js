@@ -17,7 +17,7 @@ function processInput() {
   var filter = "&filter=encounterID%20%21%3D%200%20";
   try {
   var fightData = fetch(baseURL + "/fights/" + logID + "?" + API.slice(1,API.length));
-  document.getElementById("page").innerHTML = fightData;
+  document.getElementById("page").innerHTML = fightData; return
   //fightData = fightData.getContentText();
   fightData = JSON.parse(fightData);
   document.getElementById("page").innerHTML = "Checkpoint 0";
