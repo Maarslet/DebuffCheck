@@ -15,7 +15,7 @@ function processInput() {
 
   var baseURL = "https://classic.warcraftlogs.com:443/v1/report";
   var filter = "&filter=encounterID%20%21%3D%200%20";
-  
+  try {
   var fightData = UrlFetchApp.fetch(baseURL + "/fights/" + logID + "?" + API.slice(1,API.length));
   fightData = fightData.getContentText();
   fightData = JSON.parse(fightData);
@@ -32,7 +32,10 @@ function processInput() {
     debuffData.events = debuffData.events.concat(dataadd.events);
     nextTime = dataadd.nextPageTimestamp;
   }
-  document.getElementById("page").innerHTML = "Checkpoint 1";
+  document.getElementById("page").innerHTML = "Checkpoint 1";}
+  catch(err) {
+  document.getElementById("page").innerHTML = err.message;
+  }
   var bossIDs = new Array;
   var enemyIDs = new Array;
   var count = 0;
