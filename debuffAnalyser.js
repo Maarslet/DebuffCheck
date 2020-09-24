@@ -16,10 +16,11 @@ function processInput() {
   var baseURL = "https://classic.warcraftlogs.com:443/v1/report";
   var filter = "&filter=encounterID%20%21%3D%200%20";
   try {
-  //var fightData = fetch(baseURL + "/fights/" + logID + "?" + API.slice(1,API.length));
+  //var fightData = axios.get(baseURL + "/fights/" + logID + "?" + API.slice(1,API.length));
   //fightData = fightData.getContentText();
   //fightData = fightData.json();
-  var fightData = axios.get(baseURL + "/fights/" + logID + "?" + API.slice(1,API.length));
+  var fightData = fetch(baseURL + "/fights/" + logID + "?" + API.slice(1,API.length));
+    fightData = fightData.data;
     console.log(fightData);
   document.getElementById("page").innerHTML = fightData; return
   document.getElementById("page").innerHTML = "Checkpoint 0";
