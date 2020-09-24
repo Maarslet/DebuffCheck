@@ -8,7 +8,7 @@ function processInput() {
     document.getElementById("page").innerHTML = "Error, invalid report ID.";
     return}
   
-  setTimeout(() => { document.getElementById("page").innerHTML = "Loading . . ."; }, 5);
+  document.getElementById("page").innerHTML = "Loading . . .";
   
   var logID = input; 
   var API = "&api_key=120a438a467e97b900a062c8a7a34000";
