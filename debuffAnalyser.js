@@ -28,6 +28,7 @@ function processInput() {
     console.log(fightData.responseURL);
     fightData = JSON.parse(fightData.response);
     };
+     fightData.send(null);
 
   document.getElementById("page").innerHTML = fightData; return
   document.getElementById("page").innerHTML = "Checkpoint 0";
