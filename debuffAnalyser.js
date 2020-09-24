@@ -269,6 +269,7 @@ function processInput() {
   }
   document.getElementById("page").innerHTML = "Checkpoint 3";
   document.getElementById("page").innerHTML = output;
+  console.log(output)
 }
 
 
