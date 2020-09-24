@@ -5,7 +5,10 @@ function processInput() {
   if (input.length>16)
     input = input.slice(indx,indx+16);
   else if (input.length<16) {
+    document.getElementById("page").innerHTML = "Error, invalid report ID.";
     return}
+  
+  document.getElementById("page").innerHTML = "Calculating . . .";
   
   var logID = input; 
   var API = "&api_key=120a438a467e97b900a062c8a7a34000";
