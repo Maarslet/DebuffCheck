@@ -32,7 +32,7 @@ function processInput() {
     debuffData.events = debuffData.events.concat(dataadd.events);
     nextTime = dataadd.nextPageTimestamp;
   }
-  
+  document.getElementById("page").innerHTML = "Checkpoint 1";
   var bossIDs = new Array;
   var enemyIDs = new Array;
   var count = 0;
@@ -133,7 +133,7 @@ function processInput() {
         debuffEdit.splice(i,1);
     }
   }
-  
+  document.getElementById("page").innerHTML = "Checkpoint 2";
   
   var uniqueStamps = timestampList.filter(onlyUnique);
   var currentBoss = "None";
@@ -259,6 +259,7 @@ function processInput() {
     else
        Logger.log(timeAt + ": " + count)
   }
+  document.getElementById("page").innerHTML = "Checkpoint 3";
   document.getElementById("page").innerHTML = output;
 }
 
