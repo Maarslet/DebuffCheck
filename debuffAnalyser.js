@@ -170,100 +170,100 @@ function processInput() {
     if (count==2) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff") {
         if (debuffEdit[idx].ability.name!==debuffEdit[idx+1].ability.name) {
-          Logger.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name) }}
+          console.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name) }}
       else
-        Logger.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type)   
+        console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type)   
     }
     
     else if (count==3) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "removedebuff" && debuffEdit[idx+2].type == "applydebuff") {
         if (debuffEdit[idx].ability.name == debuffEdit[idx+2].ability.name)
-          Logger.log(timeAt + ": " + debuffEdit[idx+1].ability.name + " removed by Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")");
+          console.log(timeAt + ": " + debuffEdit[idx+1].ability.name + " removed by Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")");
         else if (debuffEdit[idx+1].ability.name == debuffEdit[idx+2].ability.name)
-          Logger.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")");
+          console.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")");
         else
-          Logger.log(timeAt + ": " + debuffEdit[idx].ability.name + " and " + debuffEdit[idx+1].ability.name + " removed by " + debuffEdit[idx+2].ability.name)
+          console.log(timeAt + ": " + debuffEdit[idx].ability.name + " and " + debuffEdit[idx+1].ability.name + " removed by " + debuffEdit[idx+2].ability.name)
       }
       else if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "applydebuff") {
-        Logger.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name)
+        console.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name)
       }
       
       else 
-        Logger.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type + " " + debuffEdit[idx+2].type)
+        console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type + " " + debuffEdit[idx+2].type)
         
     }
     else if (count==4) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "applydebuff" && debuffEdit[idx+3].type == "applydebuff") {
-        Logger.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + " or " + debuffEdit[idx+3].ability.name)
+        console.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + " or " + debuffEdit[idx+3].ability.name)
       }
       else if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "removedebuff" && debuffEdit[idx+3].type == "applydebuff") {
         if (debuffEdit[idx].ability.name!==debuffEdit[idx+1].ability.name) {
-          Logger.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name)}
+          console.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name)}
           
         if (debuffEdit[idx+2].ability.name!==debuffEdit[idx+3].ability.name) {
-          Logger.log(timeAt + ": " + debuffEdit[idx+2].ability.name + " removed by " + debuffEdit[idx+3].ability.name)}
+          console.log(timeAt + ": " + debuffEdit[idx+2].ability.name + " removed by " + debuffEdit[idx+3].ability.name)}
       }
       else if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "removedebuff" && debuffEdit[idx+2].type == "applydebuff" && debuffEdit[idx+3].type == "applydebuff") {
-        Logger.log(timeAt + ": " + debuffEdit[idx].ability.name + " & " + debuffEdit[idx+1].ability.name + " removed by " + debuffEdit[idx+2].ability.name + " & " + debuffEdit[idx+3].ability.name)
+        console.log(timeAt + ": " + debuffEdit[idx].ability.name + " & " + debuffEdit[idx+1].ability.name + " removed by " + debuffEdit[idx+2].ability.name + " & " + debuffEdit[idx+3].ability.name)
       }
       else 
-        Logger.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type + " " + debuffEdit[idx+2].type + " " + debuffEdit[idx+3].type)
+        console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type + " " + debuffEdit[idx+2].type + " " + debuffEdit[idx+3].type)
     }
     
     else if (count==5) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "removedebuff" && debuffEdit[idx+2].type == "applydebuff" && debuffEdit[idx+3].type == "removedebuff" && debuffEdit[idx+4].type == "applydebuff") {
         if (debuffEdit[idx].ability.name == debuffEdit[idx+2].ability.name)
-          Logger.log(timeAt + ": " + debuffEdit[idx+1].ability.name + " removed by Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")");
+          console.log(timeAt + ": " + debuffEdit[idx+1].ability.name + " removed by Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")");
         else if (debuffEdit[idx+1].ability.name == debuffEdit[idx+2].ability.name)
-          Logger.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")");
+          console.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")");
         else {
-          Logger.log(timeAt + ": " + debuffEdit[idx].ability.name + " and " + debuffEdit[idx+1].ability.name + " removed by " + debuffEdit[idx+2].ability.name)}
+          console.log(timeAt + ": " + debuffEdit[idx].ability.name + " and " + debuffEdit[idx+1].ability.name + " removed by " + debuffEdit[idx+2].ability.name)}
         if (debuffEdit[idx+3].ability.name!==debuffEdit[idx+4].ability.name) {
-          Logger.log(timeAt + ": " + debuffEdit[idx+3].ability.name + " removed by " + debuffEdit[idx+4].ability.name) }
+          console.log(timeAt + ": " + debuffEdit[idx+3].ability.name + " removed by " + debuffEdit[idx+4].ability.name) }
         //else
           //Logger.log(timeAt + ": Error, " + debuffEdit[idx+3].type + " " + debuffEdit[idx+4].type)
       }
       else if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "applydebuff" && debuffEdit[idx+3].type == "removedebuff" && debuffEdit[idx+4].type == "applydebuff") {
-        Logger.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name)
-        Logger.log(timeAt + ": " + debuffEdit[idx+3].ability.name + " removed by " + debuffEdit[idx+4].ability.name)
+        console.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name)
+        console.log(timeAt + ": " + debuffEdit[idx+3].ability.name + " removed by " + debuffEdit[idx+4].ability.name)
       }
       
       else if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "removedebuff" && debuffEdit[idx+3].type == "removedebuff" && debuffEdit[idx+4].type == "applydebuff") {
-        Logger.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name)
+        console.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name)
         if (debuffEdit[idx+2].ability.name == debuffEdit[idx+4].ability.name)
-          Logger.log(timeAt + ": " + debuffEdit[idx+3].ability.name + " removed by Phantom Debuff (" + debuffEdit[idx+4].ability.name + ")");
+          console.log(timeAt + ": " + debuffEdit[idx+3].ability.name + " removed by Phantom Debuff (" + debuffEdit[idx+4].ability.name + ")");
         else if (debuffEdit[idx+3].ability.name == debuffEdit[idx+4].ability.name)
-          Logger.log(timeAt + ": " + debuffEdit[idx+2].ability.name + " removed by Phantom Debuff (" + debuffEdit[idx+4].ability.name + ")");
+          console.log(timeAt + ": " + debuffEdit[idx+2].ability.name + " removed by Phantom Debuff (" + debuffEdit[idx+4].ability.name + ")");
         else {
-          Logger.log(timeAt + ": " + debuffEdit[idx+2].ability.name + " and " + debuffEdit[idx+3].ability.name + " removed by " + debuffEdit[idx+4].ability.name)}
+          console.log(timeAt + ": " + debuffEdit[idx+2].ability.name + " and " + debuffEdit[idx+3].ability.name + " removed by " + debuffEdit[idx+4].ability.name)}
       }
       
       else if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "removedebuff" && debuffEdit[idx+3].type == "applydebuff" && debuffEdit[idx+4].type == "applydebuff") {
-        Logger.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name)
-        Logger.log(timeAt + ": " + debuffEdit[idx+2].ability.name + " removed by " + debuffEdit[idx+3].ability.name + " or " + debuffEdit[idx+4].ability.name)
+        console.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name)
+        console.log(timeAt + ": " + debuffEdit[idx+2].ability.name + " removed by " + debuffEdit[idx+3].ability.name + " or " + debuffEdit[idx+4].ability.name)
       }
       
       else 
-        Logger.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type + " " + debuffEdit[idx+2].type + " " + debuffEdit[idx+3].type + " " + debuffEdit[idx+4].type)
+        console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type + " " + debuffEdit[idx+2].type + " " + debuffEdit[idx+3].type + " " + debuffEdit[idx+4].type)
     }
     
     else if (count==6) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "removedebuff" && debuffEdit[idx+3].type == "applydebuff" && debuffEdit[idx+4].type == "removedebuff" && debuffEdit[idx+5].type == "applydebuff") {
         if (debuffEdit[idx].ability.name!==debuffEdit[idx+1].ability.name) {
-          Logger.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name)}
+          console.log(timeAt + ": " + debuffEdit[idx].ability.name + " removed by " + debuffEdit[idx+1].ability.name)}
           
         if (debuffEdit[idx+2].ability.name!==debuffEdit[idx+3].ability.name) {
-          Logger.log(timeAt + ": " + debuffEdit[idx+2].ability.name + " removed by " + debuffEdit[idx+3].ability.name)}
+          console.log(timeAt + ": " + debuffEdit[idx+2].ability.name + " removed by " + debuffEdit[idx+3].ability.name)}
         
         if (debuffEdit[idx+4].ability.name!==debuffEdit[idx+5].ability.name) {
-          Logger.log(timeAt + ": " + debuffEdit[idx+4].ability.name + " removed by " + debuffEdit[idx+5].ability.name)}
+          console.log(timeAt + ": " + debuffEdit[idx+4].ability.name + " removed by " + debuffEdit[idx+5].ability.name)}
       }
       
       else
-        Logger.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type + " " + debuffEdit[idx+2].type + " " + debuffEdit[idx+3].type + " " + debuffEdit[idx+4].type + " " + debuffEdit[idx+5].type)
+        console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type + " " + debuffEdit[idx+2].type + " " + debuffEdit[idx+3].type + " " + debuffEdit[idx+4].type + " " + debuffEdit[idx+5].type)
       }
     else
-       Logger.log(timeAt + ": " + count)
+       console.log(timeAt + ": " + count)
   }
   document.getElementById("page").innerHTML = "Checkpoint 3";
   document.getElementById("page").innerHTML = output;
