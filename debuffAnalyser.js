@@ -143,7 +143,7 @@ function processInput() {
       debuffEdit[i].ability.name = "Faerie Fire";}
     if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].timestamp == debuffEdit[i-1].timestamp && debuffEdit[i-1].type == "applydebuff") {
       console.log("Check 1")
-      for (j=i; j<=10; j++) {
+      for (j=i; j<=i+10; j++) {
         console.log("Check 2")
         if (debuffEdit[j].timestamp == debuffEdit[i-1].timestamp) {
           console.log("Check 3")
