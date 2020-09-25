@@ -205,6 +205,10 @@ function processInput() {
           output.push(timeAt + debuffEdit[idx+1].ability.name + rb + "Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else if (debuffEdit[idx+1].ability.name == debuffEdit[idx+2].ability.name)
           output.push(timeAt + debuffEdit[idx].ability.name + rb + "Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+        else if (debuffEdit[idx+1].ability.name == "Hammer of Justice" && debuffEdit[idx+2].ability.name == "Kidney Shot")
+          output.push(timeAt + debuffEdit[idx].ability.name + rb + "Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+        else if (debuffEdit[idx+1].ability.name == "Kidney Shot" && debuffEdit[idx+2].ability.name == "Hammer of Justice")
+          output.push(timeAt + debuffEdit[idx].ability.name + rb + "Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else
           output.push(timeAt + debuffEdit[idx].ability.name + " and " + debuffEdit[idx+1].ability.name + rb + debuffEdit[idx+2].ability.name + tdtr);
       }
