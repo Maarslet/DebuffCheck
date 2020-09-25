@@ -304,6 +304,7 @@ function formatNumber(value) {
     value = " " + value;}
   while (value.length<7) {
     value += "0";}
+  return value
 }
 
 
