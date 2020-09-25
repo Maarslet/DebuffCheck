@@ -254,6 +254,7 @@ function processInput() {
   console.log(bossEnds)
   console.log(uniqueStamps)
   console.log(timestampList)
+  console.log(fightData)
 }
 
 
