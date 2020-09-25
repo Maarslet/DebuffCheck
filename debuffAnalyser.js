@@ -210,6 +210,8 @@ function processInput() {
           output.push(timeAt + debuffEdit[idx].ability.name + rb + "Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else if (debuffEdit[idx+1].ability.name == "Kidney Shot" && debuffEdit[idx+2].ability.name == "Hammer of Justice")
           output.push(timeAt + debuffEdit[idx].ability.name + rb + "Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+        else if (debuffEdit[idx+1].ability.name == "Sunder Armor" && debuffEdit[idx+2].ability.name == "Expose Armor")
+          output.push(timeAt + debuffEdit[idx].ability.name + rb + "Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else
           output.push(timeAt + debuffEdit[idx].ability.name + " and " + debuffEdit[idx+1].ability.name + rb + debuffEdit[idx+2].ability.name + tdtr);
       }
