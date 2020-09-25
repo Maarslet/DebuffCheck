@@ -162,7 +162,7 @@ function processInput() {
   var idx = 0;
   var timeAt = 0;
   var output = new Array;
-  var rb = "</td><td>" + " removed by " + "</td><td>";
+  var rb = "</td><td style="text-align:center">" + " removed by " + "</td><td style="text-align:left">";
   var tdtr = "</td></tr>";
   output[0] = "<table><tr><th colspan='4'>" + "Report ID: " + logID + "</th></tr>";
   count = 0;
@@ -187,7 +187,7 @@ function processInput() {
         count++;
     }
     
-    timeAt = "<tr><td>" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + "</td><td>";
+    timeAt = "<tr><td style="text-align:right">" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + "</td><td style="text-align:right">";
     if (count==2) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff") {
         if (debuffEdit[idx].ability.name!==debuffEdit[idx+1].ability.name)
