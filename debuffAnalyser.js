@@ -139,10 +139,11 @@ function processInput() {
   }
   
   for (var i=0; i<debuffEdit.length; i++) {
-    if (debuffEdit[i].ability.name == "Faerie Fire (Feral)")
-      debuffEdit[i].ability.name == "Faerie Fire";
+    if (debuffEdit[i].ability.name == "Faerie Fire (Feral)") {
+      debuffEdit[i].ability.name == "Faerie Fire";}
+    console.log(debuffEdit[i].ability.name)
   }
-  
+  console.log(debuffEdit)
   var uniqueStamps = timestampList.filter(onlyUnique);
   var currentBoss = "None";
   var currentStart = 0;
