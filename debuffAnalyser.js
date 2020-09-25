@@ -5,10 +5,10 @@ function processInput() {
   if (input.length>16)
     input = input.slice(indx,indx+16);
   else if (input.length<16) {
-    document.getElementById("info").innerHTML = "Error, invalid report ID.";
+    document.getElementById("page").innerHTML = "Error, invalid report ID.";
     return}
   
-  document.getElementById("info").innerHTML = "Loading . . .";
+  document.getElementById("page").innerHTML = "Loading . . .";
   
   var logID = input; 
   var API = "&api_key=120a438a467e97b900a062c8a7a34000";
@@ -73,7 +73,7 @@ function processInput() {
       debuffEdit.splice(i,1);}
     else {
       for (var j=0; j<bossStarts.length; j++) {
-        if (debuffEdit[i].timestamp>bossEnds[j]-2000 && debuffEdit[i].timestamp<bossEnds[j]+500) {     
+        if (debuffEdit[i].timestamp>bossEnds[j]-1000 && debuffEdit[i].timestamp<bossEnds[j]+1000) {     
           debuffEdit.splice(i,1);
           break
         }
@@ -99,12 +99,6 @@ function processInput() {
     if (count < 1)
       debuffEdit.splice(i,1);
   }
-  
-  var timestampList = new Array;
-  for (var i=0; i<debuffEdit.length; i++) {
-    timestampList[i] = debuffEdit[i].timestamp;
-  }
-  
   
   for (var k=1; k<=5; k++) {
     for (var i=debuffEdit.length-1; i>=0; i--) {
@@ -137,15 +131,16 @@ function processInput() {
         debuffEdit.splice(i,1);
     }
   }
-
-  for (var i=1; i<debuffEdit.length; i++) {
-    if (debuffEdit[i].ability.name == "Faerie Fire (Feral)") {
-      debuffEdit[i].ability.name = "Faerie Fire";}
-    if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].timestamp == debuffEdit[i-1].timestamp && debuffEdit[i-1].type == "applydebuff") {
-      for (j=i; j<=i+10; j++) {
-        if (debuffEdit[j].timestamp == debuffEdit[i-1].timestamp) {
-          console.log("Check 3")
-          debuffEdit[j].timestamp = debuffEdit[j].timestamp + 1;
+  
+  for (var k=1; k<=5; k++) {
+    for (var i=1; i<debuffEdit.length; i++) {
+      if (debuffEdit[i].ability.name == "Faerie Fire (Feral)") {
+        debuffEdit[i].ability.name = "Faerie Fire";}
+      if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].timestamp == debuffEdit[i-1].timestamp && debuffEdit[i-1].type == "applydebuff") {
+        for (j=i; j<=i+10; j++) {
+          if (debuffEdit[j].timestamp == debuffEdit[i-1].timestamp) {
+            debuffEdit[j].timestamp = debuffEdit[j].timestamp + 1;
+          }
         }
       }
     }
@@ -187,11 +182,11 @@ function processInput() {
         count++;
     }
     
-    timeAt = "<tr><td>" + (debuffEdit[idx].timestamp-currentStart)/1000 + "</td><td>";
+    timeAt = "<tr><td>" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + "</td><td>";
     if (count==2) {
-      if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff") {
-        if (debuffEdit[idx].ability.name!==debuffEdit[idx+1].ability.name) {
-          output.push(timeAt + debuffEdit[idx].ability.name + rb + debuffEdit[idx+1].ability.name) + tdtr}}
+      if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff")
+        if (debuffEdit[idx].ability.name!==debuffEdit[idx+1].ability.name)
+          output.push(timeAt + debuffEdit[idx].ability.name + rb + debuffEdit[idx+1].ability.name) + tdtr
       else
         console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type)   
     }
@@ -296,7 +291,12 @@ function onlyUnique(value, index, self) {
 }
 
 
-
+function formatNumber(value) {
+  while (value.indexOf(".")<3) {
+    value = " " + value;}
+  while (value.length<7) {
+    value += "0";}
+}
 
 
 /*function processInput() {
