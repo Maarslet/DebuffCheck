@@ -162,7 +162,7 @@ function processInput() {
   var idx = 0;
   var timeAt = 0;
   var output = new Array;
-  var rb = "</td><td>" + " removed by " + "</td><td style='text-align:left'>";
+  var rb = "</td><td>" + "&nbsp removed by &nbsp" + "</td><td style='text-align:left'>";
   var tdtr = "</td></tr>";
   output[0] = "<table><tr><th colspan='4'>" + "Report ID: " + logID + "</th></tr>";
   count = 0;
