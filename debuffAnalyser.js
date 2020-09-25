@@ -298,12 +298,11 @@ function onlyUnique(value, index, self) {
 
 function formatNumber(value) {
   console.log(value)
-  var val = new String;
-  val = value;
-  console.log(val)
-  while (val.indexOf(".")<3) {
+  value = value.toString();
+  console.log(value)
+  while (value.indexOf(".")<3) {
     value = " " + value;}
-  while (val.length<7) {
+  while (value.length<7) {
     value += "0";}
 }
 
