@@ -253,6 +253,7 @@ function processInput() {
   console.log(bossStarts)
   console.log(bossEnds)
   console.log(uniqueStamps)
+  console.log(timestampList)
 }
 
 
