@@ -9,7 +9,7 @@ function processInput() {
     return
   }
   
-  document.getElementById("page").innerHTML = "Loading . . .";
+  document.getElementById("page").innerHTML = "Error";
   
   var logID = input; 
   var API = "&api_key=120a438a467e97b900a062c8a7a34000";
@@ -60,10 +60,10 @@ function processInput() {
   count = 0;
   for (var i=0; i<bossIDs.length; i++) {
     val = bossIDs[i];
-    temp = fightData.enemies[enemyIDs.indexOf(val)];
-    bossNames[count]  = fightData.fights[fightData.enemies[enemyIDs.indexOf(val)].fights[0].id-1].name;
-    bossStarts[count] = fightData.fights[fightData.enemies[enemyIDs.indexOf(val)].fights[0].id-1].start_time;
-    bossEnds[count]   = fightData.fights[fightData.enemies[enemyIDs.indexOf(val)].fights[0].id-1].end_time;
+    temp = fightData.enemies[enemyIDs.indexOf(val)].fights;
+    bossNames[count]  = fightData.fights[fightData.enemies[enemyIDs.indexOf(val)].fights[temp.length-1].id-1].name;
+    bossStarts[count] = fightData.fights[fightData.enemies[enemyIDs.indexOf(val)].fights[temp.length-1].id-1].start_time;
+    bossEnds[count]   = fightData.fights[fightData.enemies[enemyIDs.indexOf(val)].fights[temp.length-1].id-1].end_time;
     count++
   }
   
