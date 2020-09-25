@@ -207,9 +207,9 @@ function processInput() {
           output.push(timeAt + debuffEdit[idx].ability.name + " and " + debuffEdit[idx+1].ability.name + rb + debuffEdit[idx+2].ability.name + tdtr);
       }
       else if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "applydebuff") {
-        output.push(timeAt + debuffEdit[idx].ability.name + rb + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + tdtr);
+        if (debuffEdit[idx].ability.name !== debuffEdit[idx+1].ability.name && debuffEdit[idx].ability.name !== debuffEdit[idx+2].ability.name)
+          output.push(timeAt + debuffEdit[idx].ability.name + rb + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + tdtr);
       }
-      
       else 
         console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type + " " + debuffEdit[idx+2].type)
         
