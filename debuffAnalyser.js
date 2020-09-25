@@ -193,7 +193,8 @@ function processInput() {
         if (debuffEdit[idx].ability.name!==debuffEdit[idx+1].ability.name)
           if (debuffEdit[idx].ability.name!=="Mind Flay" || debuffEdit[idx+1].ability.name!=="Shadow Word: Pain")
             if (debuffEdit[idx].ability.name!=="Shadow Vulnerability" || debuffEdit[idx+1].ability.name!=="Mind Flay")
-              output.push(timeAt + debuffEdit[idx].ability.name + rb + debuffEdit[idx+1].ability.name) + tdtr 
+              if (debuffEdit[idx].ability.name!=="Sunder Armor" || debuffEdit[idx+1].ability.name!=="Expose Armor")
+                output.push(timeAt + debuffEdit[idx].ability.name + rb + debuffEdit[idx+1].ability.name) + tdtr 
       }
       else
         console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type) 
