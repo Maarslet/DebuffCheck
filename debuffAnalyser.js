@@ -187,7 +187,7 @@ function processInput() {
         count++;
     }
     
-    timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + "</td><td style='text-align:right'>";
+    timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + ":</td><td style='text-align:right'>";
     if (count==2) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff") {
         if (debuffEdit[idx].ability.name!==debuffEdit[idx+1].ability.name)
