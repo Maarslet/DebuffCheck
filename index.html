@@ -6,7 +6,6 @@
       table {
       font-family: arial, sans-serif;
       border-collapse: collapse;
-      width: 100%;
       }
       td, th {
       border: 1px solid #dddddd;
@@ -17,16 +16,15 @@
       background-color: #dddddd;
       }
       tr:nth-child(odd) {
-      background-color: #f1f1f1;
+      background-color: #dddddd;
       }
   </style>
   </head>
   <body>
     <h3>Debuff Analyser Tool</h3>
-    <p>Link your report or enter the report ID</p>
+    <p>Link your report or enter the report ID (5-20 seconds after pressing the button the data should appear)</p>
     <input type="text" id="input">
     <button type="button" onclick="processInput()">Process Report</button>
-    <p id="info"></p>
     <p id="page"></p>
   </body>
 </html>
