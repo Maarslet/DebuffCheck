@@ -175,7 +175,7 @@ function processInput() {
         currentStart = bossStarts[j];
         if (i!==0) 
           output.push("<tr><th colspan='4'></th></tr>")
-        output.push("<tr><th colspan='4'>" + "--- " + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight) ---" + "</th></tr>")
+        output.push("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
         console.log(" ")
         console.log("--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---")
       }
