@@ -70,11 +70,11 @@ function processInput() {
   for (var i=debuffEdit.length-1; i>=0; i--) {
     if (bossIDs.indexOf(debuffEdit[i].targetID) == -1 || debuffEdit[i].type == "removedebuffstack" || debuffEdit[i].type == "applydebuffstack" || debuffEdit[i].type == "refreshdebuff") {
       debuffEdit.splice(i,1);}
-    else if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].ability.name == "Deep Wound") {
+    else if (debuffEdit[i].ability.name == "Deep Wound") {
       debuffEdit.splice(i,1);}
-    else if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].ability.name == "Fireball") {
+    else if (debuffEdit[i].ability.name == "Fireball") {
       debuffEdit.splice(i,1);}
-    else if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].ability.name == "Pyroblast") {
+    else if (debuffEdit[i].ability.name == "Pyroblast") {
       debuffEdit.splice(i,1);}
     else {
       for (var j=0; j<bossStarts.length; j++) {
@@ -215,7 +215,8 @@ function processInput() {
       }
       else if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "applydebuff") {
         if (debuffEdit[idx].ability.name !== debuffEdit[idx+1].ability.name && debuffEdit[idx].ability.name !== debuffEdit[idx+2].ability.name)
-          output.push(timeAt + debuffEdit[idx].ability.name + rb + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + tdtr);
+          if (debuffEdit[idx].ability.name !== "Sunder Armor")
+            output.push(timeAt + debuffEdit[idx].ability.name + rb + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + tdtr);
       }
       else 
         console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type + " " + debuffEdit[idx+2].type)
