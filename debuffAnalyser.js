@@ -189,11 +189,12 @@ function processInput() {
     
     timeAt = "<tr><td>" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + "</td><td>";
     if (count==2) {
-      if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff")
+      if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff") {
         if (debuffEdit[idx].ability.name!==debuffEdit[idx+1].ability.name)
-          output.push(timeAt + debuffEdit[idx].ability.name + rb + debuffEdit[idx+1].ability.name) + tdtr
+          output.push(timeAt + debuffEdit[idx].ability.name + rb + debuffEdit[idx+1].ability.name) + tdtr 
+      }
       else
-        console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type)   
+        console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type) 
     }
     
     else if (count==3) {
@@ -287,7 +288,6 @@ function processInput() {
        console.log(timeAt + ": " + count)
   }
   document.getElementById("page").innerHTML = output + "</table>";
-  console.log(output)
 }
 
 
