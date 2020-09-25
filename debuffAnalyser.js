@@ -61,9 +61,9 @@ function processInput() {
   for (var i=0; i<bossIDs.length; i++) {
     val = bossIDs[i];
     temp = fightData.enemies[enemyIDs.indexOf(val)];
-    bossNames[count]  = fightData.fights[fightData.enemies[enemyIDs.indexOf(val)].fights[fightData.fights.temp.fights.length-1].id-1].name;
-    bossStarts[count] = fightData.fights[fightData.enemies[enemyIDs.indexOf(val)].fights[fightData.fights.temp.fights.length-1].id-1].start_time;
-    bossEnds[count]   = fightData.fights[fightData.enemies[enemyIDs.indexOf(val)].fights[fightData.fights.temp.fights.length-1].id-1].end_time;
+    bossNames[count]  = fightData.fights[fightData.enemies[enemyIDs.indexOf(val)].fights[0].id-1].name;
+    bossStarts[count] = fightData.fights[fightData.enemies[enemyIDs.indexOf(val)].fights[0].id-1].start_time;
+    bossEnds[count]   = fightData.fights[fightData.enemies[enemyIDs.indexOf(val)].fights[0].id-1].end_time;
     count++
   }
   
