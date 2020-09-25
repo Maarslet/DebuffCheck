@@ -301,7 +301,7 @@ function formatNumber(value) {
   value = value.toString();
   console.log(value)
   while (value.indexOf(".")<3) {
-    value = " " + value;}
+    value = "&nbsp" + value;}
   while (value.length<7) {
     value += "0";}
   return value
