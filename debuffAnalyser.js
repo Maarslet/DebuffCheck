@@ -257,10 +257,12 @@ function onlyUnique(value, index, self) {
 
 function formatNumber(value) {
   value = value.toString();
-  while (value.indexOf(".")<3) {
-    value = "&nbsp" + value;}
-  while (value.length<value.indexOf(".")+4) {
-    value += "0";}
+  for (var k=1; k<=5; k++)
+    if (value.indexOf(".")<3)
+      value = "&nbsp" + value;
+  for (var k=1; k<=5; k++)
+    if (value.length<value.indexOf(".")+4)
+      value += "0";
   return value
 }
 
