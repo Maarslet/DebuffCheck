@@ -245,7 +245,7 @@ function processInput() {
     else
        console.log(timeAt + ": Error, " + count)
   }
-  document.getElementById("page").innerHTML = output + "</table>";
+  document.getElementById("page").innerHTML = output + "<tr> <td><div style='width: 50px'></div></td> <td><div style='width: 250px'></div></td> <td><div style='width: 150px'></div></td> <td><div style='width: 300px'></div></td> </tr></table>";
 }
 
 
