@@ -249,6 +249,9 @@ function processInput() {
        console.log(timeAt + ": Error, " + count)
   }
   document.getElementById("page").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
+  console.log(uniqueStamps)
+  console.log(bossStarts)
+  console.log(bossEnds)
 }
 
 
