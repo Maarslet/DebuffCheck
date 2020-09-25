@@ -6,7 +6,8 @@ function processInput() {
     input = input.slice(indx,indx+16);
   else if (input.length<16) {
     document.getElementById("page").innerHTML = "Error, invalid report ID.";
-    return}
+    return
+  }
   
   document.getElementById("page").innerHTML = "Loading . . .";
   
@@ -16,34 +17,38 @@ function processInput() {
   var baseURL = "https://classic.warcraftlogs.com:443/v1/report";
   var filter = "&filter=encounterID%20%21%3D%200%20";
   try {
-  var fightData = new XMLHttpRequest();
+    var fightData = new XMLHttpRequest();
     fightData.open("Get", baseURL + "/fights/" + logID + "?" + API.slice(1,API.length), false);
     fightData.send(null);
     fightData = JSON.parse(fightData.response);
-  var debuffData = new XMLHttpRequest();
+    var debuffData = new XMLHttpRequest();
     debuffData.open("Get", baseURL + "/events/debuffs/" + logID + "?start=0&end=100000000&hostility=1&wipes=2&filter=encounterID%21%3D0" + API, false);
     debuffData.send(null);
     debuffData = JSON.parse(debuffData.response);
   
-  var nextTime = debuffData.nextPageTimestamp;
-  while (nextTime>1) {
-    var dataadd = new XMLHttpRequest();
-    dataadd.open("Get", baseURL + "/events/debuffs/" + logID + "?start=" + nextTime + "&end=100000000&hostility=1&wipes=2&filter=encounterID%21%3D0" + API, false);
-    dataadd.send(null);
-    dataadd = JSON.parse(dataadd.response);
-    debuffData.events = debuffData.events.concat(dataadd.events);
-    nextTime = dataadd.nextPageTimestamp;
-  }}
-  catch(err) {
-  document.getElementById("info").innerHTML = "Error: " + err.message; return
+    var nextTime = debuffData.nextPageTimestamp;
+    while (nextTime>1) {
+      var dataadd = new XMLHttpRequest();
+      dataadd.open("Get", baseURL + "/events/debuffs/" + logID + "?start=" + nextTime + "&end=100000000&hostility=1&wipes=2&filter=encounterID%21%3D0" + API, false);
+      dataadd.send(null);
+      dataadd = JSON.parse(dataadd.response);
+      debuffData.events = debuffData.events.concat(dataadd.events);
+      nextTime = dataadd.nextPageTimestamp;
+    }
   }
+  catch(err) {
+    document.getElementById("page").innerHTML = "Error: " + err.message; 
+    return
+  }
+  
   var bossIDs = new Array;
   var enemyIDs = new Array;
   var count = 0;
   for (var i=0; i<fightData.enemies.length; i++) {
     if (fightData.enemies[i].type == "Boss") {
-      bossIDs[count] = fightData.enemies[i].id; count++}
-    
+      bossIDs[count] = fightData.enemies[i].id; 
+      count++
+    }
     enemyIDs[i] = fightData.enemies[i].id;
   }
   
@@ -292,6 +297,9 @@ function onlyUnique(value, index, self) {
 
 
 function formatNumber(value) {
+  console.log(value)
+  var value = value;
+  console.log(value)
   while (value.indexOf(".")<3) {
     value = " " + value;}
   while (value.length<7) {
