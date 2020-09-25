@@ -297,9 +297,7 @@ function onlyUnique(value, index, self) {
 
 
 function formatNumber(value) {
-  console.log(value)
   value = value.toString();
-  console.log(value)
   while (value.indexOf(".")<3) {
     value = "&nbsp" + value;}
   while (value.length<value.indexOf(".")+4) {
