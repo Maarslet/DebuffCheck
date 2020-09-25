@@ -5,10 +5,10 @@ function processInput() {
   if (input.length>16)
     input = input.slice(indx,indx+16);
   else if (input.length<16) {
-    document.getElementById("page").innerHTML = "Error, invalid report ID.";
+    document.getElementById("info").innerHTML = "Error, invalid report ID.";
     return}
   
-  document.getElementById("page").innerHTML = "Loading . . .";
+  document.getElementById("info").innerHTML = "Loading . . .";
   
   var logID = input; 
   var API = "&api_key=120a438a467e97b900a062c8a7a34000";
@@ -34,9 +34,8 @@ function processInput() {
     debuffData.events = debuffData.events.concat(dataadd.events);
     nextTime = dataadd.nextPageTimestamp;
   }
-  document.getElementById("page").innerHTML = "Checkpoint 1";}
   catch(err) {
-  document.getElementById("page").innerHTML = "Error: " + err.message; return
+  document.getElementById("info").innerHTML = "Error: " + err.message; return
   }
   var bossIDs = new Array;
   var enemyIDs = new Array;
@@ -138,7 +137,6 @@ function processInput() {
         debuffEdit.splice(i,1);
     }
   }
-  document.getElementById("page").innerHTML = "Checkpoint 2";
   
   var uniqueStamps = timestampList.filter(onlyUnique);
   var currentBoss = "None";
