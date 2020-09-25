@@ -143,9 +143,9 @@ function processInput() {
         debuffEdit[i].ability.name = "Faerie Fire";}
       if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].timestamp == debuffEdit[i-1].timestamp && debuffEdit[i-1].type == "applydebuff") {
         for (j=i; j<=i+10; j++) {
-          if (j<debuffEdit.length && debuffEdit[j].timestamp == debuffEdit[i-1].timestamp) {
-            debuffEdit[j].timestamp = debuffEdit[j].timestamp + 1;
-          }
+          if (j<debuffEdit.length)
+            if (debuffEdit[j].timestamp == debuffEdit[i-1].timestamp)
+              debuffEdit[j].timestamp = debuffEdit[j].timestamp + 1;
         }
       }
     }
