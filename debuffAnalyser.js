@@ -137,12 +137,17 @@ function processInput() {
         debuffEdit.splice(i,1);
     }
   }
-  
-  for (var i=0; i<debuffEdit.length; i++) {
+  console.log(debuffEdit.timestamp)
+  for (var i=1; i<debuffEdit.length; i++) {
     if (debuffEdit[i].ability.name == "Faerie Fire (Feral)") {
       debuffEdit[i].ability.name = "Faerie Fire";}
+    if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].timestamp == debuffEdit[i-1].timestamp && debuffEdit[i-1].type == "applydebuff") {
+      for (j=i; j<=debuffEdit.timestamp.lastIndexOf(debuffEdit[i].timestamp); j++) {
+        debuffEdit[j].timestamp += 1;
+      }
+    }
   }
-
+  
   var uniqueStamps = timestampList.filter(onlyUnique);
   var currentBoss = "None";
   var currentStart = 0;
