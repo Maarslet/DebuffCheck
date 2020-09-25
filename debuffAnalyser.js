@@ -33,7 +33,7 @@ function processInput() {
     dataadd = JSON.parse(dataadd.response);
     debuffData.events = debuffData.events.concat(dataadd.events);
     nextTime = dataadd.nextPageTimestamp;
-  }
+  }}
   catch(err) {
   document.getElementById("info").innerHTML = "Error: " + err.message; return
   }
