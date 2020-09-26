@@ -11,7 +11,7 @@ function processInput() {
   
   document.getElementById("page").innerHTML = "Code stopped for some reason";
   
-  var logID = input; 
+  var logID = input.trim(); 
   var API = "&api_key=120a438a467e97b900a062c8a7a34000";
 
   var baseURL = "https://classic.warcraftlogs.com:443/v1/report";
