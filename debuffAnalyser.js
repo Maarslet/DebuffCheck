@@ -312,7 +312,7 @@ function processInput() {
       var cellString = "<font color=colorName>" + who.name + "'s " + "</font>" + debuffEdit[idx].ability.name;
     else if (pet == true)
       var cellString = "<font color=colorName>" + who.name + "'s Pet's " + "</font>" + debuffEdit[idx].ability.name;
-
+    console.log(colorName)
     return cellString
   }
   
