@@ -3,6 +3,18 @@
   <head>
     <title>Debuff Analyser Tool</title>
     <script src="/DebuffCheck/debuffAnalyser.js"></script>
+    <script>
+      $(document).ready(function(){
+        var myVar;
+        $( "#myButton" ).click(function() {
+  	      myFunction(this);
+        });
+      function myFunction(div) {
+        $("#loader").toggle();
+        $(div).toggle();
+      }
+      });
+    </script>
     <style>
       table {
         font-family: arial, sans-serif;
@@ -21,11 +33,11 @@
       tr:nth-child(even) { background-color: #dddddd; }
       tr:nth-child(odd) { background-color: #dddddd; }
       .loader {
-        border: 4px solid #f3f3f3;
+        border: 6px solid #f3f3f3;
         border-radius: 50%;
-        border-top: 4px solid #3498db;
-        width: 20px;
-        height: 20px;
+        border-top: 6px solid #3498db;
+        width: 18px;
+        height: 18px;
         -webkit-animation: spin 1.5s linear infinite; /* Safari */
         animation: spin 1.5s linear infinite;
       }
@@ -44,7 +56,10 @@
     <h3>Debuff Analyser Tool</h3>
     <p>Link your report or enter the report ID (Wait 5-20 seconds after pressing the button and the data should appear)</p>
     <input type="text" id="input">
-    <button type="button" onclick="processInput()">Process Report</button><div id="loader"></div>
+    <div>
+      <button id="myButton" type="button" onclick="processInput()">Process Report</button>
+      <div id="loader"></div>
+    </div>
     <p id="page"></p>
   </body>
 </html>
