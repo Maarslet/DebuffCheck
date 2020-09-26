@@ -205,6 +205,7 @@ function processInput() {
     
     debuffOne = classColor(idx);
     debuffTwo = classColor(idx+1);
+    console.log(debuffOne)
     
     timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + ":</td>"; //<td style='text-align:right'>
     if (count==2) {
