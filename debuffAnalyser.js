@@ -290,28 +290,28 @@ function processInput() {
     }
     
     if (spec == "Warrior")
-      var colorName = "SaddleBrown";
+      var colorName = "color:SaddleBrown";
     else if (spec == "Rogue")
-      var colorName = "Yellow";
+      var colorName = "color:Yellow";
     else if (spec == "Hunter")
-      var colorName = "ForestGreen";
+      var colorName = "color:ForestGreen";
     else if (spec == "Mage")
-      var colorName = "DeepSkyBlue";
+      var colorName = "color:DeepSkyBlue";
     else if (spec == "Warlock")
-      var colorName = "Indigo";
+      var colorName = "color:Indigo";
     else if (spec == "Druid")
-      var colorName = "DarkOrange";
+      var colorName = "color:DarkOrange";
     else if (spec == "Priest")
-      var colorName = "MintCream";
+      var colorName = "color:MintCream";
     else if (spec == "Paladin")
-      var colorName = "HotPink";
+      var colorName = "color:HotPink";
     else if (spec == "Shaman")
-      var colorName = "Navy";
+      var colorName = "color:Navy";
 
     if (pet == false)
-      var cellString = "<font color=colorName>" + who.name + "'s " + "</font>" + debuffEdit[idx].ability.name;
+      var cellString = "<p style=colorName>" + who.name + "'s " + "</p>" + debuffEdit[idx].ability.name;
     else if (pet == true)
-      var cellString = "<font color=colorName>" + who.name + "'s Pet's " + "</font>" + debuffEdit[idx].ability.name;
+      var cellString = "<p style=colorName>" + who.name + "'s Pet's " + "</p>" + debuffEdit[idx].ability.name;
     console.log(colorName)
     return cellString
   }
