@@ -59,6 +59,11 @@ function processInput() {
     friendIDs[i] = fightData.friendlies[i].id;
   }
   console.log(friendIDs)
+  var petIDs = new Array;
+  for (var i=0; i<fightData.friendlyPets.length; i++) {
+    petIDs[i] = fightData.friendlyPets[i].id;
+  }
+  console.log(petIDs)
   var bossStarts = new Array;
   var bossEnds = new Array;
   var bossNames = new Array;
@@ -201,6 +206,7 @@ function processInput() {
       debuffOne = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)].name + "'s " + debuffEdit[idx].ability.name;
     }
     catch (err) {
+      debuffOne = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx].sourceID)].owner)].name + "'s Pet's " + debuffEdit[idx].ability.name;
       console.log(err)
       console.log(fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)])
       console.log(friendIDs.indexOf(debuffEdit[idx].sourceID))
@@ -211,6 +217,7 @@ function processInput() {
     debuffTwo = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx+1].sourceID)].name + "'s " + debuffEdit[idx+1].ability.name;
     }
     catch (err) {
+      debuffTwo = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx+1].sourceID)].owner)].name + "'s Pet's " + debuffEdit[idx+1].ability.name;
       console.log(err)
       console.log(fightData.friendlies[friendIDs.indexOf(debuffEdit[idx+1].sourceID)])
       console.log(friendIDs.indexOf(debuffEdit[idx+1].sourceID))
