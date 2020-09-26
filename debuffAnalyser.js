@@ -54,6 +54,11 @@ function processInput() {
     enemyIDs[i] = fightData.enemies[i].id;
   }
   
+  var friendIDs = new Array;
+  for (var i=0; i<fightData.friendlies.length; i++) {
+    friendIDs[i] = fightData.friendlies[i].id;
+  }
+  
   var bossStarts = new Array;
   var bossEnds = new Array;
   var bossNames = new Array;
@@ -168,6 +173,8 @@ function processInput() {
   var output = new Array;
   var rb = "</td><td>" + "&nbsp removed by &nbsp" + "</td><td style='text-align:left'>";
   var tdtr = "</td></tr>";
+  var debuffOne = "";
+  var debuffTwo = "";
   output[0] = "<table><tr><th colspan='4'>" + "Report ID: " + logID + "</th></tr>";
   count = 0;
   for (var i=0; i<uniqueStamps.length; i++) {
@@ -191,6 +198,9 @@ function processInput() {
         count++;
     }
     
+    debuffOne = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)].name + "'s " + debuffEdit[idx].ability.name;
+    debuffTwo = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx+1].sourceID)].name + "'s " + debuffEdit[idx+1].ability.name;
+    
     timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + ":</td><td style='text-align:right'>";
     if (count==2) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff") {
@@ -198,7 +208,7 @@ function processInput() {
           if (debuffEdit[idx].ability.name!=="Mind Flay" || debuffEdit[idx+1].ability.name!=="Shadow Word: Pain")
             if (debuffEdit[idx].ability.name!=="Shadow Vulnerability" || debuffEdit[idx+1].ability.name!=="Mind Flay")
               if (debuffEdit[idx].ability.name!=="Sunder Armor" || debuffEdit[idx+1].ability.name!=="Expose Armor")
-                output.push(timeAt + debuffEdit[idx].ability.name + rb + debuffEdit[idx+1].ability.name) + tdtr 
+                output.push(timeAt + debuffOne + rb + debuffTwo + tdtr);
       }
       else
         console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type) 
