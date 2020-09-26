@@ -258,8 +258,8 @@ function processInput() {
   console.log(bossStarts)
   console.log(bossEnds)
   console.log(uniqueStamps)
-  console.log(timestampList)
-  console.log(fightData)*/
+  console.log(timestampList)*/
+  console.log(fightData)
   console.log(debuffEdit)
 }
 
