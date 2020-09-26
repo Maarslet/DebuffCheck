@@ -281,12 +281,14 @@ function processInput() {
     try {
       var who = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)];
       var pet = false;
+      var spec = who.type;
     }
     catch {
       var who = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx].sourceID)].petOwner)];
       var pet = true;
+      var spec = who.type;
     }
-    var spec = who.type;
+    
     if (spec == "Warrior")
       var colorName = "SaddleBrown";
     else if (spec == "Rogue")
