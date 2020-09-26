@@ -257,6 +257,7 @@ function processInput() {
   console.log(uniqueStamps)
   console.log(timestampList)
   console.log(fightData)
+  console.log(debuffData)
 }
 
 
