@@ -197,9 +197,11 @@ function processInput() {
       if (uniqueStamps[i]==timestampList[j])
         count++;
     }
-    
+    try {
     debuffOne = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)].name + "'s " + debuffEdit[idx].ability.name;
-    //debuffTwo = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx+1].sourceID)].name + "'s " + debuffEdit[idx+1].ability.name;
+    debuffTwo = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx+1].sourceID)].name + "'s " + debuffEdit[idx+1].ability.name;
+    }
+    catch (err) {}
     
     timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + ":</td><td style='text-align:right'>";
     if (count==2) {
