@@ -58,12 +58,12 @@ function processInput() {
   for (var i=0; i<fightData.friendlies.length; i++) {
     friendIDs[i] = fightData.friendlies[i].id;
   }
-  console.log(friendIDs)
+
   var petIDs = new Array;
   for (var i=0; i<fightData.friendlyPets.length; i++) {
     petIDs[i] = fightData.friendlyPets[i].id;
   }
-  console.log(petIDs)
+
   var bossStarts = new Array;
   var bossEnds = new Array;
   var bossNames = new Array;
@@ -202,29 +202,9 @@ function processInput() {
       if (uniqueStamps[i]==timestampList[j])
         count++;
     }
-    try {
-      debuffOne = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)].name + "'s " + debuffEdit[idx].ability.name;
-    }
-    catch (err) {
-      console.log(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx].sourceID)].petOwner)
-      debuffOne = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx].sourceID)].petOwner)].name + "'s Pet's " + debuffEdit[idx].ability.name;
-      console.log(err)
-      console.log(fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)])
-      console.log(friendIDs.indexOf(debuffEdit[idx].sourceID))
-      console.log(debuffEdit[idx].sourceID)
-    }
     
-    try {
-    debuffTwo = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx+1].sourceID)].name + "'s " + debuffEdit[idx+1].ability.name;
-    }
-    catch (err) {
-      console.log(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx+1].sourceID)].petOwner)
-      debuffTwo = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx+1].sourceID)].petOwner)].name + "'s Pet's " + debuffEdit[idx+1].ability.name;
-      console.log(err)
-      console.log(fightData.friendlies[friendIDs.indexOf(debuffEdit[idx+1].sourceID)])
-      console.log(friendIDs.indexOf(debuffEdit[idx+1].sourceID))
-      console.log(debuffEdit[idx+1].sourceID)
-    }
+    debuffOne = classColor(idx);
+    debuffTwo = classColor(idx+1);
     
     timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + ":</td><td style='text-align:right'>";
     if (count==2) {
@@ -242,22 +222,22 @@ function processInput() {
     else if (count==3) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "removedebuff" && debuffEdit[idx+2].type == "applydebuff") {
         if (debuffEdit[idx].ability.name == debuffEdit[idx+2].ability.name)
-          output.push(timeAt + debuffEdit[idx+1].ability.name + rb + "Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+          output.push(timeAt + debuffTwo + rb + "Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else if (debuffEdit[idx+1].ability.name == debuffEdit[idx+2].ability.name)
-          output.push(timeAt + debuffEdit[idx].ability.name + rb + "Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+          output.push(timeAt + debuffOne + rb + "Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else if (debuffEdit[idx+1].ability.name == "Hammer of Justice" && debuffEdit[idx+2].ability.name == "Kidney Shot")
-          output.push(timeAt + debuffEdit[idx].ability.name + rb + "Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+          output.push(timeAt + debuffOne + rb + "Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else if (debuffEdit[idx+1].ability.name == "Kidney Shot" && debuffEdit[idx+2].ability.name == "Hammer of Justice")
-          output.push(timeAt + debuffEdit[idx].ability.name + rb + "Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+          output.push(timeAt + debuffOne + rb + "Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else if (debuffEdit[idx+1].ability.name == "Sunder Armor" && debuffEdit[idx+2].ability.name == "Expose Armor")
-          output.push(timeAt + debuffEdit[idx].ability.name + rb + "Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+          output.push(timeAt + debuffOne + rb + "Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else
-          output.push(timeAt + debuffEdit[idx].ability.name + " and " + debuffEdit[idx+1].ability.name + rb + debuffEdit[idx+2].ability.name + tdtr);
+          output.push(timeAt + debuffOne + " and " + debuffTwo + rb + debuffEdit[idx+2].ability.name + tdtr);
       }
       else if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "applydebuff") {
         if (debuffEdit[idx].ability.name !== debuffEdit[idx+1].ability.name && debuffEdit[idx].ability.name !== debuffEdit[idx+2].ability.name)
           if (debuffEdit[idx].ability.name !== "Sunder Armor")
-            output.push(timeAt + debuffEdit[idx].ability.name + rb + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + tdtr);
+            output.push(timeAt + debuffOne + rb + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + tdtr);
       }
       else 
         console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type + " " + debuffEdit[idx+2].type)
@@ -266,7 +246,7 @@ function processInput() {
     else if (count==4) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "applydebuff" && debuffEdit[idx+3].type == "applydebuff") {
         if (debuffEdit[idx].ability.name !== debuffEdit[idx+1].ability.name && debuffEdit[idx].ability.name !== debuffEdit[idx+2].ability.name && debuffEdit[idx].ability.name !== debuffEdit[idx+3].ability.name)
-          output.push(timeAt + debuffEdit[idx].ability.name + rb + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + " or " + debuffEdit[idx+3].ability.name + tdtr)
+          output.push(timeAt + debuffOne + rb + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + " or " + debuffEdit[idx+3].ability.name + tdtr)
       }
       else if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "removedebuff" && debuffEdit[idx+2].type == "applydebuff" && debuffEdit[idx+3].type == "applydebuff") {
         console.log(timeAt + ": " + debuffEdit[idx].ability.name + " & " + debuffEdit[idx+1].ability.name + " removed by " + debuffEdit[idx+2].ability.name + " & " + debuffEdit[idx+3].ability.name)
@@ -278,7 +258,7 @@ function processInput() {
     else if (count==5) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "applydebuff" && debuffEdit[idx+3].type == "applydebuff" && debuffEdit[idx+4].type == "applydebuff") {
         if (debuffEdit[idx].ability.name !== debuffEdit[idx+1].ability.name && debuffEdit[idx].ability.name !== debuffEdit[idx+2].ability.name && debuffEdit[idx].ability.name !== debuffEdit[idx+3].ability.name && debuffEdit[idx].ability.name !== debuffEdit[idx+4].ability.name)
-          output.push(timeAt + debuffEdit[idx].ability.name + rb + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + " or " + debuffEdit[idx+3].ability.name + " or " + debuffEdit[idx+4].ability.name + tdtr)
+          output.push(timeAt + debuffOne + rb + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + " or " + debuffEdit[idx+3].ability.name + " or " + debuffEdit[idx+4].ability.name + tdtr)
       }
       else 
         console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type + " " + debuffEdit[idx+2].type + " " + debuffEdit[idx+3].type + " " + debuffEdit[idx+4].type)
@@ -314,4 +294,62 @@ function formatNumber(value) {
       value += "0";
   return value
 }
+
+function classColor(idx) {
+  try {
+    var who = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)];
+    var pet = false;
+  }
+  catch {
+    var who = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx].sourceID)].petOwner)];
+    var pet = true;
+  }
+  var spec = who.type;
+  if (spec == "Warrior")
+    var colorName = "SaddleBrown";
+  else if (spec == "Rogue")
+    var colorName = "Yellow";
+  else if (spec == "Hunter")
+    var colorName = "ForestGreen";
+  else if (spec == "Mage")
+    var colorName = "DeepSkyBlue";
+  else if (spec == "Warlock")
+    var colorName = "Indigo";
+  else if (spec == "Druid")
+    var colorName = "DarkOrange";
+  else if (spec == "Priest")
+    var colorName = "MintCream";
+  else if (spec == "Paladin")
+    var colorName = "HotPink";
+  else if (spec == "Shaman")
+    var colorName = "Navy";
+  
+  if (pet == false)
+    var cellString = "<font color=colorName>" + who.name + "'s " + "</font>" + debuffEdit[idx].ability.name;
+  else if (pet == true)
+    var cellString = "<font color=colorName>" + who.name + "'s Pet's " + "</font>" + debuffEdit[idx].ability.name;
+  
+  return cellString
+}
+
+
+/*
+    try {
+      spec = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)].type;
+      if (spec == "Warrior")
+        color = "brown";
+      else if (spec == 
+      debuffOne = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)].name + "'s " + debuffEdit[idx].ability.name;
+    }
+    catch {debuffOne = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx].sourceID)].petOwner)].name + "'s Pet's " + debuffEdit[idx].ability.name;}
+    
+    try {debuffTwo = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx+1].sourceID)].name + "'s " + debuffEdit[idx+1].ability.name;}
+    catch {debuffTwo = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx+1].sourceID)].petOwner)].name + "'s Pet's " + debuffEdit[idx+1].ability.name;}
+    */
+
+
+
+
+
+
 
