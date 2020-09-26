@@ -291,23 +291,23 @@ function processInput() {
     
     var preString = "text-align:" + alignment + ";color:"
     if (spec == "Warrior")
-      var colorName = preString + "SaddleBrown";
+      var colorName = preString + "#C79C6E";
     else if (spec == "Rogue")
-      var colorName = preString + "Yellow";
+      var colorName = preString + "#FFF569";
     else if (spec == "Hunter")
-      var colorName = preString + "ForestGreen";
+      var colorName = preString + "#ABD473";
     else if (spec == "Mage")
-      var colorName = preString + "DeepSkyBlue";
+      var colorName = preString + "#69CCF0";
     else if (spec == "Warlock")
-      var colorName = preString + "Indigo";
+      var colorName = preString + "#9482C9";
     else if (spec == "Druid")
-      var colorName = preString + "DarkOrange";
+      var colorName = preString + "#FF7D0A";
     else if (spec == "Priest")
-      var colorName = preString + "MintCream";
+      var colorName = preString + "#FFFFFF";
     else if (spec == "Paladin")
-      var colorName = preString + "HotPink";
+      var colorName = preString + "#F58CBA";
     else if (spec == "Shaman")
-      var colorName = preString + "Navy";
+      var colorName = preString + "#0070DE";
 
     if (pet == false)
       var cellString = "<td style=" + colorName + ">" + who.name + "'s " + debuffEdit[idx].ability.name;
