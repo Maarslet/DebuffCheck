@@ -3,19 +3,6 @@
   <head>
     <title>Debuff Analyser Tool</title>
     <script src="/DebuffCheck/debuffAnalyser.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>
-      $(document).ready(function(){
-        var myVar;
-        $( "#myButton" ).click(function() {
-  	      myFunction(this);
-        });
-      function myFunction(div) {
-        $("#loader").toggle();
-        $(div).toggle();
-      }
-      });
-    </script>
     <style>
       table {
         font-family: arial, sans-serif;
@@ -59,7 +46,7 @@
     <div>
       <input type="text" id="input">
       <button id="myButton" type="button" onclick="processInput()">Process Report</button>
-      <div id="loader" style="display:none;background:green"></div>
+      <div id="loader" class="loader_div"></div>
     </div>
     <p id="page"></p>
   </body>
