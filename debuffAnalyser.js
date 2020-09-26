@@ -222,7 +222,7 @@ function processInput() {
     else if (count==3) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "removedebuff" && debuffEdit[idx+2].type == "applydebuff") {
         if (debuffEdit[idx].ability.name == debuffEdit[idx+2].ability.name)
-          output.push(timeAt + classColor(idx+1,"right") + rb + "<td>Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+          output.push(timeAt + classColor(idx+1,"right") + rb + "<td style='text-align:left'>Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else if (debuffEdit[idx+1].ability.name == debuffEdit[idx+2].ability.name)
           output.push(timeAt + debuffOne + rb + "<td style='text-align:left'>Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else if (debuffEdit[idx+1].ability.name == "Hammer of Justice" && debuffEdit[idx+2].ability.name == "Kidney Shot")
