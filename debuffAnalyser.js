@@ -311,9 +311,9 @@ function processInput() {
       var colorName = preString + "Navy";
 
     if (pet == false)
-      var cellString = "<td style=colorName>" + who.name + "'s " + debuffEdit[idx].ability.name;
+      var cellString = "<td style=" + colorName + ">" + who.name + "'s " + debuffEdit[idx].ability.name;
     else if (pet == true)
-      var cellString = "<td style=colorName>" + who.name + "'s Pet's " + debuffEdit[idx].ability.name;
+      var cellString = "<td style=" + colorName + ">" + who.name + "'s Pet's " + debuffEdit[idx].ability.name;
     console.log(colorName)
     return cellString
   }
