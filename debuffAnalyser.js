@@ -223,22 +223,22 @@ function processInput() {
     else if (count==3) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "removedebuff" && debuffEdit[idx+2].type == "applydebuff") {
         if (debuffEdit[idx].ability.name == debuffEdit[idx+2].ability.name)
-          output.push(timeAt + debuffTwo + rb + "Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+          output.push(timeAt + debuffTwo + rb + "<td>Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else if (debuffEdit[idx+1].ability.name == debuffEdit[idx+2].ability.name)
-          output.push(timeAt + debuffOne + rb + "Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+          output.push(timeAt + debuffOne + rb + "<td>Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else if (debuffEdit[idx+1].ability.name == "Hammer of Justice" && debuffEdit[idx+2].ability.name == "Kidney Shot")
-          output.push(timeAt + debuffOne + rb + "Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+          output.push(timeAt + debuffOne + rb + "<td>Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else if (debuffEdit[idx+1].ability.name == "Kidney Shot" && debuffEdit[idx+2].ability.name == "Hammer of Justice")
-          output.push(timeAt + debuffOne + rb + "Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+          output.push(timeAt + debuffOne + rb + "<td>Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else if (debuffEdit[idx+1].ability.name == "Sunder Armor" && debuffEdit[idx+2].ability.name == "Expose Armor")
-          output.push(timeAt + debuffOne + rb + "Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+          output.push(timeAt + debuffOne + rb + "<td>Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else
-          output.push(timeAt + debuffOne + " and " + debuffTwo + rb + debuffEdit[idx+2].ability.name + tdtr);
+          output.push(timeAt + debuffOne + " and " + debuffTwo + rb + "<td>" + debuffEdit[idx+2].ability.name + tdtr);
       }
       else if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "applydebuff") {
         if (debuffEdit[idx].ability.name !== debuffEdit[idx+1].ability.name && debuffEdit[idx].ability.name !== debuffEdit[idx+2].ability.name)
           if (debuffEdit[idx].ability.name !== "Sunder Armor")
-            output.push(timeAt + debuffOne + rb + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + tdtr);
+            output.push(timeAt + debuffOne + rb + "<td>" + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + tdtr);
       }
       else 
         console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type + " " + debuffEdit[idx+2].type)
@@ -247,7 +247,7 @@ function processInput() {
     else if (count==4) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "applydebuff" && debuffEdit[idx+3].type == "applydebuff") {
         if (debuffEdit[idx].ability.name !== debuffEdit[idx+1].ability.name && debuffEdit[idx].ability.name !== debuffEdit[idx+2].ability.name && debuffEdit[idx].ability.name !== debuffEdit[idx+3].ability.name)
-          output.push(timeAt + debuffOne + rb + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + " or " + debuffEdit[idx+3].ability.name + tdtr)
+          output.push(timeAt + debuffOne + rb + "<td>" + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + " or " + debuffEdit[idx+3].ability.name + tdtr)
       }
       else if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "removedebuff" && debuffEdit[idx+2].type == "applydebuff" && debuffEdit[idx+3].type == "applydebuff") {
         console.log(timeAt + ": " + debuffEdit[idx].ability.name + " & " + debuffEdit[idx+1].ability.name + " removed by " + debuffEdit[idx+2].ability.name + " & " + debuffEdit[idx+3].ability.name)
@@ -259,7 +259,7 @@ function processInput() {
     else if (count==5) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "applydebuff" && debuffEdit[idx+3].type == "applydebuff" && debuffEdit[idx+4].type == "applydebuff") {
         if (debuffEdit[idx].ability.name !== debuffEdit[idx+1].ability.name && debuffEdit[idx].ability.name !== debuffEdit[idx+2].ability.name && debuffEdit[idx].ability.name !== debuffEdit[idx+3].ability.name && debuffEdit[idx].ability.name !== debuffEdit[idx+4].ability.name)
-          output.push(timeAt + debuffOne + rb + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + " or " + debuffEdit[idx+3].ability.name + " or " + debuffEdit[idx+4].ability.name + tdtr)
+          output.push(timeAt + debuffOne + rb + "<td>" + debuffEdit[idx+1].ability.name + " or " + debuffEdit[idx+2].ability.name + " or " + debuffEdit[idx+3].ability.name + " or " + debuffEdit[idx+4].ability.name + tdtr)
       }
       else 
         console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type + " " + debuffEdit[idx+2].type + " " + debuffEdit[idx+3].type + " " + debuffEdit[idx+4].type)
