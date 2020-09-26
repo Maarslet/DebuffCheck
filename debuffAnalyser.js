@@ -207,7 +207,7 @@ function processInput() {
     }
     catch (err) {
       console.log(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx].sourceID)].owner)
-      debuffOne = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx].sourceID)].owner)].name + "'s Pet's " + debuffEdit[idx].ability.name;
+      //debuffOne = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx].sourceID)].owner)].name + "'s Pet's " + debuffEdit[idx].ability.name;
       console.log(err)
       console.log(fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)])
       console.log(friendIDs.indexOf(debuffEdit[idx].sourceID))
@@ -219,7 +219,7 @@ function processInput() {
     }
     catch (err) {
       console.log(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx+1].sourceID)].owner)
-      debuffTwo = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx+1].sourceID)].owner)].name + "'s Pet's " + debuffEdit[idx+1].ability.name;
+      //debuffTwo = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx+1].sourceID)].owner)].name + "'s Pet's " + debuffEdit[idx+1].ability.name;
       console.log(err)
       console.log(fightData.friendlies[friendIDs.indexOf(debuffEdit[idx+1].sourceID)])
       console.log(friendIDs.indexOf(debuffEdit[idx+1].sourceID))
