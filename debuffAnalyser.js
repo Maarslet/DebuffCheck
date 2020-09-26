@@ -276,6 +276,44 @@ function processInput() {
   console.log(timestampList)*/
   console.log(fightData)
   console.log(debuffEdit)
+  
+  function classColor(idx) {
+    try {
+      var who = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)];
+      var pet = false;
+    }
+    catch {
+      var who = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx].sourceID)].petOwner)];
+      var pet = true;
+    }
+    var spec = who.type;
+    if (spec == "Warrior")
+      var colorName = "SaddleBrown";
+    else if (spec == "Rogue")
+      var colorName = "Yellow";
+    else if (spec == "Hunter")
+      var colorName = "ForestGreen";
+    else if (spec == "Mage")
+      var colorName = "DeepSkyBlue";
+    else if (spec == "Warlock")
+      var colorName = "Indigo";
+    else if (spec == "Druid")
+      var colorName = "DarkOrange";
+    else if (spec == "Priest")
+      var colorName = "MintCream";
+    else if (spec == "Paladin")
+      var colorName = "HotPink";
+    else if (spec == "Shaman")
+      var colorName = "Navy";
+
+    if (pet == false)
+      var cellString = "<font color=colorName>" + who.name + "'s " + "</font>" + debuffEdit[idx].ability.name;
+    else if (pet == true)
+      var cellString = "<font color=colorName>" + who.name + "'s Pet's " + "</font>" + debuffEdit[idx].ability.name;
+
+    return cellString
+  }
+  
 }
 
 
@@ -295,42 +333,7 @@ function formatNumber(value) {
   return value
 }
 
-function classColor(idx) {
-  try {
-    var who = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)];
-    var pet = false;
-  }
-  catch {
-    var who = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx].sourceID)].petOwner)];
-    var pet = true;
-  }
-  var spec = who.type;
-  if (spec == "Warrior")
-    var colorName = "SaddleBrown";
-  else if (spec == "Rogue")
-    var colorName = "Yellow";
-  else if (spec == "Hunter")
-    var colorName = "ForestGreen";
-  else if (spec == "Mage")
-    var colorName = "DeepSkyBlue";
-  else if (spec == "Warlock")
-    var colorName = "Indigo";
-  else if (spec == "Druid")
-    var colorName = "DarkOrange";
-  else if (spec == "Priest")
-    var colorName = "MintCream";
-  else if (spec == "Paladin")
-    var colorName = "HotPink";
-  else if (spec == "Shaman")
-    var colorName = "Navy";
-  
-  if (pet == false)
-    var cellString = "<font color=colorName>" + who.name + "'s " + "</font>" + debuffEdit[idx].ability.name;
-  else if (pet == true)
-    var cellString = "<font color=colorName>" + who.name + "'s Pet's " + "</font>" + debuffEdit[idx].ability.name;
-  
-  return cellString
-}
+
 
 
 /*
