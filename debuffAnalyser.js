@@ -9,7 +9,7 @@ function processInput() {
     return
   }
   
-  document.getElementById("page").innerHTML = "Error";
+  document.getElementById("page").innerHTML = "Code stopped for some reason";
   
   var logID = input; 
   var API = "&api_key=120a438a467e97b900a062c8a7a34000";
