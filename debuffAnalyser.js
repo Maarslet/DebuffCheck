@@ -40,7 +40,7 @@ function processInput() {
     document.getElementById("page").innerHTML = "Error: " + err.message; 
     return
   }
-  console.log(debuffData)
+  console.log(debuffData); return
   var bossIDs = new Array;
   var enemyIDs = new Array;
   var count = 0;
