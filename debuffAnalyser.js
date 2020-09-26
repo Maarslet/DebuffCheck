@@ -1,6 +1,7 @@
 function processInput() {
   
   var input = document.querySelector("#input").value;
+  input = input.trim();
   var indx = input.indexOf("/reports/")+"/reports/".length;
   if (input.length>16)
     input = input.slice(indx,indx+16);
