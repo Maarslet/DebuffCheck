@@ -198,10 +198,24 @@ function processInput() {
         count++;
     }
     try {
-    debuffOne = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)].name + "'s " + debuffEdit[idx].ability.name;
+      debuffOne = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)].name + "'s " + debuffEdit[idx].ability.name;
+    }
+    catch (err) {
+      console.log(err)
+      console.log(fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)])
+      console.log(friendIDs.indexOf(debuffEdit[idx].sourceID))
+      console.log(debuffEdit[idx].sourceID)
+    }
+    
+    try {
     debuffTwo = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx+1].sourceID)].name + "'s " + debuffEdit[idx+1].ability.name;
     }
-    catch (err) {}
+    catch (err) {
+      console.log(err)
+      console.log(fightData.friendlies[friendIDs.indexOf(debuffEdit[idx+1].sourceID)])
+      console.log(friendIDs.indexOf(debuffEdit[idx+1].sourceID))
+      console.log(debuffEdit[idx+1].sourceID)
+    }
     
     timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + ":</td><td style='text-align:right'>";
     if (count==2) {
