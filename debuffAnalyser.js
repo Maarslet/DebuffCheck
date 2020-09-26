@@ -58,7 +58,7 @@ function processInput() {
   for (var i=0; i<fightData.friendlies.length; i++) {
     friendIDs[i] = fightData.friendlies[i].id;
   }
-  
+  console.log(friendIDs)
   var bossStarts = new Array;
   var bossEnds = new Array;
   var bossNames = new Array;
