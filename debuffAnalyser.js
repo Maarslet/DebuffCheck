@@ -203,9 +203,8 @@ function processInput() {
         count++;
     }
     
-    debuffOne = classColor(idx);
-    debuffTwo = classColor(idx+1);
-    console.log(debuffOne)
+    debuffOne = classColor(idx,"right");
+    debuffTwo = classColor(idx+1,"left");
     
     timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + ":</td>"; //<td style='text-align:right'>
     if (count==2) {
@@ -223,7 +222,7 @@ function processInput() {
     else if (count==3) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "removedebuff" && debuffEdit[idx+2].type == "applydebuff") {
         if (debuffEdit[idx].ability.name == debuffEdit[idx+2].ability.name)
-          output.push(timeAt + debuffTwo + rb + "<td>Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+          output.push(timeAt + classColor(idx+1,"right") + rb + "<td>Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else if (debuffEdit[idx+1].ability.name == debuffEdit[idx+2].ability.name)
           output.push(timeAt + debuffOne + rb + "<td>Phantom Debuff (" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else if (debuffEdit[idx+1].ability.name == "Hammer of Justice" && debuffEdit[idx+2].ability.name == "Kidney Shot")
@@ -233,7 +232,7 @@ function processInput() {
         else if (debuffEdit[idx+1].ability.name == "Sunder Armor" && debuffEdit[idx+2].ability.name == "Expose Armor")
           output.push(timeAt + debuffOne + rb + "<td>Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else
-          output.push(timeAt + debuffOne + " and " + debuffTwo + rb + "<td>" + debuffEdit[idx+2].ability.name + tdtr);
+          output.push(timeAt + debuffOne + " and " + debuffEdit[idx+1].ability.name + rb + "<td>" + debuffEdit[idx+2].ability.name + tdtr);
       }
       else if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff" && debuffEdit[idx+2].type == "applydebuff") {
         if (debuffEdit[idx].ability.name !== debuffEdit[idx+1].ability.name && debuffEdit[idx].ability.name !== debuffEdit[idx+2].ability.name)
@@ -278,7 +277,7 @@ function processInput() {
   console.log(fightData)
   console.log(debuffEdit)
   
-  function classColor(idx) {
+  function classColor(idx,alignment) {
     try {
       var who = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)];
       var pet = false;
@@ -290,7 +289,7 @@ function processInput() {
       var spec = who.type;
     }
     
-    var preString = "text-align:left;color:"
+    var preString = "text-align:" + alignment + ";color:"
     if (spec == "Warrior")
       var colorName = preString + "SaddleBrown";
     else if (spec == "Rogue")
@@ -314,7 +313,7 @@ function processInput() {
       var cellString = "<td style=" + colorName + ">" + who.name + "'s " + debuffEdit[idx].ability.name;
     else if (pet == true)
       var cellString = "<td style=" + colorName + ">" + who.name + "'s Pet's " + debuffEdit[idx].ability.name;
-    console.log(colorName)
+    
     return cellString
   }
   
