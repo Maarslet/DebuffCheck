@@ -176,7 +176,7 @@ function processInput() {
   var idx = 0;
   var timeAt = 0;
   var output = new Array;
-  var rb = "</td><td>" + "&nbsp removed by &nbsp" + "</td><td style='text-align:left'>";
+  var rb = "</td><td>" + "&nbsp removed by &nbsp" + "</td>";
   var tdtr = "</td></tr>";
   var debuffOne = "";
   var debuffTwo = "";
@@ -206,7 +206,7 @@ function processInput() {
     debuffOne = classColor(idx);
     debuffTwo = classColor(idx+1);
     
-    timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + ":</td><td style='text-align:right'>";
+    timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + ":</td>"; //<td style='text-align:right'>
     if (count==2) {
       if (debuffEdit[idx].type == "removedebuff" && debuffEdit[idx+1].type == "applydebuff") {
         if (debuffEdit[idx].ability.name!==debuffEdit[idx+1].ability.name)
@@ -289,29 +289,30 @@ function processInput() {
       var spec = who.type;
     }
     
+    var preString = "text-align:left;color:"
     if (spec == "Warrior")
-      var colorName = "color:SaddleBrown";
+      var colorName = preString + "SaddleBrown";
     else if (spec == "Rogue")
-      var colorName = "color:Yellow";
+      var colorName = preString + "Yellow";
     else if (spec == "Hunter")
-      var colorName = "color:ForestGreen";
+      var colorName = preString + "ForestGreen";
     else if (spec == "Mage")
-      var colorName = "color:DeepSkyBlue";
+      var colorName = preString + "DeepSkyBlue";
     else if (spec == "Warlock")
-      var colorName = "color:Indigo";
+      var colorName = preString + "Indigo";
     else if (spec == "Druid")
-      var colorName = "color:DarkOrange";
+      var colorName = preString + "DarkOrange";
     else if (spec == "Priest")
-      var colorName = "color:MintCream";
+      var colorName = preString + "MintCream";
     else if (spec == "Paladin")
-      var colorName = "color:HotPink";
+      var colorName = preString + "HotPink";
     else if (spec == "Shaman")
-      var colorName = "color:Navy";
+      var colorName = preString + "Navy";
 
     if (pet == false)
-      var cellString = "<p style=colorName>" + who.name + "'s " + "</p>" + debuffEdit[idx].ability.name;
+      var cellString = "<td style=colorName>" + who.name + "'s " + debuffEdit[idx].ability.name;
     else if (pet == true)
-      var cellString = "<p style=colorName>" + who.name + "'s Pet's " + "</p>" + debuffEdit[idx].ability.name;
+      var cellString = "<td style=colorName>" + who.name + "'s Pet's " + debuffEdit[idx].ability.name;
     console.log(colorName)
     return cellString
   }
