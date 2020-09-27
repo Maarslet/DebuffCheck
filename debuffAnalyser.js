@@ -85,7 +85,15 @@ function processInput() {
   for (var i=debuffEdit.length-1; i>=0; i--) {
     if (bossIDs.indexOf(debuffEdit[i].targetID) == -1 || debuffEdit[i].type == "removedebuffstack" || debuffEdit[i].type == "applydebuffstack" || debuffEdit[i].type == "refreshdebuff") {
       debuffEdit.splice(i,1);}
-    else if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].ability.name in ["Mind Flay", "Rain of Fire", "Blizzard", "Consecration", "Hellfire"]) {
+    else if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].ability.name == "Mind Flay") {
+      debuffEdit.splice(i,1);}
+    else if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].ability.name == "Rain of Fire") {
+      debuffEdit.splice(i,1);}
+    else if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].ability.name == "Blizzard") {
+      debuffEdit.splice(i,1);}
+    else if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].ability.name == "Consecration") {
+      debuffEdit.splice(i,1);}
+    else if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].ability.name == "Hellfire") {
       debuffEdit.splice(i,1);}
     else {
       for (var j=0; j<bossStarts.length; j++) {
