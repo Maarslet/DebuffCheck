@@ -236,6 +236,8 @@ function processInput() {
           output.push(timeAt + debuffOne + rb + "<td style='text-align:left'>Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else if (debuffEdit[idx+1].ability.name == "Sunder Armor" && debuffEdit[idx+2].ability.name == "Expose Armor")
           output.push(timeAt + debuffOne + rb + "<td style='text-align:left'>Phantom Debuff (" + debuffEdit[idx+1].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
+        else if (debuffEdit[idx].ability.name == "Sunder Armor" && debuffEdit[idx+2].ability.name == "Expose Armor")
+          output.push(timeAt + classColor(idx+1,"right") + rb + "<td style='text-align:left'>Phantom Debuff (" + debuffEdit[idx].ability.name + "/" + debuffEdit[idx+2].ability.name + ")" + tdtr);
         else
           output.push(timeAt + debuffOne + " and " + debuffEdit[idx+1].ability.name + rb + "<td style='text-align:left'>" + debuffEdit[idx+2].ability.name + tdtr);
       }
