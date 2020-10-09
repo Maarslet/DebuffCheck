@@ -67,6 +67,6 @@ body, html {
   height: 100%;
 }
 
-#DebuffAnalyser {background-color: red;}
-#DebuffsUsed {background-color: green;}
-#ISBStacks {background-color: blue;}
+#DebuffAnalyser {background-color: #888888;}
+#DebuffsUsed {background-color: #888888;}
+#ISBStacks {background-color: #888888;}
