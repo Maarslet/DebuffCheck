@@ -44,7 +44,7 @@ body, html {
 }
 /* Style tab links */
 .tablink {
-  background-color: #555;
+  background-color: #666;
   color: black;
   float: left;
   border: none;
@@ -63,7 +63,7 @@ body, html {
 .tabcontent {
   color: black;
   display: none;
-  padding: 30px 20px;
+  padding: 60px 20px;
   height: 100%;
 }
 
