@@ -6,7 +6,6 @@
     <script src="/DebuffCheck/debuffAnalyser.js"></script>
     <script type="text/javascript">
       function startCode() {
-        var choice
         document.getElementById("page").innerHTML = "";
         document.getElementsByClassName("loader")[0].style.display = "inline-block";
         setTimeout(function(){ processInput(); }, 10);
@@ -46,7 +45,7 @@
     <div id="DebuffsUsed" class="tabcontent">
       <h3>Something something debuffs used checker</h3>
       <p>Link your report or enter the report ID (Wait 5-20 seconds after pressing the button and the data should appear)</p>
-      <input type="text" id="input">
+      <input type="text" id="input2">
       <button id="myButton2" type="button" onclick="startCode();">Process Report</button>
       <div id="loader2" class="loader"></div>
       <p id="page2"></p>
@@ -55,7 +54,7 @@
     <div id="ISBStacks" class="tabcontent">
       <h3>Something something ISB stack eat checker</h3>
       <p>Link your report or enter the report ID (Wait 5-20 seconds after pressing the button and the data should appear)</p>
-      <input type="text" id="input">
+      <input type="text" id="input3">
       <button id="myButton3" type="button" onclick="startCode();">Process Report</button>
       <div id="loader3" class="loader"></div>
       <p id="page3"></p>
