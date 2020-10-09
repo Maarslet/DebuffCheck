@@ -68,5 +68,5 @@ body, html {
 }
 
 #DebuffAnalyser {background-color: red;}
-#DebuffUsed {background-color: green;}
+#DebuffsUsed {background-color: green;}
 #ISBStacks {background-color: blue;}
