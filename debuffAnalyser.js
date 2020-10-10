@@ -1,5 +1,7 @@
 function processInput() {
   
+  document.getElementsByClassName("loader")[0].style.display = "none";
+  
   var input = document.querySelector("#input").value;
   input = input.trim();
   var indx = input.indexOf("/reports/")+"/reports/".length;
@@ -274,7 +276,6 @@ function processInput() {
     else
        console.log(timeAt + ": Error, " + count)
   }
-  document.getElementsByClassName("loader")[0].style.display = "none";
   document.getElementById("page").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
   console.log(bossNames)
   console.log(bossStarts)
@@ -342,27 +343,5 @@ function formatNumber(value) {
       value += "0";
   return value
 }
-
-
-
-
-/*
-    try {
-      spec = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)].type;
-      if (spec == "Warrior")
-        color = "brown";
-      else if (spec == 
-      debuffOne = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx].sourceID)].name + "'s " + debuffEdit[idx].ability.name;
-    }
-    catch {debuffOne = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx].sourceID)].petOwner)].name + "'s Pet's " + debuffEdit[idx].ability.name;}
-    
-    try {debuffTwo = fightData.friendlies[friendIDs.indexOf(debuffEdit[idx+1].sourceID)].name + "'s " + debuffEdit[idx+1].ability.name;}
-    catch {debuffTwo = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx+1].sourceID)].petOwner)].name + "'s Pet's " + debuffEdit[idx+1].ability.name;}
-    */
-
-
-
-
-
 
 
