@@ -149,4 +149,7 @@ function checkDebuffsUsed() {
   }
   document.getElementById("page2").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
   
+  console.log(bossNames)
+  console.log(bossStarts)
+  console.log(bossEnds)
 }
