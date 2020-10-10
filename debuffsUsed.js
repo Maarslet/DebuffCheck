@@ -95,7 +95,7 @@ function checkDebuffsUsed() {
   
   for (var i=0; i<debuffEdit.length; i++) {
     for (var j=0; j<bossNames.length; j++) {
-      if (uniqueStamps[i]>bossStarts[j] && uniqueStamps[i]<bossEnds[j] && bossNames[j]!==currentBoss) {
+      if (debuffEdit[i].timestamp>bossStarts[j] && debuffEdit[i].timestamp[i]<bossEnds[j] && bossNames[j]!==currentBoss) {
         currentBoss = bossNames[j];
         currentStart = bossStarts[j];
         if (i!==0) 
