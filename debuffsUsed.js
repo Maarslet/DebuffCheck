@@ -2,17 +2,17 @@ function checkDebuffsUsed() {
   
   document.getElementsByClassName("loader")[1].style.display = "none";
   
-  var input = document.querySelector("#input").value;
+  var input = document.querySelector("#input2").value;
   input = input.trim();
   var indx = input.indexOf("/reports/")+"/reports/".length;
   if (input.length>16)
     input = input.slice(indx,indx+16);
   else if (input.length<16) {
-    document.getElementById("page").innerHTML = "Error, invalid report ID.";
+    document.getElementById("page2").innerHTML = "Error, invalid report ID.";
     return
   }
   
-  document.getElementById("page").innerHTML = "Code stopped for some reason";
+  document.getElementById("page2").innerHTML = "Code stopped for some reason";
   
   var logID = input.trim(); console.log("'" + logID + "'")
   var API = "&api_key=120a438a467e97b900a062c8a7a34000";
@@ -42,11 +42,11 @@ function checkDebuffsUsed() {
     }
   }
   catch(err) {
-    document.getElementById("page").innerHTML = "Error: " + err.message; 
+    document.getElementById("page2").innerHTML = "Error: " + err.message; 
     return
   }
   
   
   
-  document.getElementById("page").innerHTML = "End of code (Work In Progress)";
+  document.getElementById("page2").innerHTML = "End of code (Work In Progress)";
 }
