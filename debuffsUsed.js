@@ -107,7 +107,41 @@ function checkDebuffsUsed() {
     }
     
     timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[i].timestamp-currentStart)/1000) + ":</td>";
-    output.push(timeAt + debuffEdit[i].ability.name + ab + "<td>NAME HERE" + tdtr);
+    
+    try {
+      var who = fightData.friendlies[friendIDs.indexOf(debuffEdit[i].sourceID)];
+      var pet = false;
+      var spec = who.type;
+    }
+    catch {
+      var who = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[i].sourceID)].petOwner)];
+      var pet = true;
+      var spec = who.type;
+    }
+    
+    var preString = ";color:"
+    if (spec == "Warrior")
+      var colorName = preString + "#C79C6E";
+    else if (spec == "Rogue")
+      var colorName = preString + "#FFF569";
+    else if (spec == "Hunter")
+      var colorName = preString + "#ABD473";
+    else if (spec == "Mage")
+      var colorName = preString + "#69CCF0";
+    else if (spec == "Warlock")
+      var colorName = preString + "#9482C9";
+    else if (spec == "Druid")
+      var colorName = preString + "#FF7D0A";
+    else if (spec == "Priest")
+      var colorName = preString + "#FFFFFF";
+    else if (spec == "Paladin")
+      var colorName = preString + "#F58CBA";
+    else if (spec == "Shaman")
+      var colorName = preString + "#0070DE";
+    
+    
+    
+    output.push(timeAt + "<td style=text-align:right" + colorName + ">" + debuffEdit[i].ability.name + ab + "<td>NAME HERE" + tdtr);
     
   }
   document.getElementById("page2").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
