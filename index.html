@@ -10,6 +10,16 @@
         document.getElementsByClassName("loader")[0].style.display = "inline-block";
         setTimeout(function(){ processInput(); }, 10);
       }
+      function startCode2() {
+        document.getElementById("page2").innerHTML = "";
+        document.getElementsByClassName("loader")[1].style.display = "inline-block";
+        //setTimeout(function(){ processInput(); }, 10);
+      }
+      function startCode3() {
+        document.getElementById("page3").innerHTML = "";
+        document.getElementsByClassName("loader")[2].style.display = "inline-block";
+        //setTimeout(function(){ processInput(); }, 10);
+      }
       
       function openPage(pageName,elmnt,color) {
         var i, tabcontent, tablinks;
