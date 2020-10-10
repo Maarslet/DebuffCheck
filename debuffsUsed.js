@@ -107,9 +107,9 @@ function checkDebuffsUsed() {
     }
     
     timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[i].timestamp-currentStart)/1000) + ":</td>";
-    output.push(timeAt + debuffEdit[i].ability.name + ab + "NAME HERE" + tdtr);
+    output.push(timeAt + debuffEdit[i].ability.name + ab + "<td>NAME HERE" + tdtr);
     
   }
-  document.getElementById("page").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
+  document.getElementById("page2").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
   
 }
