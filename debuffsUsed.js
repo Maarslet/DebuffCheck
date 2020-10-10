@@ -85,5 +85,31 @@ function checkDebuffsUsed() {
   var debuffEdit = debuffData.events; 
   console.log(debuffEdit)
   
-  document.getElementById("page2").innerHTML = "End of code (Work In Progress)";
+  var currentBoss = "None";
+  var currentStart = 0;
+  var timeAt = new String;
+  var output = new Array;
+  var ab = "</td><td>" + "&nbsp applied by &nbsp" + "</td>";
+  var tdtr = "</td></tr>";
+  output[0] = "<table><tr><th colspan='4'>" + "Report ID: " + logID + "</th></tr>";
+  
+  for (var i=0; i<debuffEdit.length; i++) {
+    for (var j=0; j<bossNames.length; j++) {
+      if (uniqueStamps[i]>bossStarts[j] && uniqueStamps[i]<bossEnds[j] && bossNames[j]!==currentBoss) {
+        currentBoss = bossNames[j];
+        currentStart = bossStarts[j];
+        if (i!==0) 
+          output.push("<tr><th colspan='4'></th></tr>")
+        output.push("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
+        console.log(" ")
+        console.log("--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---")
+      }
+    }
+    
+    timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + ":</td>";
+    output.push(timeAt + debuffEdit[i].ability.name + ab + "NAME HERE" + tdtr);
+    
+  }
+  document.getElementById("page").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
+  
 }
