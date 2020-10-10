@@ -106,7 +106,7 @@ function checkDebuffsUsed() {
       }
     }
     
-    timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[idx].timestamp-currentStart)/1000) + ":</td>";
+    timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[i].timestamp-currentStart)/1000) + ":</td>";
     output.push(timeAt + debuffEdit[i].ability.name + ab + "NAME HERE" + tdtr);
     
   }
