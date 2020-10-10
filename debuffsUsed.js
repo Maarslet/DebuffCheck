@@ -139,9 +139,12 @@ function checkDebuffsUsed() {
     else if (spec == "Shaman")
       var colorName = preString + "#0070DE";
     
+    if (pet == false)
+      var name = who.name;
+    else
+      var name = who.name + "'s Pet";
     
-    
-    output.push(timeAt + "<td style=text-align:right" + colorName + ">" + debuffEdit[i].ability.name + ab + "<td>NAME HERE" + tdtr);
+    output.push(timeAt + "<td style=text-align:right" + colorName + ">" + debuffEdit[i].ability.name + ab + "<td style=text-align:left" + colorName + ">" + name + tdtr);
     
   }
   document.getElementById("page2").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
