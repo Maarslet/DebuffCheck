@@ -91,7 +91,7 @@ function checkDebuffsUsed() {
   var output = new Array;
   var ab = "</td><td>" + "&nbsp applied by &nbsp" + "</td>";
   var tdtr = "</td></tr>";
-  output[0] = "<table><tr><th colspan='4'>" + "Report ID: " + logID + "</th></tr>";
+  output[0] = "<table><tr><th colspan='4' style='text-align:left'>" + "Report ID: " + logID + "</th></tr>";
   
   for (var i=0; i<debuffEdit.length; i++) {
     for (var j=0; j<bossNames.length; j++) {
