@@ -99,8 +99,8 @@ function checkDebuffsUsed() {
         currentBoss = bossNames[j];
         currentStart = bossStarts[j];
         if (i!==0) 
-          output.push("<tr><th colspan='4'></th></tr>")
-        output.push("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
+          output += ("<tr><th colspan='4'></th></tr>")
+        output += ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
         console.log(" ")
         console.log("--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---")
       }
@@ -144,7 +144,7 @@ function checkDebuffsUsed() {
     else
       var name = who.name + "'s Pet";
     
-    output.push(timeAt + "<td style=text-align:right" + colorName + ">" + debuffEdit[i].ability.name + ab + "<td style=text-align:left" + colorName + ">" + name + tdtr);
+    output += (timeAt + "<td style=text-align:right" + colorName + ">" + debuffEdit[i].ability.name + ab + "<td style=text-align:left" + colorName + ">" + name + tdtr);
     
   }
   document.getElementById("page2").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
