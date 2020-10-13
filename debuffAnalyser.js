@@ -187,7 +187,7 @@ function processInput() {
   var tdtr = "</td></tr>";
   var debuffOne = "";
   var debuffTwo = "";
-  output[0] = "<table><tr><th colspan='4'>" + "Report ID: " + logID + "</th></tr>";
+  output[0] = "<table><tr><th colspan='4' style='text-align:left'>" + "Report ID: " + logID + "</th></tr>";
   count = 0;
   for (var i=0; i<uniqueStamps.length; i++) {
     idx = timestampList.indexOf(uniqueStamps[i]);
