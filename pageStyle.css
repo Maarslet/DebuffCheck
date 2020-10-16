@@ -84,7 +84,7 @@ body, html {
   width: 275px;
 }
 .right {
-  width: 100%;
+  width: 50%;
 }
 /* Clear floats after the columns */
 .row:after {
