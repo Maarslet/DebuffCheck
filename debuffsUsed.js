@@ -32,6 +32,34 @@ function checkDebuffsUsed() {
     filterAdd += "%2C%22Gift%20of%20Arthas%22";
   if (document.getElementById("taunt").checked == true)
     filterAdd += "%2C%22Taunt%22";
+  if (document.getElementById("sunderArmor").checked == true)
+    filterAdd += "%2C%22Sunder%20Armor%22";
+  if (document.getElementById("demoShout").checked == true)
+    filterAdd += "%2C%22Demoralizing%20Shout%22";
+  if (document.getElementById("exposeArmor").checked == true)
+    filterAdd += "%2C%22Expose%20Armor%22";
+  if (document.getElementById("huntersMark").checked == true)
+    filterAdd += "%2C%22Hunter%27s%20Mark%22";
+  if (document.getElementById("screech").checked == true)
+    filterAdd += "%2C%22Screech%22";
+  if (document.getElementById("fireVul").checked == true)
+    filterAdd += "%2C%22Fire%20Vulnerability%22";
+  if (document.getElementById("ignite").checked == true)
+    filterAdd += "%2C%22Ignite%22";
+  if (document.getElementById("shadowVulWarlock").checked == true)
+    filterAdd += "%2C%22Shadow%20Vulnerability%22";
+  if (document.getElementById("curseReck").checked == true)
+    filterAdd += "%2C%22Curse%20of%20Recklessness%22";
+  if (document.getElementById("curseElements").checked == true)
+    filterAdd += "%2C%22Curse%20of%20the%20Elements%22";
+  if (document.getElementById("curseShadow").checked == true)
+    filterAdd += "%2C%22Curse%20of%20Shadow%22";
+  if (document.getElementById("faerieFire").checked == true)
+    filterAdd += "%2C%22Faerie%20Fire%22";
+  if (document.getElementById("faerieFireFeral").checked == true)
+    filterAdd += "%2C%22Faerie%20Fire%20%28Feral%29%22";
+  if (document.getElementById("mindFlay").checked == true)
+    filterAdd += "%2C%22Mind%20Flay%22";
   filterAdd += "%29";
   
   //encounterID!=0 AND type in ("applydebuff") AND ability.name not in ("Deep Wound","Fireball","Pyroblast") AND target.id in (12118,11982,12259,12057,12056,12264,12098,11988,11502,10184,12435,13020,12017,11983,14601,11981,14020,11583,14507,14517,14510,11382,15082,14509,15114,14515,11380,14834,15348,15341,15340,15370,15369,15339,15263,15543,15511,15544,15516,15510,15299,15509,15276,15517,15589,15727)
