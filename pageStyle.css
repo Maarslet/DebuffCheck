@@ -73,3 +73,10 @@ body, html {
 #DebuffAnalyser {background-color: #888888;}
 #DebuffsUsed {background-color: #888888;}
 #ISBStacks {background-color: #888888;}
+
+.row {
+  display: flex;
+}
+.column {
+  flex: 25%;
+}
