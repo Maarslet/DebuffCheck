@@ -59,7 +59,18 @@
       <input type="text" id="input2">
       <button id="myButton2" type="button" onclick="startCode2();">Process Report</button>
       <div id="loader2" class="loader"></div>
-      <p id="page2"></p>
+      <div class="row">
+        <div class="column">
+          <h5>Select debuffs to ignore</h5>
+          <input type="checkbox" id="shadowVulnWarlock"><label>Shadow Vulnerability (Warlock)</label><br>
+          <input type="checkbox" id="shadowVulnPriest"> <label>Shadow Vulnerability (Priest)</label><br>
+          <input type="checkbox" id="Thunderfury">      <label>Thunderfury</label><br>
+        </div>
+        <div class="column">
+          <p id="page2"></p>
+        </div>
+      </div>
+      
     </div>
     
     <div id="ISBStacks" class="tabcontent">
