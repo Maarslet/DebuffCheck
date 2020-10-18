@@ -45,8 +45,76 @@ function checkISB() {
     return
   }
   
-  console.log(debuffData)
+  var debuffEdit = debuffData.events; 
+  console.log(debuffEdit)
   
+  var bossIDs = new Array;
+  var enemyIDs = new Array;
+  var count = 0;
+  for (var i=0; i<fightData.enemies.length; i++) {
+    if (fightData.enemies[i].type == "Boss") {
+      bossIDs[count] = fightData.enemies[i].id; 
+      count++
+    }
+    enemyIDs[i] = fightData.enemies[i].id;
+  }
+  
+  var friendIDs = new Array;
+  for (var i=0; i<fightData.friendlies.length; i++) {
+    friendIDs[i] = fightData.friendlies[i].id;
+  }
+
+  var petIDs = new Array;
+  for (var i=0; i<fightData.friendlyPets.length; i++) {
+    petIDs[i] = fightData.friendlyPets[i].id;
+  }
+
+  var bossStarts = new Array;
+  var bossEnds = new Array;
+  var bossNames = new Array;
+  var val = 0;
+  var temp = new Array;
+  count = 0;
+  for (var i=0; i<bossIDs.length; i++) {
+    val = bossIDs[i];
+    temp = fightData.enemies[enemyIDs.indexOf(val)].fights;
+    bossNames[count]  = fightData.fights[fightData.enemies[enemyIDs.indexOf(val)].fights[temp.length-1].id-1].name;
+    bossStarts[count] = fightData.fights[fightData.enemies[enemyIDs.indexOf(val)].fights[temp.length-1].id-1].start_time;
+    bossEnds[count]   = fightData.fights[fightData.enemies[enemyIDs.indexOf(val)].fights[temp.length-1].id-1].end_time;
+    count++
+  }
+  
+  var currentBoss = "None";
+  var currentStart = 0;
+  var timeAt = new String;
+  var output = new Array;
+  var ab = "</td><td>" + "&nbsp removed by &nbsp" + "</td>";
+  var tdtr = "</td></tr>";
+  output[0] = "<table><tr><th colspan='4' style='text-align:left'>" + "Report ID: " + logID + "</th></tr>";
+  
+  for (var i=0; i<debuffEdit.length; i++) {
+    for (var j=0; j<bossNames.length; j++) {
+      if (debuffEdit[i].timestamp>bossStarts[j] && debuffEdit[i].timestamp<bossEnds[j] && bossNames[j]!==currentBoss) {
+        currentBoss = bossNames[j];
+        currentStart = bossStarts[j];
+        if (i!==0) 
+          output += ("<tr><th colspan='4'></th></tr>")
+        output += ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
+        //console.log(" ")
+        //console.log("--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---")
+      }
+    }
+    
+    timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[i].timestamp-currentStart)/1000) + ":</td>";
+    
+    
+    
+  }
+  //document.getElementById("page3").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
+  
+  console.log(bossNames)
+  console.log(bossStarts)
+  console.log(bossEnds)
   
   document.getElementById("page3").innerHTML = "End of code reached";
 }
