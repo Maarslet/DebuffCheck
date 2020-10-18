@@ -47,4 +47,6 @@ function checkISB() {
   
   console.log(debuffData)
   
+  
+  document.getElementById("page3").innerHTML = "End of code reached";
 }
