@@ -40,6 +40,7 @@ function checkISB() {
       dataadd = JSON.parse(dataadd.response);
       debuffData.events = debuffData.events.concat(dataadd.events);
       nextTime = dataadd.nextPageTimestamp;
+    }
       
     var damageData = new XMLHttpRequest();
     damageData.open("Get", baseURL + "/events/damage-done/" + logID + "?start=0&end=100000000&wipes=2" + filtertwo + API, false);
