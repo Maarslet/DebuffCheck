@@ -20,6 +20,8 @@ function checkISB() {
   
   //encounterID!=0 AND target.id in (12118,11982,12259,12057,12056,12264,12098,11988,11502,10184,12435,13020,12017,11983,14601,11981,14020,11583,14507,14517,14510,11382,15082,14509,15114,14515,11380,14834,15348,15341,15340,15370,15369,15339,15263,15543,15511,15544,15516,15510,15299,15509,15276,15517,15589,15727)
   var filter = "&filter=encounterID%21%3D0%20AND%20target.id%20in%20%2812118%2C11982%2C12259%2C12057%2C12056%2C12264%2C12098%2C11988%2C11502%2C10184%2C12435%2C13020%2C12017%2C11983%2C14601%2C11981%2C14020%2C11583%2C14507%2C14517%2C14510%2C11382%2C15082%2C14509%2C15114%2C14515%2C11380%2C14834%2C15348%2C15341%2C15340%2C15370%2C15369%2C15339%2C15263%2C15543%2C15511%2C15544%2C15516%2C15510%2C15299%2C15509%2C15276%2C15517%2C15589%2C15727%29";
+  //encounterID!=0 AND ability.name in ("Shadow Bolt","Shoot","Mind Blast") AND target.id in (12118,11982,12259,12057,12056,12264,12098,11988,11502,10184,12435,13020,12017,11983,14601,11981,14020,11583,14507,14517,14510,11382,15082,14509,15114,14515,11380,14834,15348,15341,15340,15370,15369,15339,15263,15543,15511,15544,15516,15510,15299,15509,15276,15517,15589,15727)
+  var filtertwo = "&filter=encounterID%21%3D0%20AND%20ability.name%20in%20%28%22Shadow%20Bolt%22%2C%22Shoot%22%2C%22Mind%20Blast%22%29%20AND%20target.id%20in%20%2812118%2C11982%2C12259%2C12057%2C12056%2C12264%2C12098%2C11988%2C11502%2C10184%2C12435%2C13020%2C12017%2C11983%2C14601%2C11981%2C14020%2C11583%2C14507%2C14517%2C14510%2C11382%2C15082%2C14509%2C15114%2C14515%2C11380%2C14834%2C15348%2C15341%2C15340%2C15370%2C15369%2C15339%2C15263%2C15543%2C15511%2C15544%2C15516%2C15510%2C15299%2C15509%2C15276%2C15517%2C15589%2C15727%29";
   try {
     var fightData = new XMLHttpRequest();
     fightData.open("Get", baseURL + "/fights/" + logID + "?" + API.slice(1,API.length), false);
@@ -38,6 +40,20 @@ function checkISB() {
       dataadd = JSON.parse(dataadd.response);
       debuffData.events = debuffData.events.concat(dataadd.events);
       nextTime = dataadd.nextPageTimestamp;
+      
+    var damageData = new XMLHttpRequest();
+    damageData.open("Get", baseURL + "/events/damage-done/" + logID + "?start=0&end=100000000&wipes=2" + filtertwo + API, false);
+    damageData.send(null);
+    damageData = JSON.parse(damageData.response);
+  
+    var nextTime = damageData.nextPageTimestamp;
+    while (nextTime>1) {
+      var dataadd = new XMLHttpRequest();
+      dataadd.open("Get", baseURL + "/events/damage-done/" + logID + "?start=" + nextTime + "&end=100000000&wipes=2" + filtertwo + API, false);
+      dataadd.send(null);
+      dataadd = JSON.parse(dataadd.response);
+      damageData.events = damageData.events.concat(dataadd.events);
+      nextTime = dataadd.nextPageTimestamp;
     }
   }
   catch(err) {
@@ -47,6 +63,7 @@ function checkISB() {
   
   var debuffEdit = debuffData.events; 
   console.log(debuffEdit)
+    
   
   var bossIDs = new Array;
   var enemyIDs = new Array;
