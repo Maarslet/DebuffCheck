@@ -5,6 +5,7 @@
     <title>Debuff Analyser Tool</title>
     <script src="/DebuffCheck/debuffAnalyser.js"></script>
     <script src="/DebuffCheck/debuffsUsed.js"></script>
+    <script src="/DebuffCheck/checkISB.js"></script>
     <script type="text/javascript">
       function startCode() {
         document.getElementById("page").innerHTML = "";
@@ -19,7 +20,7 @@
       function startCode3() {
         document.getElementById("page3").innerHTML = "";
         document.getElementsByClassName("loader")[2].style.display = "inline-block";
-        //setTimeout(function(){ processInput(); }, 10);
+        setTimeout(function(){ checkISB(); }, 10);
       }
       
       function openPage(pageName,elmnt,color) {
