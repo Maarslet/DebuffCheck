@@ -64,7 +64,7 @@ function checkISB() {
   
   var debuffEdit = debuffData.events; 
   console.log(debuffEdit)
-    
+  console.log(damageData)
   
   var bossIDs = new Array;
   var enemyIDs = new Array;
