@@ -130,7 +130,7 @@ function checkISB() {
     who = fightData.friendlies[friendIDs.indexOf(debuffEdit[i].sourceID)];
     
     if (debuffEdit[i].type == "applydebuff")
-      output += (timeAt + "<td>Shadow Vulnerability" + ab + "<td style=color:#9482C9>" + who.name + tdtr)
+      output += (timeAt + "<td style=text-align:right>Shadow Vulnerability" + ab + "<td style=text-align:left;color:#9482C9>" + who.name + tdtr)
     
     
   }
