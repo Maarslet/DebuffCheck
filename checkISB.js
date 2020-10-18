@@ -107,8 +107,10 @@ function checkISB() {
   var currentStart = 0;
   var timeAt = new String;
   var output = new Array;
-  var ab = "</td><td>" + "&nbsp removed by &nbsp" + "</td>";
+  var ab = "</td><td>" + "&nbsp applied by &nbsp" + "</td>";
+  var rb = "</td><td>" + "&nbsp removed by &nbsp" + "</td>";
   var tdtr = "</td></tr>";
+  var who = new String;
   output[0] = "<table><tr><th colspan='4' style='text-align:left'>" + "Report ID: " + logID + "</th></tr>";
   
   for (var i=0; i<debuffEdit.length; i++) {
@@ -125,15 +127,16 @@ function checkISB() {
     }
     
     timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[i].timestamp-currentStart)/1000) + ":</td>";
+    who = fightData.friendlies[friendIDs.indexOf(debuffEdit[i].sourceID)];
     
+    if (debuffEdit[i].type == "applydebuff")
+      output += (timeAt + "<td>Shadow Vulnerability" + ab + "<td style=color:#9482C9>" + who.name + tdtr)
     
     
   }
-  //document.getElementById("page3").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
+  document.getElementById("page3").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
   
   console.log(bossNames)
   console.log(bossStarts)
   console.log(bossEnds)
-  
-  document.getElementById("page3").innerHTML = "End of code reached";
 }
