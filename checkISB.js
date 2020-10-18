@@ -111,6 +111,7 @@ function checkISB() {
   var rb = "</td><td>" + "&nbsp removed by &nbsp" + "</td>";
   var tdtr = "</td></tr>";
   var who = new String;
+  var remover = new String;
   output[0] = "<table><tr><th colspan='4' style='text-align:left'>" + "Report ID: " + logID + "</th></tr>";
   
   for (var i=0; i<debuffEdit.length; i++) {
@@ -127,10 +128,14 @@ function checkISB() {
     }
     
     timeAt = "<tr><td style='text-align:right'>" + formatNumber((debuffEdit[i].timestamp-currentStart)/1000) + ":</td>";
-    who = fightData.friendlies[friendIDs.indexOf(debuffEdit[i].sourceID)];
     
-    if (debuffEdit[i].type == "applydebuff")
+    if (debuffEdit[i].type == "applydebuff") {
+      who = fightData.friendlies[friendIDs.indexOf(debuffEdit[i].sourceID)];
       output += (timeAt + "<td style=text-align:right>Shadow Vulnerability" + ab + "<td style=text-align:left;color:#9482C9>" + who.name + tdtr)
+    }
+    else {
+      
+    }
     
     
   }
