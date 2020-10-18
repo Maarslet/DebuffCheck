@@ -2,13 +2,6 @@ function checkDebuffsUsed() {
   
   document.getElementsByClassName("loader")[1].style.display = "none";
   
-  var test1 = document.getElementById("thunderfury").checked;
-  var test2 = document.getElementById("giftOfArthas").checked;
-  var test3 = document.getElementById("taunt");
-  console.log(test1)
-  console.log(test2)
-  console.log(test3)
-  
   var input = document.querySelector("#input2").value;
   input = input.trim();
   var indx = input.indexOf("/reports/")+"/reports/".length;
