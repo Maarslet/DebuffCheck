@@ -148,7 +148,26 @@ function checkISB() {
           if (debuffEdit[i].stack == undefined)
             debuffEdit[i].stack = 0;
           
-          output += (timeAt + "<td style=text-align:right>ISB Stack (" + (debuffEdit[i].stack+1) + ")" + rb + "<td style=text-align:left>" + who.name + "'s " + remover.ability.name + tdtr)
+          if (who.type == "Warrior")
+            var colorName = ";color:#C79C6E";
+          else if (who.type == "Rogue")
+            var colorName = ";color:#FFF569";
+          else if (who.type == "Hunter")
+            var colorName = ";color:#ABD473";
+          else if (who.type == "Mage")
+            var colorName = ";color:#69CCF0";
+          else if (who.type == "Warlock")
+            var colorName = ";color:#9482C9";
+          else if (who.type == "Druid")
+            var colorName = ";color:#FF7D0A";
+          else if (who.type == "Priest")
+            var colorName = ";color:#FFFFFF";
+          else if (who.type == "Paladin")
+            var colorName = ";color:#F58CBA";
+          else if (who.type == "Shaman")
+            var colorName = ";color:#0070DE";
+          
+          output += (timeAt + "<td style=text-align:right>ISB Stack (" + (debuffEdit[i].stack+1) + ")" + rb + "<td style=text-align:left + colorName + ">" + who.name + "'s " + remover.ability.name + tdtr)
         }
         catch(err) {
           console.log(debuffEdit[i])
