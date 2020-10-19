@@ -151,8 +151,8 @@ function checkISB() {
           console.log(debuffEdit[i])
           console.log((debuffEdit[i].timestamp-currentStart)/1000)
         }
-      }
-      /*else {
+      /*}
+      else {
         console.log(debuffEdit[i])
         console.log((debuffEdit[i].timestamp-currentStart)/1000)
       }*/
