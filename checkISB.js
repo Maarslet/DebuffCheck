@@ -141,11 +141,17 @@ function checkISB() {
     }
     else {
       remover = damageEdit[timestampList.indexOf(findClosest(debuffEdit[i].timestamp,timestampList))];
-      try {
-        who = fightData.friendlies[friendIDs.indexOf(remover.sourceID)];
-        output += (timeAt + "<td style=text-align:right>ISB Stack" + rb + "<td style=text-align:left>" + who.name + "'s " + remover.ability.name + tdtr)
+      if (Math.abs(remover.timestamp-debuffEdit[i].timestamp)<50) {
+        try {
+          who = fightData.friendlies[friendIDs.indexOf(remover.sourceID)];
+          output += (timeAt + "<td style=text-align:right>ISB Stack" + rb + "<td style=text-align:left>" + who.name + "'s " + remover.ability.name + tdtr)
+        }
+        catch(err) {
+          console.log(debuffEdit[i])
+          console.log((debuffEdit[i].timestamp-currentStart)/1000)
+        }
       }
-      catch(err) {
+      else {
         console.log(debuffEdit[i])
         console.log((debuffEdit[i].timestamp-currentStart)/1000)
       }
