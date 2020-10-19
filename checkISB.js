@@ -134,7 +134,7 @@ function checkISB() {
       output += (timeAt + "<td style=text-align:right>Shadow Vulnerability" + ab + "<td style=text-align:left;color:#9482C9>" + who.name + tdtr)
     }
     else {
-      remover = damageEdit[damageEdit.timestamp.indexOf(debuffEdit[i].timestamp)];
+      remover = damageEdit[damageEdit[0,damageEdit.length-1].timestamp.indexOf(debuffEdit[i].timestamp)];
       console.log(remover)
     }
     
