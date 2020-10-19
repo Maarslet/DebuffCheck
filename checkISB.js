@@ -147,6 +147,7 @@ function checkISB() {
       }
       catch(err) {
         console.log(debuffEdit[i])
+        console.log((debuffEdit[i].timestamp-currentStart)/1000)
       }
     }
     
