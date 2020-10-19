@@ -140,7 +140,11 @@ function checkISB() {
     }
     else {
       remover = damageEdit[timestampList.indexOf(debuffEdit[i].timestamp)];
-      console.log(remover)
+      who = fightData.friendlies[friendIDs.indexOf(remover.sourceID)];
+      try
+        output += (timeAt + "<td style=text-align:right>ISB Stack" + rb + "<td style=text-align:left>" + who.name + "'s " + remover.ability.name + tdtr)
+      catch
+        console.log(debuffEdit[i])
     }
     
     
