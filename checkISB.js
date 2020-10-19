@@ -168,7 +168,7 @@ function checkISB() {
             var colorName = ";color:#0070DE";
           
           output += (timeAt + "<td style=text-align:right>ISB Stack (" + (debuffEdit[i].stack+1) + ")" + rb + "<td style=text-align:left" + colorName + ">" + who.name + "'s " + remover.ability.name + tdtr)
-          damageEdit[timestampList.indexOf(findClosest(debuffEdit[i].timestamp,timestampList))].timestamp = -1;
+          timestampList[timestampList.indexOf(findClosest(debuffEdit[i].timestamp,timestampList))] = -1;
         }
         catch(err) {
           console.log(debuffEdit[i])
