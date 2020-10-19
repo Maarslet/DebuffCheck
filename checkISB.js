@@ -145,6 +145,9 @@ function checkISB() {
       //if (Math.abs(remover.timestamp-debuffEdit[i].timestamp)<50) {
         try {
           who = fightData.friendlies[friendIDs.indexOf(remover.sourceID)];
+          if (debuffEdit[i].stack == undefined)
+            debuffEdit[i].stack = 0;
+          
           output += (timeAt + "<td style=text-align:right>ISB Stack (" + (debuffEdit[i].stack+1) + ")" + rb + "<td style=text-align:left>" + who.name + "'s " + remover.ability.name + tdtr)
         }
         catch(err) {
