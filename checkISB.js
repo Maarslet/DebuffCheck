@@ -27,6 +27,7 @@ function checkISB() {
     fightData.open("Get", baseURL + "/fights/" + logID + "?" + API.slice(1,API.length), false);
     fightData.send(null);
     fightData = JSON.parse(fightData.response);
+    
     var debuffData = new XMLHttpRequest();
     debuffData.open("Get", baseURL + "/events/debuffs/" + logID + "?start=0&end=100000000&hostility=1&abilityid=17800&wipes=2" + filter + API, false);
     debuffData.send(null);
@@ -141,10 +142,12 @@ function checkISB() {
     else {
       remover = damageEdit[timestampList.indexOf(debuffEdit[i].timestamp)];
       who = fightData.friendlies[friendIDs.indexOf(remover.sourceID)];
-      try
+      try {
         output += (timeAt + "<td style=text-align:right>ISB Stack" + rb + "<td style=text-align:left>" + who.name + "'s " + remover.ability.name + tdtr)
-      catch
+      }
+      catch(err) {
         console.log(debuffEdit[i])
+      }
     }
     
     
