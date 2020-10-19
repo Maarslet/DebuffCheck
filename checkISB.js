@@ -167,7 +167,7 @@ function checkISB() {
           else if (who.type == "Shaman")
             var colorName = ";color:#0070DE";
           
-          output += (timeAt + "<td style=text-align:right>ISB Stack (" + (debuffEdit[i].stack+1) + ")" + rb + "<td style=text-align:left + colorName + ">" + who.name + "'s " + remover.ability.name + tdtr)
+          output += (timeAt + "<td style=text-align:right>ISB Stack (" + (debuffEdit[i].stack+1) + ")" + rb + "<td style=text-align:left" + colorName + ">" + who.name + "'s " + remover.ability.name + tdtr)
         }
         catch(err) {
           console.log(debuffEdit[i])
