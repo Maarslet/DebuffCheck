@@ -140,9 +140,9 @@ function checkISB() {
       output += (timeAt + "<td style=text-align:right>Shadow Vulnerability" + ab + "<td style=text-align:left;color:#9482C9>" + who.name + tdtr)
     }
     else {
-      remover = damageEdit[timestampList.indexOf(debuffEdit[i].timestamp)];
-      //remover = damageEdit[timestampList.indexOf(findClosest(debuffEdit[i].timestamp,timestampList))];
-      //if (Math.abs(remover.timestamp-debuffEdit[i].timestamp)<50) {
+      //remover = damageEdit[timestampList.indexOf(debuffEdit[i].timestamp)];
+      remover = damageEdit[timestampList.indexOf(findClosest(debuffEdit[i].timestamp,timestampList))];
+      if (Math.abs(remover.timestamp-debuffEdit[i].timestamp)<15) {
         try {
           who = fightData.friendlies[friendIDs.indexOf(remover.sourceID)];
           if (debuffEdit[i].stack == undefined)
@@ -154,11 +154,11 @@ function checkISB() {
           console.log(debuffEdit[i])
           console.log((debuffEdit[i].timestamp-currentStart)/1000)
         }
-      /*}
+      }
       else {
         console.log(debuffEdit[i])
         console.log((debuffEdit[i].timestamp-currentStart)/1000)
-      }*/
+      }
     }
     
     
