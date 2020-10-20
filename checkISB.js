@@ -172,8 +172,6 @@ function checkISB() {
   var tdtr = "</td></tr>";
   var who = new String;
   var remover = new String;
-  var ISBStarts = new Array;
-  var ISBEnds = new Array;
   output[0] = "<table><tr><th colspan='4' style='text-align:left'>" + "Report ID: " + logID + "</th></tr>";
   
   for (var i=0; i<debuffEdit.length; i++) {
@@ -249,6 +247,7 @@ function checkISB() {
   console.log(bossEnds)
   console.log(ISBStarts)
   console.log(ISBEnds)
+  console.log(bossISB)
 }
 
 var findClosest = function(x, arr) {
