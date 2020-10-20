@@ -183,8 +183,6 @@ function checkISB() {
         currentStart = bossStarts[j];
         if (i!==0) {
           output += ("<tr><th colspan='4'></th></tr>")
-          if (ISBEnds.length<ISBStarts.length)
-            ISBEnds[ISBEnds.length] = debuffEdit[i].timestamp;
         }
         output += ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight) - ISB Uptime: " + bossISB[j] + "%" + "</th></tr>")
         //output += ("<tr><td colspan='4'>" + "ISB Uptime: " + bossISB[j] + "%" + tdtr)
@@ -198,12 +196,6 @@ function checkISB() {
     if (debuffEdit[i].type == "applydebuff" || debuffEdit[i].type == "applydebuffstack") {
       who = fightData.friendlies[friendIDs.indexOf(debuffEdit[i].sourceID)];
       output += (timeAt + "<td style=text-align:right>Shadow Vulnerability" + ab + "<td style=text-align:left;color:#9482C9>" + who.name + tdtr)
-      
-      if (debuffEdit[i].type == "applydebuff") {
-        if (ISBEnds.length<ISBStarts.length)
-          ISBEnds[ISBEnds.length] = debuffEdit[i].timestamp;
-        ISBStarts[ISBStarts.length] = debuffEdit[i].timestamp;
-      }
     }
     else {
       //remover = damageEdit[timestampList.indexOf(debuffEdit[i].timestamp)];
@@ -213,7 +205,6 @@ function checkISB() {
           who = fightData.friendlies[friendIDs.indexOf(remover.sourceID)];
           if (debuffEdit[i].stack == undefined) {
             debuffEdit[i].stack = 0;
-            ISBEnds[ISBEnds.length] = debuffEdit[i].timestamp;
           }
           
           if (who.type == "Warrior")
@@ -253,45 +244,9 @@ function checkISB() {
   }
   document.getElementById("page3").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
   
-  
-  var timestampList = new Array;
-  for (var i=0; i<castEdit.length; i++) {
-    timestampList[i] = castEdit[i].timestamp;
-  }
-  
-  var currentBoss = "None";
-  var currentStart = 0;
-  var output = new Array;
-  output[0] = "<table><tr><th colspan='1' style='text-align:left'>" + "Report ID: " + logID + "</th></tr>";  
-  var countISB = 0;
-  var bossSort = bossStarts;
-  //bossSort = bossSort.sort();
-  for (var q=0; q<bossNames.length; q++) {
-    var j = bossStarts.indexOf(bossSort[q]);
-    currentBoss = bossNames[j];
-    if (q!==0)
-      output += ("<tr><th colspan='1'></th></tr>")
-    output += ("<tr><th colspan='1'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
-    
-    count = 0;
-    countISB = 0;
-    for (var i=0; timestampList[i]<bossEnds[j]; i++) {
-      if (timestampList[i]>bossStarts[j]) {
-        count++;
-        for (var k=0; k<ISBStarts.length; k++) {
-          if (castEdit[i].timestamp>ISBStarts[k] && castEdit[i].timestamp<ISBEnds[k])
-            countISB++
-        }
-      }
-    }
-    output += ("<tr><td> ISB Uptime: " + Math.round(countISB/count*100) + "%" + tdtr)
-  }
-  //document.getElementById("page3_col2").innerHTML = output + "<tr><td> </td></tr></table>";
-  
   console.log(bossNames)
   console.log(bossStarts)
   console.log(bossEnds)
-  console.log(bossSort)
   console.log(ISBStarts)
   console.log(ISBEnds)
 }
