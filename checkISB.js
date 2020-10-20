@@ -123,6 +123,79 @@ function checkISB() {
     count++
   }
   
+  
+  /*var timestampList = new Array;
+  for (var i=0; i<damageEdit.length; i++) {
+    timestampList[i] = damageEdit[i].timestamp;
+  }*/
+  
+  /*var ISBStarts = new Array;
+  var ISBEnds = new Array;
+  var currentBoss = "None";
+  var remover;
+  for (var i=0; i<debuffEdit.length; i++) {
+    for (var j=0; j<bossNames.length; j++) {
+      if (debuffEdit[i].timestamp>bossStarts[j] && debuffEdit[i].timestamp<bossEnds[j] && bossNames[j]!==currentBoss) {
+        if (ISBEnds.length<ISBStarts.length)
+          ISBEnds[ISBEnds.length] = debuffEdit[i].timestamp;
+      }
+    }
+    if (debuffEdit[i].type == "applydebuff") {
+      if (ISBEnds.length<ISBStarts.length)
+        ISBEnds[ISBEnds.length] = debuffEdit[i].timestamp;
+      ISBStarts[ISBStarts.length] = debuffEdit[i].timestamp;
+    }
+    else {
+      remover = damageEdit[timestampList.indexOf(findClosest(debuffEdit[i].timestamp,timestampList))];
+      if (Math.abs(remover.timestamp-debuffEdit[i].timestamp)<25) {
+        if (debuffEdit[i].stack == undefined) {
+          ISBEnds[ISBEnds.length] = debuffEdit[i].timestamp;
+        }
+      }
+    }
+  }*/
+  var ISBStarts = new Array;
+  var ISBEnds = new Array;
+  var currentBoss = "None";
+  for (var i=0; i<debuffEdit.length; i++) {
+    /*for (var j=0; j<bossNames.length; j++) {
+      if (debuffEdit[i].timestamp>bossStarts[j] && debuffEdit[i].timestamp<bossEnds[j] && bossNames[j]!==currentBoss) {
+        if (ISBEnds.length<ISBStarts.length)
+          ISBEnds[ISBEnds.length] = debuffEdit[i].timestamp;
+      }
+    }*/
+    if (debuffEdit[i].type == "applydebuff") {
+      if (ISBEnds.length<ISBStarts.length)
+        ISBEnds[ISBEnds.length] = debuffEdit[i].timestamp;
+      ISBStarts[ISBStarts.length] = debuffEdit[i].timestamp;
+    }
+    if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].stack == undefined)
+      ISBEnds[ISBEnds.length] = debuffEdit[i].timestamp;
+  }
+  
+
+  var timestampList = new Array;
+  for (var i=0; i<castEdit.length; i++) {
+    timestampList[i] = castEdit[i].timestamp;
+  }
+  
+  var bossISB = new Array;
+  for (var j=0; j<bossNames.length; j++) {
+    var count = 0;
+    var countISB = 0;
+    for (var i=0; timestampList[i]<bossEnds[j]; i++) {
+      if (timestampList[i]>bossStarts[j]) {
+        count++;
+        for (var k=0; k<ISBStarts.length; k++) {
+          if (castEdit[i].timestamp>ISBStarts[k] && castEdit[i].timestamp<ISBEnds[k])
+            countISB++
+        }
+      }
+    }
+    bossISB[j]=Math.round(countISB/count*100);
+  }
+  
+  
   var timestampList = new Array;
   for (var i=0; i<damageEdit.length; i++) {
     timestampList[i] = damageEdit[i].timestamp;
@@ -151,7 +224,7 @@ function checkISB() {
           if (ISBEnds.length<ISBStarts.length)
             ISBEnds[ISBEnds.length] = debuffEdit[i].timestamp;
         }
-        output += ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
+        output += ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight), ISB Uptime: " + bossISB[j] + "%" + "</th></tr>")
         //console.log(" ")
         //console.log("--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---")
       }
