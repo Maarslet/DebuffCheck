@@ -228,9 +228,11 @@ function checkISB() {
   var output = new Array;
   output[0] = "<table><tr><th colspan='1' style='text-align:left'>" + "Report ID: " + logID + "</th></tr>";  
   var countISB = 0;
-  for (var j=0; j<bossNames.length; j++) {
+  var bossSort = bossStarts.sort();
+  for (var q=0; q<bossNames.length; q++) {
+    var j = bossStarts.indexOf(bossSort[j]);
     currentBoss = bossNames[j];
-    if (j!==0)
+    if (q!==0)
       output += ("<tr><th colspan='1'></th></tr>")
     output += ("<tr><th colspan='1'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
     
@@ -245,7 +247,7 @@ function checkISB() {
         }
       }
     }
-    output += ("<tr><td> ISB Uptime: " + countISB/count*100 + "%" + tdtr)
+    output += ("<tr><td> ISB Uptime: " + Math.round(countISB/count*100) + "%" + tdtr)
   }
   document.getElementById("page3_col2").innerHTML = output + "<tr><td> </td></tr></table>";
   
