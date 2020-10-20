@@ -229,7 +229,7 @@ function checkISB() {
   output[0] = "<table><tr><th colspan='1' style='text-align:left'>" + "Report ID: " + logID + "</th></tr>";  
   var countISB = 0;
   var bossSort = bossStarts;
-  bossSort = bossSort.sort();
+  //bossSort = bossSort.sort();
   for (var q=0; q<bossNames.length; q++) {
     var j = bossStarts.indexOf(bossSort[q]);
     currentBoss = bossNames[j];
