@@ -230,7 +230,7 @@ function checkISB() {
   var countISB = 0;
   var bossSort = bossStarts.sort();
   for (var q=0; q<bossNames.length; q++) {
-    var j = bossStarts.indexOf(bossSort[j]);
+    var j = bossStarts.indexOf(bossSort[q]);
     currentBoss = bossNames[j];
     if (q!==0)
       output += ("<tr><th colspan='1'></th></tr>")
