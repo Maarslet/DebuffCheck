@@ -127,8 +127,9 @@ function checkISB() {
   var ISBEnds = new Array;
   for (var i=0; i<debuffEdit.length; i++) {
     if (debuffEdit[i].type == "applydebuff") {
-      if (ISBEnds.length<ISBStarts.length)
+      while (ISBEnds.length<ISBStarts.length) {
         ISBEnds[ISBEnds.length] = debuffEdit[i].timestamp;
+      }
       ISBStarts[ISBStarts.length] = debuffEdit[i].timestamp;
     }
     if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].stack == undefined)
