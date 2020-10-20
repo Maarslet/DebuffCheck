@@ -217,6 +217,38 @@ function checkISB() {
   }
   document.getElementById("page3").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
   
+  
+  var timestampList = new Array;
+  for (var i=0; i<castEdit.length; i++) {
+    timestampList[i] = castEdit[i].timestamp;
+  }
+  
+  var currentBoss = "None";
+  var currentStart = 0;
+  var output = new Array;
+  output[0] = "<table><tr><th colspan='1' style='text-align:left'>" + "Report ID: " + logID + "</th></tr>";  
+  var countISB = 0;
+  for (var j=0; j<bossNames.length; j++) {
+    currentBoss = bossNames[j];
+    if (j!==0)
+      output += ("<tr><th colspan='1'></th></tr>")
+    output += ("<tr><th colspan='1'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
+    
+    count = 0;
+    countISB = 0;
+    for (var i=0; timestampList[i]<bossEnds[j]; i++) {
+      if (timestampList[i]>bossStarts[j]) {
+        count++;
+        for (var k=0; k<ISBStarts.length; k++) {
+          if (castEdit[i].timestamp>ISBStarts[k] && castEdit[i].timestamp<ISBEnds[k])
+            countISB++
+        }
+      }
+    }
+    output += ("<tr><td> ISB Uptime: " + countISB/count*100 + "%" + tdtr)
+  }
+  document.getElementById("page3_col2").innerHTML = output + "<tr><td> </td></tr></table>";
+  
   console.log(bossNames)
   console.log(bossStarts)
   console.log(bossEnds)
