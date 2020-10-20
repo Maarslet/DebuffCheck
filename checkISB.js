@@ -186,8 +186,8 @@ function checkISB() {
           if (ISBEnds.length<ISBStarts.length)
             ISBEnds[ISBEnds.length] = debuffEdit[i].timestamp;
         }
-        output += ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
-        output += ("<tr><td colspan='4'>" + "ISB Uptime: " + bossISB[j] + "%" + tdtr)
+        output += ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight) - ISB Uptime: " + bossISB[j] + "%" + "</th></tr>")
+        //output += ("<tr><td colspan='4'>" + "ISB Uptime: " + bossISB[j] + "%" + tdtr)
         //console.log(" ")
         //console.log("--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---")
       }
@@ -286,7 +286,7 @@ function checkISB() {
     }
     output += ("<tr><td> ISB Uptime: " + Math.round(countISB/count*100) + "%" + tdtr)
   }
-  document.getElementById("page3_col2").innerHTML = output + "<tr><td> </td></tr></table>";
+  //document.getElementById("page3_col2").innerHTML = output + "<tr><td> </td></tr></table>";
   
   console.log(bossNames)
   console.log(bossStarts)
