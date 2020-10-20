@@ -137,6 +137,8 @@ function checkISB() {
   var tdtr = "</td></tr>";
   var who = new String;
   var remover = new String;
+  var ISBStarts = new Array;
+  var ISBEnds = new Array;
   output[0] = "<table><tr><th colspan='4' style='text-align:left'>" + "Report ID: " + logID + "</th></tr>";
   
   for (var i=0; i<debuffEdit.length; i++) {
@@ -144,8 +146,11 @@ function checkISB() {
       if (debuffEdit[i].timestamp>bossStarts[j] && debuffEdit[i].timestamp<bossEnds[j] && bossNames[j]!==currentBoss) {
         currentBoss = bossNames[j];
         currentStart = bossStarts[j];
-        if (i!==0) 
+        if (i!==0) {
           output += ("<tr><th colspan='4'></th></tr>")
+          if (ISBEnds.length<ISBStarts.length)
+            ISBEnds[ISBEnds.length] = debuffEdit[i].timestamp;
+        }
         output += ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
         //console.log(" ")
         //console.log("--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---")
@@ -157,6 +162,12 @@ function checkISB() {
     if (debuffEdit[i].type == "applydebuff" || debuffEdit[i].type == "applydebuffstack") {
       who = fightData.friendlies[friendIDs.indexOf(debuffEdit[i].sourceID)];
       output += (timeAt + "<td style=text-align:right>Shadow Vulnerability" + ab + "<td style=text-align:left;color:#9482C9>" + who.name + tdtr)
+      
+      if (debuffEdit[i].type == "applydebuff") {
+        if (ISBEnds.length<ISBStarts.length)
+          ISBEnds[ISBEnds.length] = debuffEdit[i].timestamp;
+        ISBStarts[ISBStarts.length] = debuffEdit[i].timestamp;
+      }
     }
     else {
       //remover = damageEdit[timestampList.indexOf(debuffEdit[i].timestamp)];
@@ -164,8 +175,10 @@ function checkISB() {
       if (Math.abs(remover.timestamp-debuffEdit[i].timestamp)<25) {
         try {
           who = fightData.friendlies[friendIDs.indexOf(remover.sourceID)];
-          if (debuffEdit[i].stack == undefined)
+          if (debuffEdit[i].stack == undefined) {
             debuffEdit[i].stack = 0;
+            ISBEnds[ISBEnds.length] = debuffEdit[i].timestamp;
+          }
           
           if (who.type == "Warrior")
             var colorName = ";color:#C79C6E";
@@ -207,6 +220,8 @@ function checkISB() {
   console.log(bossNames)
   console.log(bossStarts)
   console.log(bossEnds)
+  console.log(ISBStarts)
+  console.log(ISBEnds)
 }
 
 var findClosest = function(x, arr) {
