@@ -204,7 +204,7 @@ function checkISB() {
       //remover = damageEdit[timestampList.indexOf(debuffEdit[i].timestamp)];
       remover = damageEdit[timestampList.indexOf(findClosest(debuffEdit[i].timestamp,timestampList))];
       if (i<debuffEdit.length-1 && debuffEdit[i].timestamp==debuffEdit[i+1].timestamp && debuffEdit[i].type == "removedebuff" && debuffEdit[i+1].type == "applydebuff") {}
-      else if (Math.abs(remover.timestamp-debuffEdit[i].timestamp)<25) {
+      else if (Math.abs(remover.timestamp-debuffEdit[i].timestamp)<50) {
         try {
           who = fightData.friendlies[friendIDs.indexOf(remover.sourceID)];
           if (debuffEdit[i].stack == undefined) {
@@ -241,6 +241,7 @@ function checkISB() {
       else if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].timestamp > (appliedAt + 11500)) {}
       else if (currentBoss == "The Prophet Skeram" && debuffEdit[i].type == "removedebuff") {}
       else if (i<debuffEdit.length-1 && debuffEdit[i].type == "removedebuff" && debuffEdit[i].targetID!==debuffEdit[i+1].targetID) {}
+      else if (i<debuffEdit.length-1 && debuffEdit[i].timestamp>debuffEdit[i+1].timestamp-15 && debuffEdit[i].type == "removedebuff" && debuffEdit[i+1].type == "applydebuff") {}
       //else if (i<debuffEdit.length-1 && debuffEdit[i].type == "removedebuff" && (debuffEdit[i].timestamp+60000)<debuffEdit[i+1].timestamp) {}
       else {
         console.log(debuffEdit[i])
