@@ -220,7 +220,8 @@ function processInput() {
           if (debuffEdit[idx].ability.name!=="Mind Flay" || debuffEdit[idx+1].ability.name!=="Shadow Word: Pain")
             if (debuffEdit[idx].ability.name!=="Shadow Vulnerability" || debuffEdit[idx+1].ability.name!=="Mind Flay")
               if (debuffEdit[idx].ability.name!=="Sunder Armor" || debuffEdit[idx+1].ability.name!=="Expose Armor")
-                output += (timeAt + debuffOne + rb + debuffTwo + tdtr);
+                if (debuffEdit[idx].targetID == debuffEdit[idx+1].targetID)
+                  output += (timeAt + debuffOne + rb + debuffTwo + tdtr);
       }
       else
         console.log(timeAt + ": Error, " + debuffEdit[idx].type + " " + debuffEdit[idx+1].type) 
