@@ -198,12 +198,12 @@ function checkISB() {
     if (debuffEdit[i].type == "applydebuff" || debuffEdit[i].type == "applydebuffstack") {
       who = fightData.friendlies[friendIDs.indexOf(debuffEdit[i].sourceID)];
       output += (timeAt + "<td style=text-align:right>Shadow Vulnerability" + ab + "<td style=text-align:left;color:#9482C9>" + who.name + tdtr)
+      var appliedAt = debuffEdit[i].timestamp;
     }
     else {
       //remover = damageEdit[timestampList.indexOf(debuffEdit[i].timestamp)];
       remover = damageEdit[timestampList.indexOf(findClosest(debuffEdit[i].timestamp,timestampList))];
       if (i<debuffEdit.length-1 && debuffEdit[i].timestamp==debuffEdit[i+1].timestamp && debuffEdit[i].type == "removedebuff" && debuffEdit[i+1].type == "applydebuff") {}
-      else if (i<debuffEdit.length-1 && debuffEdit[i].type == "removedebuff" && (debuffEdit[i].timestamp+60000)<debuffEdit[i+1].timestamp) {}
       else if (Math.abs(remover.timestamp-debuffEdit[i].timestamp)<25) {
         try {
           who = fightData.friendlies[friendIDs.indexOf(remover.sourceID)];
@@ -238,6 +238,8 @@ function checkISB() {
           console.log((debuffEdit[i].timestamp-currentStart)/1000 + " " + err)
         }
       }
+      else if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].timestamp > (appliedAt + 11500)) {}
+      else if (i<debuffEdit.length-1 && debuffEdit[i].type == "removedebuff" && (debuffEdit[i].timestamp+60000)<debuffEdit[i+1].timestamp) {}
       else {
         console.log(debuffEdit[i])
         console.log((debuffEdit[i].timestamp-currentStart)/1000 + " else")
