@@ -186,7 +186,7 @@ function checkISB() {
         if (i!==0) {
           output += ("<tr><th colspan='4'></th></tr>")
         }
-        output += ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight) - ISB Uptime: " + bossISB[j] + "%" + "</th></tr>")
+        output += ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)<br>ISB Uptime: " + bossISB[j] + "%" + "</th></tr>")
         //output += ("<tr><td colspan='4'>" + "ISB Uptime: " + bossISB[j] + "%" + tdtr)
         //console.log(" ")
         //console.log("--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---")
