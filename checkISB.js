@@ -235,7 +235,7 @@ function checkISB() {
         }
         catch(err) {
           console.log(debuffEdit[i])
-          console.log((debuffEdit[i].timestamp-currentStart)/1000 + " " + err)
+          console.log(currentBoss + " " + (debuffEdit[i].timestamp-currentStart)/1000 + " " + err)
         }
       }
       else if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].timestamp > (appliedAt + 11500)) {}
@@ -244,7 +244,7 @@ function checkISB() {
       //else if (i<debuffEdit.length-1 && debuffEdit[i].type == "removedebuff" && (debuffEdit[i].timestamp+60000)<debuffEdit[i+1].timestamp) {}
       else {
         console.log(debuffEdit[i])
-        console.log((debuffEdit[i].timestamp-currentStart)/1000 + " else")
+        console.log(currentBoss + " " + (debuffEdit[i].timestamp-currentStart)/1000 + " else")
       }
     }
     
