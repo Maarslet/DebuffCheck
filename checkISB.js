@@ -202,7 +202,7 @@ function checkISB() {
     else {
       //remover = damageEdit[timestampList.indexOf(debuffEdit[i].timestamp)];
       remover = damageEdit[timestampList.indexOf(findClosest(debuffEdit[i].timestamp,timestampList))];
-      if (debuffEdit[i].type == "removedebuff" && debuffEdit[i+1].type == "applydebuff") {}
+      if (i<debuffEdit.length-1 && debuffEdit[i].type == "removedebuff" && debuffEdit[i+1].type == "applydebuff") {}
       else if (Math.abs(remover.timestamp-debuffEdit[i].timestamp)<25) {
         try {
           who = fightData.friendlies[friendIDs.indexOf(remover.sourceID)];
