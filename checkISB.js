@@ -149,11 +149,11 @@ function checkISB() {
   for (var j=0; j<bossNames.length; j++) {
     var count = 0;
     var countISB = 0;
-    for (var i=0; timestampList[i]<bossEnds[j]; i++) {
-      if (timestampList[i]>bossStarts[j] && castEdit[i].ability.name == "Shadow Bolt") {
+    for (var i=0; timestampList[i]<=bossEnds[j]; i++) {
+      if (timestampList[i]>=bossStarts[j] && castEdit[i].ability.name == "Shadow Bolt") {
         count++;
-        for (var k=0; k<ISBStarts.length; k++) {
-          if (castEdit[i].timestamp>ISBStarts[k] && castEdit[i].timestamp<ISBEnds[k])
+        for (var k=0; k<=ISBStarts.length; k++) {
+          if (castEdit[i].timestamp>=ISBStarts[k] && castEdit[i].timestamp<=ISBEnds[k])
             countISB++
         }
       }
