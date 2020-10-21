@@ -242,7 +242,7 @@ function checkISB() {
       else if (currentBoss == "The Prophet Skeram" && debuffEdit[i].type == "removedebuff") {}
       else if (i<debuffEdit.length-1 && debuffEdit[i].type == "removedebuff" && debuffEdit[i].targetID!==debuffEdit[i+1].targetID) {}
       else if (i<debuffEdit.length-1 && debuffEdit[i].timestamp>debuffEdit[i+1].timestamp-15 && debuffEdit[i].type == "removedebuff" && debuffEdit[i+1].type == "applydebuff") {}
-      //else if (i<debuffEdit.length-1 && debuffEdit[i].type == "removedebuff" && (debuffEdit[i].timestamp+60000)<debuffEdit[i+1].timestamp) {}
+      else if (i=debuffEdit.length-1 && debuffEdit[i].type == "removedebuff") {}
       else {
         console.log(debuffEdit[i])
         console.log(currentBoss + " " + (debuffEdit[i].timestamp-currentStart)/1000 + " else")
