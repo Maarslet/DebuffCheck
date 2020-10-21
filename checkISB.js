@@ -233,12 +233,12 @@ function checkISB() {
         }
         catch(err) {
           console.log(debuffEdit[i])
-          console.log((debuffEdit[i].timestamp-currentStart)/1000 + err)
+          console.log((debuffEdit[i].timestamp-currentStart)/1000 + " " + err)
         }
       }
       else {
         console.log(debuffEdit[i])
-        console.log((debuffEdit[i].timestamp-currentStart)/1000)
+        console.log((debuffEdit[i].timestamp-currentStart)/1000 + " else")
       }
     }
     
