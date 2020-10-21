@@ -239,7 +239,9 @@ function checkISB() {
         }
       }
       else if (debuffEdit[i].type == "removedebuff" && debuffEdit[i].timestamp > (appliedAt + 11500)) {}
-      else if (i<debuffEdit.length-1 && debuffEdit[i].type == "removedebuff" && (debuffEdit[i].timestamp+60000)<debuffEdit[i+1].timestamp) {}
+      else if (currentBoss == "The Prophet Skeram" && debuffEdit[i].type == "removedebuff") {}
+      else if (i<debuffEdit.length-1 && debuffEdit[i].type == "removedebuff" && debuffEdit[i].targetID!==debuffEdit[i+1].targetID) {}
+      //else if (i<debuffEdit.length-1 && debuffEdit[i].type == "removedebuff" && (debuffEdit[i].timestamp+60000)<debuffEdit[i+1].timestamp) {}
       else {
         console.log(debuffEdit[i])
         console.log((debuffEdit[i].timestamp-currentStart)/1000 + " else")
