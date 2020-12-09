@@ -302,9 +302,15 @@ function processInput() {
       var spec = who.type;
     }
     catch {
-      var who = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx].sourceID)].petOwner)];
-      var pet = true;
-      var spec = who.type;
+      try {
+        var who = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(debuffEdit[idx].sourceID)].petOwner)];
+        var pet = true;
+        var spec = who.type;
+      }
+      catch {
+        var cellString = "<td>" + "Unknown's " + debuffEdit[idx].ability.name;
+        return cellString
+      }
     }
     
     var preString = "text-align:" + alignment + ";color:"
