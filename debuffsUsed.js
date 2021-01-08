@@ -18,7 +18,7 @@ function checkDebuffsUsed() {
   var API = "&api_key=120a438a467e97b900a062c8a7a34000";
   var baseURL = "https://classic.warcraftlogs.com:443/v1/report";
   
-  var filterAdd = "%20AND%20ability.name%20not%20in%20%28%22Deep%20Wound%22%2C%22Fireball%22%2C%22Pyroblast%22";
+  var filterAdd = "%20AND%20ability.id%20not%20in%20%2812721%2C25306%2C18809%2C10151%29%20AND%20ability.name%20not%20in%20%28%22Deep%20Wound%22%2C%22Fireball%22%2C%22Pyroblast%22";
   if (document.getElementById("thunderfury").checked == true)
     filterAdd += "%2C%22Thunderfury%22";
   if (document.getElementById("giftOfArthas").checked == true)
