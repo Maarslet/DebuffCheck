@@ -29,14 +29,14 @@ function processInput() {
     fightData.send(null);
     fightData = JSON.parse(fightData.response);
     var debuffData = new XMLHttpRequest();
-    debuffData.open("Get", baseURL + "/events/debuffs/" + logID + "?start=0&end=100000000&hostility=1&wipes=2" + filter + API, false);
+    debuffData.open("Get", baseURL + "/events/debuffs/" + logID + "?start=0&end=1000000000&hostility=1&wipes=2" + filter + API, false);
     debuffData.send(null);
     debuffData = JSON.parse(debuffData.response);
   
     var nextTime = debuffData.nextPageTimestamp;
     while (nextTime>1) {
       var dataadd = new XMLHttpRequest();
-      dataadd.open("Get", baseURL + "/events/debuffs/" + logID + "?start=" + nextTime + "&end=100000000&hostility=1&wipes=2" + filter + API, false);
+      dataadd.open("Get", baseURL + "/events/debuffs/" + logID + "?start=" + nextTime + "&end=1000000000&hostility=1&wipes=2" + filter + API, false);
       dataadd.send(null);
       dataadd = JSON.parse(dataadd.response);
       debuffData.events = debuffData.events.concat(dataadd.events);
