@@ -31,14 +31,14 @@ function checkISB() {
     fightData = JSON.parse(fightData.response);
     
     var debuffData = new XMLHttpRequest();
-    debuffData.open("Get", baseURL + "/events/debuffs/" + logID + "?start=0&end=100000000&hostility=1&abilityid=17800&wipes=2" + filter + API, false);
+    debuffData.open("Get", baseURL + "/events/debuffs/" + logID + "?start=0&end=1000000000&hostility=1&abilityid=17800&wipes=2" + filter + API, false);
     debuffData.send(null);
     debuffData = JSON.parse(debuffData.response);
   
     var nextTime = debuffData.nextPageTimestamp;
     while (nextTime>1) {
       var dataadd = new XMLHttpRequest();
-      dataadd.open("Get", baseURL + "/events/debuffs/" + logID + "?start=" + nextTime + "&end=100000000&hostility=1&abilityid=17800&wipes=2" + filter + API, false);
+      dataadd.open("Get", baseURL + "/events/debuffs/" + logID + "?start=" + nextTime + "&end=1000000000&hostility=1&abilityid=17800&wipes=2" + filter + API, false);
       dataadd.send(null);
       dataadd = JSON.parse(dataadd.response);
       debuffData.events = debuffData.events.concat(dataadd.events);
@@ -46,14 +46,14 @@ function checkISB() {
     }
       
     var damageData = new XMLHttpRequest();
-    damageData.open("Get", baseURL + "/events/damage-done/" + logID + "?start=0&end=100000000&wipes=2" + filtertwo + API, false);
+    damageData.open("Get", baseURL + "/events/damage-done/" + logID + "?start=0&end=1000000000&wipes=2" + filtertwo + API, false);
     damageData.send(null);
     damageData = JSON.parse(damageData.response);
   
     var nextTime = damageData.nextPageTimestamp;
     while (nextTime>1) {
       var dataadd = new XMLHttpRequest();
-      dataadd.open("Get", baseURL + "/events/damage-done/" + logID + "?start=" + nextTime + "&end=100000000&wipes=2" + filtertwo + API, false);
+      dataadd.open("Get", baseURL + "/events/damage-done/" + logID + "?start=" + nextTime + "&end=1000000000&wipes=2" + filtertwo + API, false);
       dataadd.send(null);
       dataadd = JSON.parse(dataadd.response);
       damageData.events = damageData.events.concat(dataadd.events);
@@ -61,14 +61,14 @@ function checkISB() {
     }
     
     var castData = new XMLHttpRequest();
-    castData.open("Get", baseURL + "/events/casts/" + logID + "?start=0&end=100000000&wipes=2" + filterthree + API, false);
+    castData.open("Get", baseURL + "/events/casts/" + logID + "?start=0&end=1000000000&wipes=2" + filterthree + API, false);
     castData.send(null);
     castData = JSON.parse(castData.response);
   
     var nextTime = castData.nextPageTimestamp;
     while (nextTime>1) {
       var dataadd = new XMLHttpRequest();
-      dataadd.open("Get", baseURL + "/events/casts/" + logID + "?start=" + nextTime + "&end=100000000&wipes=2" + filterthree + API, false);
+      dataadd.open("Get", baseURL + "/events/casts/" + logID + "?start=" + nextTime + "&end=1000000000&wipes=2" + filterthree + API, false);
       dataadd.send(null);
       dataadd = JSON.parse(dataadd.response);
       castData.events = castData.events.concat(dataadd.events);
