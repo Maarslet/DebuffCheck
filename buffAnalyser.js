@@ -93,28 +93,28 @@ function buffCheck() {
   
   var buffEdit = buffData.events; 
   var index = new Array;
-  /*for (var i=buffEdit.length-1; i>=0; i--) {
-    if (bossIDs.indexOf(buffEdit[i].targetID) == -1 || buffEdit[i].type == "removebuffstack" || buffEdit[i].type == "applybuffstack" || buffEdit[i].type == "refreshbuff") {
+  for (var i=buffEdit.length-1; i>=0; i--) {
+    if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Flurry") {
       buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Mind Flay") {
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Bloodthirst") {
       buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Rain of Fire") {
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Defensive Stance") {
       buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Blizzard") {
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Battle Stance") {
       buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Consecration") {
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Berserker Stance") {
       buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Hellfire") {
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Bloodrage") {
       buffEdit.splice(i,1);}
     else {
-      for (var j=0; j<bossStarts.length; j++) {
+      /*for (var j=0; j<bossStarts.length; j++) {
         if (buffEdit[i].timestamp>bossEnds[j]-1000 && buffEdit[i].timestamp<bossEnds[j]+1000) {     
           //buffEdit.splice(i,1);
           break
         }
-      }      
+      }      */
     }
-  }*/
+  }
   
   var timestampList = new Array;
   count = 0;
@@ -180,7 +180,7 @@ function buffCheck() {
       }
     }
   }
-  console.log(buffEdit); return
+
   var timestampList = new Array;
   for (var i=0; i<buffEdit.length; i++) {
     timestampList[i] = buffEdit[i].timestamp;
@@ -226,11 +226,8 @@ function buffCheck() {
     if (count==2) {
       if (buffEdit[idx].type == "removebuff" && buffEdit[idx+1].type == "applybuff") {
         if (buffEdit[idx].ability.name!==buffEdit[idx+1].ability.name)
-          if (buffEdit[idx].ability.name!=="Mind Flay" || buffEdit[idx+1].ability.name!=="Shadow Word: Pain")
-            if (buffEdit[idx].ability.name!=="Shadow Vulnerability" || buffEdit[idx+1].ability.name!=="Mind Flay")
-              if (buffEdit[idx].ability.name!=="Sunder Armor" || buffEdit[idx+1].ability.name!=="Expose Armor")
-                if (buffEdit[idx].targetID == buffEdit[idx+1].targetID)
-                  output += (timeAt + buffOne + rb + buffTwo + tdtr);
+          if (buffEdit[idx].targetID == buffEdit[idx+1].targetID)
+            output += (timeAt + buffOne + rb + buffTwo + tdtr);
       }
       else
         console.log(timeAt + ": Error, " + buffEdit[idx].type + " " + buffEdit[idx+1].type) 
