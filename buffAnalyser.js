@@ -50,10 +50,10 @@ function buffCheck() {
   var enemyIDs = new Array;
   var count = 0;
   for (var i=0; i<fightData.enemies.length; i++) {
-    if (fightData.enemies[i].type == "Boss") {
+    //if (fightData.enemies[i].type == "Boss") {
       bossIDs[count] = fightData.enemies[i].id; 
       count++
-    }
+    //}
     enemyIDs[i] = fightData.enemies[i].id;
   }
   var friendIDs = new Array;
@@ -109,7 +109,7 @@ function buffCheck() {
     else {
       for (var j=0; j<bossStarts.length; j++) {
         if (buffEdit[i].timestamp>bossEnds[j]-1000 && buffEdit[i].timestamp<bossEnds[j]+1000) {     
-          buffEdit.splice(i,1);
+          //buffEdit.splice(i,1);
           break
         }
       }      
@@ -286,7 +286,7 @@ function buffCheck() {
     else
        console.log(timeAt + ": Error, " + count)
   }
-  document.getElementById("page").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
+  document.getElementById("page4").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
   console.log(bossNames)
   console.log(bossStarts)
   console.log(bossEnds)
