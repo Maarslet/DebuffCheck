@@ -1,18 +1,18 @@
 function buffCheck() {
   
-  document.getElementsByClassName("loader")[0].style.display = "none";
+  document.getElementsByClassName("loader")[3].style.display = "none";
   
-  var input = document.querySelector("#input").value;
+  var input = document.querySelector("#input4").value;
   input = input.trim();
   var indx = input.indexOf("/reports/")+"/reports/".length;
   if (input.length>16)
     input = input.slice(indx,indx+16);
   else if (input.length<16) {
-    document.getElementById("page").innerHTML = "Error, invalid report ID.";
+    document.getElementById("page4").innerHTML = "Error, invalid report ID.";
     return
   }
   
-  document.getElementById("page").innerHTML = "Code stopped for some reason";
+  document.getElementById("page4").innerHTML = "Code stopped for some reason";
   
   var logID = input.trim(); console.log("'" + logID + "'")
   var API = "&api_key=120a438a467e97b900a062c8a7a34000";
@@ -30,6 +30,7 @@ function buffCheck() {
     buffData.send(null);
     buffData = JSON.parse(buffData.response);
   
+    /*
     var nextTime = buffData.nextPageTimestamp;
     while (nextTime>1) {
       var dataadd = new XMLHttpRequest();
@@ -38,10 +39,10 @@ function buffCheck() {
       dataadd = JSON.parse(dataadd.response);
       buffData.events = buffData.events.concat(dataadd.events);
       nextTime = dataadd.nextPageTimestamp;
-    }
+    }*/
   }
   catch(err) {
-    document.getElementById("page").innerHTML = "Error: " + err.message; 
+    document.getElementById("page4").innerHTML = "Error: " + err.message; 
     return
   }
   console.log(buffData)
