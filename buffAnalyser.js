@@ -134,7 +134,7 @@ function buffCheck() {
     if (count < 1)
       buffEdit.splice(i,1);
   }
-  console.log(buffEdit); return
+  
   for (var k=1; k<=5; k++) {
     for (var i=buffEdit.length-1; i>=0; i--) {
       if (i == buffEdit.length-1) {
@@ -169,8 +169,8 @@ function buffCheck() {
   
   for (var k=1; k<=5; k++) {
     for (var i=1; i<buffEdit.length; i++) {
-      if (buffEdit[i].ability.name == "Faerie Fire (Feral)") {
-        buffEdit[i].ability.name = "Faerie Fire";}
+      /*if (buffEdit[i].ability.name == "Faerie Fire (Feral)") {
+        buffEdit[i].ability.name = "Faerie Fire";}*/
       if (buffEdit[i].type == "removebuff" && buffEdit[i].timestamp == buffEdit[i-1].timestamp && buffEdit[i-1].type == "applybuff") {
         for (j=i; j<=i+10; j++) {
           if (j<buffEdit.length)
@@ -180,7 +180,7 @@ function buffCheck() {
       }
     }
   }
-  
+  console.log(buffEdit); return
   var timestampList = new Array;
   for (var i=0; i<buffEdit.length; i++) {
     timestampList[i] = buffEdit[i].timestamp;
