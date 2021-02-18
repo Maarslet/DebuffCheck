@@ -45,7 +45,7 @@ function buffCheck() {
     document.getElementById("page4").innerHTML = "Error: " + err.message; 
     return
   }
-  console.log(buffData); return
+  console.log(buffData)
   var bossIDs = new Array;
   var enemyIDs = new Array;
   var count = 0;
@@ -93,7 +93,7 @@ function buffCheck() {
   
   var buffEdit = buffData.events; 
   var index = new Array;
-  for (var i=buffEdit.length-1; i>=0; i--) {
+  /*for (var i=buffEdit.length-1; i>=0; i--) {
     if (bossIDs.indexOf(buffEdit[i].targetID) == -1 || buffEdit[i].type == "removebuffstack" || buffEdit[i].type == "applybuffstack" || buffEdit[i].type == "refreshbuff") {
       buffEdit.splice(i,1);}
     else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Mind Flay") {
@@ -114,7 +114,7 @@ function buffCheck() {
         }
       }      
     }
-  }
+  }*/
   
   var timestampList = new Array;
   count = 0;
@@ -134,7 +134,7 @@ function buffCheck() {
     if (count < 1)
       buffEdit.splice(i,1);
   }
-  
+  console.log(buffEdit); return
   for (var k=1; k<=5; k++) {
     for (var i=buffEdit.length-1; i>=0; i--) {
       if (i == buffEdit.length-1) {
