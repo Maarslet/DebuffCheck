@@ -30,7 +30,7 @@ function buffCheck() {
     buffData.send(null);
     buffData = JSON.parse(buffData.response);
   
-    /*
+    
     var nextTime = buffData.nextPageTimestamp;
     while (nextTime>1) {
       var dataadd = new XMLHttpRequest();
@@ -39,13 +39,13 @@ function buffCheck() {
       dataadd = JSON.parse(dataadd.response);
       buffData.events = buffData.events.concat(dataadd.events);
       nextTime = dataadd.nextPageTimestamp;
-    }*/
+    }
   }
   catch(err) {
     document.getElementById("page4").innerHTML = "Error: " + err.message; 
     return
   }
-  console.log(buffData)
+  console.log(buffData); return
   var bossIDs = new Array;
   var enemyIDs = new Array;
   var count = 0;
