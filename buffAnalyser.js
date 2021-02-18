@@ -294,13 +294,13 @@ function buffCheck() {
   
   function classColor(idx,alignment) {
     try {
-      var who = fightData.friendlies[friendIDs.indexOf(buffEdit[idx].sourceID)];
+      var who = fightData.friendlies[friendIDs.indexOf(buffEdit[idx].targetID)];
       var pet = false;
       var spec = who.type;
     }
     catch {
       try {
-        var who = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(buffEdit[idx].sourceID)].petOwner)];
+        var who = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(buffEdit[idx].targetID)].petOwner)];
         var pet = true;
         var spec = who.type;
       }
