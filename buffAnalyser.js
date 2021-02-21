@@ -240,19 +240,19 @@ function buffCheck() {
     if (count < 1)
       buffEdit.splice(i,1);
   }
-  return
+  
   for (var k=1; k<=5; k++) {
     for (var i=buffEdit.length-1; i>=0; i--) {
       if (i == buffEdit.length-1) {
         if (buffEdit[i].type == "removebuff")
-          buffEdit.splice(i,1);
+          //buffEdit.splice(i,1);
       }
       else if (i == 0) {
         if (buffEdit[i].type == "applybuff")
           buffEdit.splice(i,1);
       }
       else if (buffEdit[i].type == "removebuff" && buffEdit[i].timestamp<buffEdit[i+1].timestamp)
-        buffEdit.splice(i,1);
+        //buffEdit.splice(i,1);
       else if (buffEdit[i].type == "applybuff" && buffEdit[i].timestamp>buffEdit[i-1].timestamp)
         buffEdit.splice(i,1);
     }
@@ -268,15 +268,13 @@ function buffCheck() {
         if (buffEdit[i].timestamp == timestampList[j])
           count++;
       }
-      if (count < 2)
+      if (count < 2 && buffEdit[i].type == "applybuff")
         buffEdit.splice(i,1);
     }
   }
   
   for (var k=1; k<=5; k++) {
     for (var i=1; i<buffEdit.length; i++) {
-      /*if (buffEdit[i].ability.name == "Faerie Fire (Feral)") {
-        buffEdit[i].ability.name = "Faerie Fire";}*/
       if (buffEdit[i].type == "removebuff" && buffEdit[i].timestamp == buffEdit[i-1].timestamp && buffEdit[i-1].type == "applybuff") {
         for (j=i; j<=i+10; j++) {
           if (j<buffEdit.length)
@@ -294,7 +292,7 @@ function buffCheck() {
   
   var uniqueStamps = timestampList.filter(onlyUnique);
   var currentBoss = "None";
-  var currentStart = 0;
+  var currentStart = Math.min(bossStarts);
   var idx = 0;
   var timeAt = 0;
   var output = new Array;
@@ -310,7 +308,7 @@ function buffCheck() {
     for (var j=0; j<bossNames.length; j++) {
       if (uniqueStamps[i]>bossStarts[j] && uniqueStamps[i]<bossEnds[j] && bossNames[j]!==currentBoss) {
         currentBoss = bossNames[j];
-        currentStart = bossStarts[j];
+        //currentStart = bossStarts[j];
         if (i!==0) 
           output += ("<tr><th colspan='4'></th></tr>")
         output += ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
@@ -329,7 +327,11 @@ function buffCheck() {
     buffTwo = classColor(idx+1,"left");
     
     timeAt = "<tr><td style='text-align:right'>" + formatNumber((buffEdit[idx].timestamp-currentStart)/1000) + ":</td>"; //<td style='text-align:right'>
-    if (count==2) {
+    if (count == 1) {
+      output += (timeAt + buffOne);
+    }
+    
+    else if (count==2) {
       if (buffEdit[idx].type == "removebuff" && buffEdit[idx+1].type == "applybuff") {
         if (buffEdit[idx].ability.name!==buffEdit[idx+1].ability.name)
           if (buffEdit[idx].targetID == buffEdit[idx+1].targetID)
