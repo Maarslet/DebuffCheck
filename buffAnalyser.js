@@ -19,6 +19,8 @@ function buffCheck() {
 
   var baseURL = "https://classic.warcraftlogs.com:443/v1/report";
   var filter = "&filter=type%20in%20%28%22applybuff%22%2C%22removebuff%22%29";
+  //type in ("applybuff","removebuff") AND ability.id in (17538,3593,16609,15366,24425,22817,22818,22820,23768,22888,24382,11349,11348) - Mongoose, Fortitude II, Rend, SF, ZG, DMTAP, DMTHP, DMTSC, DMF, Ony, Zanza, DefPot, SupDef
+  //var filter = "&filter=type%20in%20%28%22applybuff%22%2C%22removebuff%22%29";
   try {
     var fightData = new XMLHttpRequest();
     fightData.open("Get", baseURL + "/fights/" + logID + "?" + API.slice(1,API.length), false);
@@ -213,6 +215,22 @@ function buffCheck() {
     else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Gift of the Wild") {
       buffEdit.splice(i,1);}
     else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Mark of the Wild") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
       buffEdit.splice(i,1);}
     else {
       /*for (var j=0; j<bossStarts.length; j++) {
