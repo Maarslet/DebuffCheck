@@ -96,7 +96,9 @@ function buffCheck() {
   var buffEdit = buffData.events; 
   var index = new Array;
   for (var i=buffEdit.length-1; i>=0; i--) {
-    if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Flurry") {
+    if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.id !== (17538,3593,16609,15366,24425,22817,22818,22820,23768,22888,24382,11349,11348))
+      buffEdit.splice(i,1);
+    /*if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Flurry") {
       buffEdit.splice(i,1);}
     else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Bloodthirst") {
       buffEdit.splice(i,1);}
@@ -215,31 +217,7 @@ function buffCheck() {
     else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Gift of the Wild") {
       buffEdit.splice(i,1);}
     else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Mark of the Wild") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
-      buffEdit.splice(i,1);}
-    else {
-      /*for (var j=0; j<bossStarts.length; j++) {
-        if (buffEdit[i].timestamp>bossEnds[j]-1000 && buffEdit[i].timestamp<bossEnds[j]+1000) {     
-          //buffEdit.splice(i,1);
-          break
-        }
-      }      */
-    }
+      buffEdit.splice(i,1);}*/
   }
   
   var timestampList = new Array;
