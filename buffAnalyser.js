@@ -324,7 +324,8 @@ function buffCheck() {
     }
     
     buffOne = classColor(idx,"right");
-    buffTwo = classColor(idx+1,"left");
+    if (count > 1)
+      buffTwo = classColor(idx+1,"left");
     
     timeAt = "<tr><td style='text-align:right'>" + formatNumber((buffEdit[idx].timestamp-currentStart)/1000) + ":</td>"; //<td style='text-align:right'>
     if (count == 1) {
