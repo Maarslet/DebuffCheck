@@ -96,8 +96,10 @@ function buffCheck() {
   var buffEdit = buffData.events; 
   var index = new Array;
   for (var i=buffEdit.length-1; i>=0; i--) {
-    if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.id !== (17538,3593,16609,15366,24425,22817,22818,22820,23768,22888,24382,11349,11348))
-      buffEdit.splice(i,1); console.log(buffEdit[i].ability.id)
+    if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.guid !== (17538,3593,16609,15366,24425,22817,22818,22820,23768,22888,24382,11349,11348)) {
+      console.log(buffEdit[i].ability.guid)
+      buffEdit.splice(i,1); 
+    }
     /*if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Flurry") {
       buffEdit.splice(i,1);}
     else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Bloodthirst") {
