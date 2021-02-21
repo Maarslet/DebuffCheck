@@ -244,14 +244,14 @@ function buffCheck() {
   for (var k=1; k<=5; k++) {
     for (var i=buffEdit.length-1; i>=0; i--) {
       if (i == buffEdit.length-1) {
-        if (buffEdit[i].type == "removebuff")
+        //if (buffEdit[i].type == "removebuff")
           //buffEdit.splice(i,1);
       }
       else if (i == 0) {
         if (buffEdit[i].type == "applybuff")
           buffEdit.splice(i,1);
       }
-      else if (buffEdit[i].type == "removebuff" && buffEdit[i].timestamp<buffEdit[i+1].timestamp)
+      //else if (buffEdit[i].type == "removebuff" && buffEdit[i].timestamp<buffEdit[i+1].timestamp)
         //buffEdit.splice(i,1);
       else if (buffEdit[i].type == "applybuff" && buffEdit[i].timestamp>buffEdit[i-1].timestamp)
         buffEdit.splice(i,1);
