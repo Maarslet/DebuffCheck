@@ -292,7 +292,7 @@ function buffCheck() {
   
   var uniqueStamps = timestampList.filter(onlyUnique);
   var currentBoss = "None";
-  var currentStart = Math.min(bossStarts);
+  var currentStart = Math.min(bossStarts); console.log(currentStart)
   var idx = 0;
   var timeAt = 0;
   var output = new Array;
@@ -393,11 +393,11 @@ function buffCheck() {
        console.log(timeAt + ": Error, " + count)
   }
   document.getElementById("page4").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
-  console.log(bossNames)
+  /*console.log(bossNames)
   console.log(bossStarts)
   console.log(bossEnds)
   console.log(uniqueStamps)
-  console.log(timestampList)
+  console.log(timestampList)*/
   console.log(fightData)
   console.log(buffEdit)
   
