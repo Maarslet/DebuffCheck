@@ -162,6 +162,58 @@ function buffCheck() {
       buffEdit.splice(i,1);}
     else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Renew") {
       buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Prayer of Fortitude") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Power Infusion") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Fear Ward") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Evasion") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Blessing of Salvation") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Inner Focus") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Blade Flurry") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Greater Blessing of Kings") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Earthstrike") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Unstable Power") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Slice and Dice") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Devotion Aura") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Mend Pet") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Blessing of Protection") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Winterfall Firewater") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Adrenaline Rush") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Essence of Sapphiron") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Mana Shield") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Arcane Intellect") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Trueshot Aura") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Track Beasts") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Track Humanoids") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Greater Blessing of Might") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Gift of the Wild") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Mark of the Wild") {
+      buffEdit.splice(i,1);}
     else {
       /*for (var j=0; j<bossStarts.length; j++) {
         if (buffEdit[i].timestamp>bossEnds[j]-1000 && buffEdit[i].timestamp<bossEnds[j]+1000) {     
