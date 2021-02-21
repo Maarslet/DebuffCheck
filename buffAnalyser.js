@@ -95,8 +95,9 @@ function buffCheck() {
   
   var buffEdit = buffData.events; 
   var index = new Array;
+  var idArray = [17538,3593,16609,15366,24425,22817,22818,22820,23768,22888,24382,11349,11348];
   for (var i=buffEdit.length-1; i>=0; i--) {
-    if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.guid !== (17538,3593,16609,15366,24425,22817,22818,22820,23768,22888,24382,11349,11348)) {
+    if (buffEdit[i].type == "removebuff" && idArray.includes(buffEdit[i].ability.guid)==false) {
       console.log(buffEdit[i].ability.guid)
       buffEdit.splice(i,1); 
     }
