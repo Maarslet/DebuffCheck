@@ -106,6 +106,28 @@ function buffCheck() {
       buffEdit.splice(i,1);}
     else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Bloodrage") {
       buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Combustion") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Inspiration") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Battle Shout") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Greater Blessing of Wisdom") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Stealth") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Concentration Aura") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Aspect of the Hawk") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Divine Favor") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Bloodrage") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Bloodrage") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Bloodrage") {
+      buffEdit.splice(i,1);}
     else {
       /*for (var j=0; j<bossStarts.length; j++) {
         if (buffEdit[i].timestamp>bossEnds[j]-1000 && buffEdit[i].timestamp<bossEnds[j]+1000) {     
