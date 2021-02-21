@@ -219,7 +219,7 @@ function buffCheck() {
     else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Mark of the Wild") {
       buffEdit.splice(i,1);}*/
   }
-  return
+  
   var timestampList = new Array;
   count = 0;
   for (var i=0; i<buffEdit.length; i++) {
@@ -238,7 +238,7 @@ function buffCheck() {
     if (count < 1)
       buffEdit.splice(i,1);
   }
-  
+  return
   for (var k=1; k<=5; k++) {
     for (var i=buffEdit.length-1; i>=0; i--) {
       if (i == buffEdit.length-1) {
