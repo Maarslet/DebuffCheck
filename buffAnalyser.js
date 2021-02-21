@@ -122,7 +122,7 @@ function buffCheck() {
       buffEdit.splice(i,1);}
     else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Divine Favor") {
       buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Nature Protection") {
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Nature Protection ") {
       buffEdit.splice(i,1);}
     else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Power Word: Shield") {
       buffEdit.splice(i,1);}
@@ -145,6 +145,22 @@ function buffCheck() {
     else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Chicken Fury") {
       buffEdit.splice(i,1);}
     else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Nature's Grace") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Aura of the Blue Dragon") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Power Word: Fortitude") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Greater Blessing of Salvation") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Holy Strength") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Holy Power") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Lay on Hands") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Aspect of the Pack") {
+      buffEdit.splice(i,1);}
+    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Renew") {
       buffEdit.splice(i,1);}
     else {
       /*for (var j=0; j<bossStarts.length; j++) {
