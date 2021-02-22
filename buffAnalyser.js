@@ -298,7 +298,7 @@ function buffCheck() {
   var timeAt = 0;
   var timeTotal = 0;
   var output = new Array;
-  var rb = "</td><td>" + "&nbsp removed by &nbsp" + "</td>";
+  var rb = "</td><td>" + "&nbsp faded away by &nbsp" + "</td>";
   var tdtr = "</td></tr>";
   var buffOne = "";
   var buffTwo = "";
@@ -313,7 +313,7 @@ function buffCheck() {
         currentStart = bossStarts[j];
         if (i!==0) 
           output += ("<tr><th colspan='5'></th></tr>")
-        output += (timeTotal + "<th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
+        output += ("<tr><th colspan='5'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
       }
     }
     
@@ -441,6 +441,25 @@ function buffCheck() {
         }
       }
     }
+    else if (alignment == "center") {
+      try {
+        var who = fightData.friendlies[friendIDs.indexOf(buffEdit[idx].targetID)];
+        var pet = false;
+        var spec = who.type;
+      }
+      catch {
+        try {
+          var who = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(buffEdit[idx].targetID)].petOwner)];
+          var pet = true;
+          var spec = who.type;
+        }
+        catch {
+          var cellString = "<td>" + "Unknown's " + buffEdit[idx].ability.name;
+          return cellString
+        }
+      }
+    }
+      
     
     var preString = "text-align:" + alignment + ";color:"
     if (spec == "Warrior")
@@ -461,11 +480,19 @@ function buffCheck() {
       var colorName = preString + "#F58CBA";
     else if (spec == "Shaman")
       var colorName = preString + "#0070DE";
-
-    if (pet == false)
-      var cellString = "<td style=" + colorName + ">" + who.name + "'s " + buffEdit[idx].ability.name;
-    else if (pet == true)
-      var cellString = "<td style=" + colorName + ">" + who.name + "'s Pet's " + buffEdit[idx].ability.name;
+    
+    if (alignment == "center") {
+      if (pet == false)
+        var cellString = "<td colspan='3' style=" + colorName + ">" + who.name + "'s " + buffEdit[idx].ability.name + " faded away";
+      else if (pet == true)
+        var cellString = "<td colspan='3' style=" + colorName + ">" + who.name + "'s Pet's " + buffEdit[idx].ability.name + " faded away";
+    }
+    else {
+      if (pet == false)
+        var cellString = "<td style=" + colorName + ">" + who.name + "'s " + buffEdit[idx].ability.name;
+      else if (pet == true)
+        var cellString = "<td style=" + colorName + ">" + who.name + "'s Pet's " + buffEdit[idx].ability.name;
+    }
     
     return cellString
   }
