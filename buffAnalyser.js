@@ -302,7 +302,7 @@ function buffCheck() {
   var tdtr = "</td></tr>";
   var buffOne = "";
   var buffTwo = "";
-  output[0] = "<table><tr><th colspan='5' style='text-align:left'>" + "Report ID: " + logID + ", ''" + fightData.title + "''</th></tr>";
+  output[0] = "<table><tr><th colspan='5' style='text-align:left'>" + "Report ID: " + logID + ", ''" + fightData.title + "'' uploaded by " + fightData.owner + "</th></tr>";
   count = 0;
   for (var i=0; i<uniqueStamps.length; i++) {
     idx = timestampList.indexOf(uniqueStamps[i]);
