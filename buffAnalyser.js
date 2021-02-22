@@ -292,28 +292,30 @@ function buffCheck() {
   
   var uniqueStamps = timestampList.filter(onlyUnique);
   var currentBoss = "None";
-  var currentStart = Math.min(bossStarts); console.log(currentStart)
+  var currentStart = 0;
+  var firstTime = math.min(bossStarts); console.log(firstTime)
   var idx = 0;
   var timeAt = 0;
+  var timeTotal = 0;
   var output = new Array;
   var rb = "</td><td>" + "&nbsp removed by &nbsp" + "</td>";
   var tdtr = "</td></tr>";
   var buffOne = "";
   var buffTwo = "";
-  output[0] = "<table><tr><th colspan='4' style='text-align:left'>" + "Report ID: " + logID + "</th></tr>";
+  output[0] = "<table><tr><th colspan='5' style='text-align:left'>" + "Report ID: " + logID + ", ''" + fightData.title + "''</th></tr>";
   count = 0;
   for (var i=0; i<uniqueStamps.length; i++) {
     idx = timestampList.indexOf(uniqueStamps[i]);
-
+    timeTotal = "<tr><td style='text-align:right'>" + formatTime((buffEdit[idx].timestamp-firstTime)/1000) + ":</td>";
+    timeAt = timeTotal + "<td style='text-align:right'>" + formatNumber((buffEdit[idx].timestamp-currentStart)/1000) + ":</td>"; //<td style='text-align:right'>
+    
     for (var j=0; j<bossNames.length; j++) {
       if (uniqueStamps[i]>bossStarts[j] && uniqueStamps[i]<bossEnds[j] && bossNames[j]!==currentBoss) {
         currentBoss = bossNames[j];
-        //currentStart = bossStarts[j];
+        currentStart = bossStarts[j];
         if (i!==0) 
-          output += ("<tr><th colspan='4'></th></tr>")
-        output += ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
-        //console.log(" ")
-        //console.log("--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---")
+          output += ("<tr><th colspan='5'></th></tr>")
+        output += (timeTotal + "<th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
       }
     }
     
@@ -327,9 +329,9 @@ function buffCheck() {
     if (count > 1)
       buffTwo = classColor(idx+1,"left");
     
-    timeAt = "<tr><td style='text-align:right'>" + formatNumber((buffEdit[idx].timestamp-currentStart)/1000) + ":</td>"; //<td style='text-align:right'>
+    
     if (count == 1) {
-      output += (timeAt + buffOne);
+      output += (timeAt + buffOne + tdtr);
     }
     
     else if (count==2) {
@@ -484,4 +486,16 @@ function formatNumber(value) {
     if (value.length<value.indexOf(".")+4)
       value += "0";
   return value
+}
+
+function formatTime(value) {
+  var hours = math.floor(value/3600);
+  var minutes = math.floor((value/3600-hours)*60);
+  if (minutes < 10)
+    minutes = "0" + minutes;
+  var seconds = math.floor(((value/3600-hours)*60-minutes)*60);
+  if (seconds < 10)
+    seconds = "0" + seconds;
+  var string = hours + "h" + minutes + "m" + seconds + "s";
+  return string
 }
