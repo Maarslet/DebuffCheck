@@ -326,11 +326,13 @@ function buffCheck() {
         count++;
     }
     
-    buffOne = classColor(idx,"right");
-    if (count > 1)
+    buffOne = classColor(idx,"center");
+    if (count > 1) {
+      buffOne = classColor(idx,"right");
       buffTwo = classColor(idx+1,"left");
-    
-    
+    }
+   
+    // Count-depending processing
     if (count == 1) {
       output += (timeAt + buffOne + tdtr);
     }
