@@ -293,7 +293,7 @@ function buffCheck() {
   var uniqueStamps = timestampList.filter(onlyUnique);
   var currentBoss = "None";
   var currentStart = 0;
-  var firstTime = math.min(bossStarts); console.log(firstTime)
+  var firstTime = fightData.fights[0].start; console.log(firstTime)
   var idx = 0;
   var timeAt = 0;
   var timeTotal = 0;
@@ -489,11 +489,11 @@ function formatNumber(value) {
 }
 
 function formatTime(value) {
-  var hours = math.floor(value/3600);
-  var minutes = math.floor((value/3600-hours)*60);
+  var hours = Math.floor(value/3600);
+  var minutes = Math.floor((value/3600-hours)*60);
   if (minutes < 10)
     minutes = "0" + minutes;
-  var seconds = math.floor(((value/3600-hours)*60-minutes)*60);
+  var seconds = Math.floor(((value/3600-hours)*60-minutes)*60);
   if (seconds < 10)
     seconds = "0" + seconds;
   var string = hours + "h" + minutes + "m" + seconds + "s";
