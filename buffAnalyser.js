@@ -302,7 +302,7 @@ function buffCheck() {
   var tdtr = "</td></tr>";
   var buffOne = "";
   var buffTwo = "";
-  output[0] = "<table><tr><th colspan='5' style='text-align:left'>" + "Report ID: " + logID + ", ''" + fightData.title + "'' uploaded by " + fightData.owner + "</th></tr>";
+  output[0] = "<table><tr><th colspan='5' style='text-align:left'>" + "Report ID: " + logID + ",&nbsp &nbsp''" + fightData.title + "'' uploaded by " + fightData.owner + "</th></tr>";
   count = 0;
   for (var i=0; i<uniqueStamps.length; i++) {
     idx = timestampList.indexOf(uniqueStamps[i]);
@@ -313,7 +313,7 @@ function buffCheck() {
         currentStart = bossStarts[j];
         if (i!==0) 
           output += ("<tr><th colspan='5'></th></tr>")
-        output += ("<tr><th colspan='5'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
+        output += ("<tr><th colspan='2'></th><th colspan='3'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
       }
     }
     
