@@ -293,7 +293,7 @@ function buffCheck() {
   var uniqueStamps = timestampList.filter(onlyUnique);
   var currentBoss = "None";
   var currentStart = 0;
-  var firstTime = fightData.fights[0].start; console.log(firstTime)
+  var firstTime = fightData.fights[0].start_time; console.log(firstTime)
   var idx = 0;
   var timeAt = 0;
   var timeTotal = 0;
@@ -306,8 +306,6 @@ function buffCheck() {
   count = 0;
   for (var i=0; i<uniqueStamps.length; i++) {
     idx = timestampList.indexOf(uniqueStamps[i]);
-    timeTotal = "<tr><td style='text-align:right'>" + formatTime((buffEdit[idx].timestamp-firstTime)/1000) + ":</td>";
-    timeAt = timeTotal + "<td style='text-align:right'>" + formatNumber((buffEdit[idx].timestamp-currentStart)/1000) + ":</td>"; //<td style='text-align:right'>
     
     for (var j=0; j<bossNames.length; j++) {
       if (uniqueStamps[i]>bossStarts[j] && uniqueStamps[i]<bossEnds[j] && bossNames[j]!==currentBoss) {
@@ -318,6 +316,9 @@ function buffCheck() {
         output += (timeTotal + "<th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
       }
     }
+    
+    timeTotal = "<tr><td style='text-align:right'>" + formatTime((buffEdit[idx].timestamp-firstTime)/1000) + ":</td>";
+    timeAt = timeTotal + "<td style='text-align:right'>" + formatNumber((buffEdit[idx].timestamp-currentStart)/1000) + ":</td>"; //<td style='text-align:right'>
     
     count = 0;
     for (var j=0; j<timestampList.length; j++) {
@@ -394,7 +395,7 @@ function buffCheck() {
     else
        console.log(timeAt + ": Error, " + count)
   }
-  document.getElementById("page4").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
+  document.getElementById("page4").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
   /*console.log(bossNames)
   console.log(bossStarts)
   console.log(bossEnds)
