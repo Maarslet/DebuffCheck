@@ -127,7 +127,7 @@ function buffCheck() {
     
     if ((buffEdit[idx].timestamp-firstTime)/1000 > 5400)
       break
-    else if ((buffEdit[idx].timestamp-firstTime)/1000 > 2700 && shortBuffs.contain(buffEdit[idx].ability.guid))
+    else if ((buffEdit[idx].timestamp-firstTime)/1000 > 2700 && shortBuffs.includes(buffEdit[idx].ability.guid))
       continue
     
     for (var j=0; j<bossNames.length; j++) {
