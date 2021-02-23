@@ -170,7 +170,7 @@ function buffCheck() {
   var uniqueStamps = timestampList.filter(onlyUnique);
   var currentBoss = "None";
   var currentStart = 0;
-  var firstTime = fightData.fights[0].start_time; console.log(firstTime)
+  var firstTime = fightData.fights[0].start_time;
   var idx = 0;
   var timeAt = 0;
   var timeTotal = 0;
@@ -185,12 +185,16 @@ function buffCheck() {
     idx = i;//timestampList.indexOf(uniqueStamps[i]);
     
     for (var j=0; j<bossNames.length; j++) {
-      if (uniqueStamps[i]>bossStarts[j] && uniqueStamps[i]<bossEnds[j] && bossNames[j]!==currentBoss) {
+      if (timestampList[i]>bossStarts[j] && timestampList[i]<bossEnds[j] && bossNames[j]!==currentBoss) {
         currentBoss = bossNames[j];
         currentStart = bossStarts[j];
-        if (i!==0) 
+        if (i == 0) {
+          output += ("<tr><th>Total Time</th><th>Fight Time</th><th colspan='3'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
+        }
+        else if (i !== 0) {
           output += ("<tr><th colspan='5'></th></tr>")
-        output += ("<tr><th colspan='2'></th><th colspan='3'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
+          output += ("<tr><th colspan='2'></th><th colspan='3'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
+        }
       }
     }
     
