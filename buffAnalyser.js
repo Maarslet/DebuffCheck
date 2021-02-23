@@ -170,6 +170,7 @@ function buffCheck() {
   var uniqueStamps = timestampList.filter(onlyUnique);
   var currentBoss = "None";
   var currentStart = 0;
+  var currentDuration = 0;
   var firstTime = fightData.fights[0].start_time;
   var idx = 0;
   var timeAt = 0;
@@ -185,9 +186,10 @@ function buffCheck() {
     idx = i;//timestampList.indexOf(uniqueStamps[i]);
     
     for (var j=0; j<bossNames.length; j++) {
-      if (timestampList[i]>bossStarts[j] && timestampList[i]<bossEnds[j] && (buffEdit[idx].timestamp-currentStart)>(bossEnds[j]-bossStarts[j])) {
+      if (timestampList[i]>bossStarts[j] && timestampList[i]<bossEnds[j] && (buffEdit[idx].timestamp-currentStart)>currentDuration) {
         currentBoss = bossNames[j];
         currentStart = bossStarts[j];
+        currentDuration = bossEnds[j]-bossStarts[j];
         if (i == 0) {
           output += ("<tr><th>Total Time</th><th>Fight Time</th><th colspan='3'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
         }
