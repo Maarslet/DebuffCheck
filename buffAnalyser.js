@@ -18,9 +18,9 @@ function buffCheck() {
   var API = "&api_key=120a438a467e97b900a062c8a7a34000";
 
   var baseURL = "https://classic.warcraftlogs.com:443/v1/report";
-  var filter = "&filter=type%20in%20%28%22applybuff%22%2C%22removebuff%22%29";
-  //type in ("applybuff","removebuff") AND ability.id in (17538,3593,16609,15366,24425,22817,22818,22820,23768,22888,24382,11349,11348) - Mongoose, Fortitude II, Rend, SF, ZG, DMTAP, DMTHP, DMTSC, DMF, Ony, Zanza, DefPot, SupDef
   //var filter = "&filter=type%20in%20%28%22applybuff%22%2C%22removebuff%22%29";
+  //type in ("removebuff") AND ability.id in (17538,3593,16609,15366,24425,22817,22818,22820,23768,22888,24382,11349,11348) - Mongoose, Fortitude II, Rend, SF, ZG, DMTAP, DMTHP, DMTSC, DMF, Ony, Zanza, DefPot, SupDef
+  var filter = "&filter=type%20in%20%28%22removebuff%22%29%20AND%20ability.id%20in%20%2817538%2C3593%2C16609%2C15366%2C24425%2C22817%2C22818%2C22820%2C23768%2C22888%2C24382%2C11349%2C11348%29";
   try {
     var fightData = new XMLHttpRequest();
     fightData.open("Get", baseURL + "/fights/" + logID + "?" + API.slice(1,API.length), false);
@@ -31,7 +31,6 @@ function buffCheck() {
     buffData.open("Get", baseURL + "/events/buffs/" + logID + "?start=0&end=1000000000&wipes=2" + filter + API, false);
     buffData.send(null);
     buffData = JSON.parse(buffData.response);
-  
     
     var nextTime = buffData.nextPageTimestamp;
     while (nextTime>1) {
@@ -52,10 +51,8 @@ function buffCheck() {
   var enemyIDs = new Array;
   var count = 0;
   for (var i=0; i<fightData.enemies.length; i++) {
-    //if (fightData.enemies[i].type == "Boss") {
-      bossIDs[count] = fightData.enemies[i].id; 
-      count++
-    //}
+    bossIDs[count] = fightData.enemies[i].id; 
+    count++
     enemyIDs[i] = fightData.enemies[i].id;
   }
   var friendIDs = new Array;
@@ -95,132 +92,12 @@ function buffCheck() {
   
   var buffEdit = buffData.events; 
   var index = new Array;
-  var idArray = [17538,3593,16609,15366,24425,22817,22818,22820,23768,22888,24382,11349,11348];
+  /*var idArray = [17538,3593,16609,15366,24425,22817,22818,22820,23768,22888,24382,11349,11348];
   for (var i=buffEdit.length-1; i>=0; i--) {
     if (buffEdit[i].type == "removebuff" && idArray.includes(buffEdit[i].ability.guid)==false) {
       buffEdit.splice(i,1); 
     }
-    /*if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Flurry") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Bloodthirst") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Defensive Stance") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Battle Stance") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Berserker Stance") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Bloodrage") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Combustion") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Inspiration") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Battle Shout") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Greater Blessing of Wisdom") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Stealth") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Concentration Aura") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Aspect of the Hawk") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Divine Favor") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Nature Protection ") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Power Word: Shield") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Greater Blessing of Light") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Enrage") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Rejuvenation") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Aspect of the Cheetah") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Shield Block") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Furious Howl") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Clearcasting") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Ephemeral Power") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Chicken Fury") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Nature's Grace") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Aura of the Blue Dragon") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Power Word: Fortitude") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Greater Blessing of Salvation") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Holy Strength") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Holy Power") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Lay on Hands") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Aspect of the Pack") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Renew") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Prayer of Fortitude") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Power Infusion") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Fear Ward") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Evasion") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Blessing of Salvation") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Inner Focus") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Blade Flurry") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Greater Blessing of Kings") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Earthstrike") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Unstable Power") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Slice and Dice") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Sprint") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Devotion Aura") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Mend Pet") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Blessing of Protection") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Winterfall Firewater") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Adrenaline Rush") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Essence of Sapphiron") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Mana Shield") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Arcane Intellect") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Trueshot Aura") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Track Beasts") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Track Humanoids") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Greater Blessing of Might") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Gift of the Wild") {
-      buffEdit.splice(i,1);}
-    else if (buffEdit[i].type == "removebuff" && buffEdit[i].ability.name == "Mark of the Wild") {
-      buffEdit.splice(i,1);}*/
-  }
+  }*/
   
   var timestampList = new Array;
   count = 0;
@@ -231,7 +108,7 @@ function buffCheck() {
     }
   }
   
-  for (var i=buffEdit.length-1; i>=0; i--) {
+  /*for (var i=buffEdit.length-1; i>=0; i--) {
     count = 0;
     for (var j=0; j<timestampList.length; j++) {
       if (buffEdit[i].timestamp == timestampList[j])
@@ -239,9 +116,9 @@ function buffCheck() {
     }
     if (count < 1)
       buffEdit.splice(i,1);
-  }
+  }*/
   
-  for (var k=1; k<=5; k++) {
+  /*for (var k=1; k<=5; k++) {
     for (var i=buffEdit.length-1; i>=0; i--) {
       if (i == buffEdit.length-1) {
         //if (buffEdit[i].type == "removebuff")
@@ -271,9 +148,9 @@ function buffCheck() {
       if (count < 2 && buffEdit[i].type == "applybuff")
         buffEdit.splice(i,1);
     }
-  }
+  }*/
   
-  for (var k=1; k<=5; k++) {
+  /*for (var k=1; k<=5; k++) {
     for (var i=1; i<buffEdit.length; i++) {
       if (buffEdit[i].type == "removebuff" && buffEdit[i].timestamp == buffEdit[i-1].timestamp && buffEdit[i-1].type == "applybuff") {
         for (j=i; j<=i+10; j++) {
@@ -283,7 +160,7 @@ function buffCheck() {
         }
       }
     }
-  }
+  }*/
 
   var timestampList = new Array;
   for (var i=0; i<buffEdit.length; i++) {
@@ -304,8 +181,8 @@ function buffCheck() {
   var buffTwo = "";
   output[0] = "<table><tr><th colspan='5' style='text-align:left'>" + "Report ID: " + logID + ",&nbsp &nbsp''" + fightData.title + "'' uploaded by " + fightData.owner + "</th></tr>";
   count = 0;
-  for (var i=0; i<uniqueStamps.length; i++) {
-    idx = timestampList.indexOf(uniqueStamps[i]);
+  for (var i=0; i<timestampList.length; i++) {
+    idx = i;//timestampList.indexOf(uniqueStamps[i]);
     
     for (var j=0; j<bossNames.length; j++) {
       if (uniqueStamps[i]>bossStarts[j] && uniqueStamps[i]<bossEnds[j] && bossNames[j]!==currentBoss) {
@@ -327,17 +204,17 @@ function buffCheck() {
     }
     
     buffOne = classColor(idx,"center");
-    if (count > 1) {
+    /*if (count > 1) {
       buffOne = classColor(idx,"right");
       buffTwo = classColor(idx+1,"left");
-    }
+    }*/
    
     // Count-depending processing
-    if (count == 1) {
+    //if (count == 1) {
       output += (timeAt + buffOne + tdtr);
-    }
+    //}
     
-    else if (count==2) {
+    /*else if (count==2) {
       if (buffEdit[idx].type == "removebuff" && buffEdit[idx+1].type == "applybuff") {
         if (buffEdit[idx].ability.name!==buffEdit[idx+1].ability.name)
           if (buffEdit[idx].targetID == buffEdit[idx+1].targetID)
@@ -395,7 +272,7 @@ function buffCheck() {
     }
     
     else
-       console.log(timeAt + ": Error, " + count)
+       console.log(timeAt + ": Error, " + count)*/
   }
   document.getElementById("page4").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
   /*console.log(bossNames)
@@ -406,6 +283,7 @@ function buffCheck() {
   console.log(fightData)
   console.log(buffEdit)
   
+  // Functions
   function classColor(idx,alignment) {
     if (alignment == "right") {
       try {
