@@ -92,13 +92,6 @@ function buffCheck() {
   
   var buffEdit = buffData.events; 
   var index = new Array;
-  /*var idArray = [17538,3593,16609,15366,24425,22817,22818,22820,23768,22888,24382,11349,11348];
-  for (var i=buffEdit.length-1; i>=0; i--) {
-    if (buffEdit[i].type == "removebuff" && idArray.includes(buffEdit[i].ability.guid)==false) {
-      buffEdit.splice(i,1); 
-    }
-  }*/
-  
   var timestampList = new Array;
   count = 0;
   for (var i=0; i<buffEdit.length; i++) {
@@ -107,60 +100,6 @@ function buffCheck() {
       count++
     }
   }
-  
-  /*for (var i=buffEdit.length-1; i>=0; i--) {
-    count = 0;
-    for (var j=0; j<timestampList.length; j++) {
-      if (buffEdit[i].timestamp == timestampList[j])
-        count++;
-    }
-    if (count < 1)
-      buffEdit.splice(i,1);
-  }*/
-  
-  /*for (var k=1; k<=5; k++) {
-    for (var i=buffEdit.length-1; i>=0; i--) {
-      if (i == buffEdit.length-1) {
-        //if (buffEdit[i].type == "removebuff")
-          //buffEdit.splice(i,1);
-      }
-      else if (i == 0) {
-        if (buffEdit[i].type == "applybuff")
-          buffEdit.splice(i,1);
-      }
-      //else if (buffEdit[i].type == "removebuff" && buffEdit[i].timestamp<buffEdit[i+1].timestamp)
-        //buffEdit.splice(i,1);
-      else if (buffEdit[i].type == "applybuff" && buffEdit[i].timestamp>buffEdit[i-1].timestamp)
-        buffEdit.splice(i,1);
-    }
-    
-    var timestampList = new Array;
-    for (var i=0; i<buffEdit.length; i++) {
-      timestampList[i] = buffEdit[i].timestamp;
-    }
-    
-    for (var i=buffEdit.length-1; i>=0; i--) {
-      count = 0;
-      for (var j=0; j<timestampList.length; j++) {
-        if (buffEdit[i].timestamp == timestampList[j])
-          count++;
-      }
-      if (count < 2 && buffEdit[i].type == "applybuff")
-        buffEdit.splice(i,1);
-    }
-  }*/
-  
-  /*for (var k=1; k<=5; k++) {
-    for (var i=1; i<buffEdit.length; i++) {
-      if (buffEdit[i].type == "removebuff" && buffEdit[i].timestamp == buffEdit[i-1].timestamp && buffEdit[i-1].type == "applybuff") {
-        for (j=i; j<=i+10; j++) {
-          if (j<buffEdit.length)
-            if (buffEdit[j].timestamp == buffEdit[i-1].timestamp)
-              buffEdit[j].timestamp = buffEdit[j].timestamp + 1;
-        }
-      }
-    }
-  }*/
 
   var timestampList = new Array;
   for (var i=0; i<buffEdit.length; i++) {
@@ -180,10 +119,16 @@ function buffCheck() {
   var tdtr = "</td></tr>";
   var buffOne = "";
   var buffTwo = "";
+  var shortBuffs = [17538,3593,16609,15366,11349,11348];// - Mongoose, Fortitude II, Rend, SF, DefPot, SupDef
   output[0] = "<table><tr><th colspan='5' style='text-align:left'>" + "Report ID: " + logID + ",&nbsp &nbsp''" + fightData.title + "'' uploaded by " + fightData.owner + "</th></tr>";
   count = 0;
   for (var i=0; i<timestampList.length; i++) {
     idx = i;//timestampList.indexOf(uniqueStamps[i]);
+    
+    if ((buffEdit[idx].timestamp-firstTime)/1000 > 5400)
+      break
+    else if ((buffEdit[idx].timestamp-firstTime)/1000 > 2700 && shortBuffs.contains(buffEdit[idx].ability.guid))
+      continue
     
     for (var j=0; j<bossNames.length; j++) {
       if (timestampList[i]>bossStarts[j] && timestampList[i]<bossEnds[j] && (buffEdit[idx].timestamp-currentStart)>currentDuration) {
@@ -201,84 +146,9 @@ function buffCheck() {
     }
     
     timeTotal = "<tr><td style='text-align:right'>" + formatTime((buffEdit[idx].timestamp-firstTime)/1000) + ":</td>";
-    timeAt = timeTotal + "<td style='text-align:right'>" + formatNumber((buffEdit[idx].timestamp-currentStart)/1000) + ":</td>"; //<td style='text-align:right'>
-    
-    count = 0;
-    for (var j=0; j<timestampList.length; j++) {
-      if (uniqueStamps[i]==timestampList[j])
-        count++;
-    }
-    
+    timeAt = timeTotal + "<td style='text-align:right'>" + formatNumber((buffEdit[idx].timestamp-currentStart)/1000) + ":</td>";
     buffOne = classColor(idx,"center");
-    /*if (count > 1) {
-      buffOne = classColor(idx,"right");
-      buffTwo = classColor(idx+1,"left");
-    }*/
-   
-    // Count-depending processing
-    //if (count == 1) {
-      output += (timeAt + buffOne + tdtr);
-    //}
-    
-    /*else if (count==2) {
-      if (buffEdit[idx].type == "removebuff" && buffEdit[idx+1].type == "applybuff") {
-        if (buffEdit[idx].ability.name!==buffEdit[idx+1].ability.name)
-          if (buffEdit[idx].targetID == buffEdit[idx+1].targetID)
-            output += (timeAt + buffOne + rb + buffTwo + tdtr);
-      }
-      else
-        console.log(timeAt + ": Error, " + buffEdit[idx].type + " " + buffEdit[idx+1].type) 
-    }
-    
-    else if (count==3) {
-      if (buffEdit[idx].type == "removebuff" && buffEdit[idx+1].type == "removebuff" && buffEdit[idx+2].type == "applybuff") {
-        if (buffEdit[idx].ability.name == buffEdit[idx+2].ability.name)
-          output += (timeAt + classColor(idx+1,"right") + rb + "<td style='text-align:left'>Phantom Buff (" + buffEdit[idx+2].ability.name + ")" + tdtr);
-        else if (buffEdit[idx+1].ability.name == buffEdit[idx+2].ability.name)
-          output += (timeAt + buffOne + rb + "<td style='text-align:left'>Phantom Buff (" + buffEdit[idx+2].ability.name + ")" + tdtr);
-        else if (buffEdit[idx+1].ability.name == "Hammer of Justice" && buffEdit[idx+2].ability.name == "Kidney Shot")
-          output += (timeAt + buffOne + rb + "<td style='text-align:left'>Phantom Buff (" + buffEdit[idx+1].ability.name + "/" + buffEdit[idx+2].ability.name + ")" + tdtr);
-        else if (buffEdit[idx+1].ability.name == "Kidney Shot" && buffEdit[idx+2].ability.name == "Hammer of Justice")
-          output += (timeAt + buffOne + rb + "<td style='text-align:left'>Phantom Buff (" + buffEdit[idx+1].ability.name + "/" + buffEdit[idx+2].ability.name + ")" + tdtr);
-        else if (buffEdit[idx+1].ability.name == "Sunder Armor" && buffEdit[idx+2].ability.name == "Expose Armor")
-          output += (timeAt + buffOne + rb + "<td style='text-align:left'>Phantom Buff (" + buffEdit[idx+1].ability.name + "/" + buffEdit[idx+2].ability.name + ")" + tdtr);
-        else if (buffEdit[idx].ability.name == "Sunder Armor" && buffEdit[idx+2].ability.name == "Expose Armor")
-          output += (timeAt + classColor(idx+1,"right") + rb + "<td style='text-align:left'>Phantom Buff (" + buffEdit[idx].ability.name + "/" + buffEdit[idx+2].ability.name + ")" + tdtr);
-        else
-          output += (timeAt + buffOne + " and " + buffEdit[idx+1].ability.name + rb + "<td style='text-align:left'>" + buffEdit[idx+2].ability.name + tdtr);
-      }
-      else if (buffEdit[idx].type == "removebuff" && buffEdit[idx+1].type == "applybuff" && buffEdit[idx+2].type == "applybuff") {
-        if (buffEdit[idx].ability.name !== buffEdit[idx+1].ability.name && buffEdit[idx].ability.name !== buffEdit[idx+2].ability.name)
-          if (buffEdit[idx].ability.name !== "Sunder Armor")
-            output += (timeAt + buffOne + rb + "<td style='text-align:left'>" + buffEdit[idx+1].ability.name + " or " + buffEdit[idx+2].ability.name + tdtr);
-      }
-      else 
-        console.log(timeAt + ": Error, " + buffEdit[idx].type + " " + buffEdit[idx+1].type + " " + buffEdit[idx+2].type)
-    }
-    
-    else if (count==4) {
-      if (buffEdit[idx].type == "removebuff" && buffEdit[idx+1].type == "applybuff" && buffEdit[idx+2].type == "applybuff" && buffEdit[idx+3].type == "applybuff") {
-        if (buffEdit[idx].ability.name !== buffEdit[idx+1].ability.name && buffEdit[idx].ability.name !== buffEdit[idx+2].ability.name && buffEdit[idx].ability.name !== buffEdit[idx+3].ability.name)
-          output += (timeAt + buffOne + rb + "<td style='text-align:left'>" + buffEdit[idx+1].ability.name + " or " + buffEdit[idx+2].ability.name + " or " + buffEdit[idx+3].ability.name + tdtr)
-      }
-      else if (buffEdit[idx].type == "removebuff" && buffEdit[idx+1].type == "removebuff" && buffEdit[idx+2].type == "applybuff" && buffEdit[idx+3].type == "applybuff") {
-        console.log(timeAt + ": " + buffEdit[idx].ability.name + " & " + buffEdit[idx+1].ability.name + " removed by " + buffEdit[idx+2].ability.name + " & " + buffEdit[idx+3].ability.name)
-      }
-      else 
-        console.log(timeAt + ": Error, " + buffEdit[idx].type + " " + buffEdit[idx+1].type + " " + buffEdit[idx+2].type + " " + buffEdit[idx+3].type)
-    }
-    
-    else if (count==5) {
-      if (buffEdit[idx].type == "removebuff" && buffEdit[idx+1].type == "applybuff" && buffEdit[idx+2].type == "applybuff" && buffEdit[idx+3].type == "applybuff" && buffEdit[idx+4].type == "applybuff") {
-        if (buffEdit[idx].ability.name !== buffEdit[idx+1].ability.name && buffEdit[idx].ability.name !== buffEdit[idx+2].ability.name && buffEdit[idx].ability.name !== buffEdit[idx+3].ability.name && buffEdit[idx].ability.name !== buffEdit[idx+4].ability.name)
-          output += (timeAt + buffOne + rb + "<td style='text-align:left'>" + buffEdit[idx+1].ability.name + " or " + buffEdit[idx+2].ability.name + " or " + buffEdit[idx+3].ability.name + " or " + buffEdit[idx+4].ability.name + tdtr)
-      }
-      else 
-        console.log(timeAt + ": Error, " + buffEdit[idx].type + " " + buffEdit[idx+1].type + " " + buffEdit[idx+2].type + " " + buffEdit[idx+3].type + " " + buffEdit[idx+4].type)
-    }
-    
-    else
-       console.log(timeAt + ": Error, " + count)*/
+    output += (timeAt + buffOne + tdtr);
   }
   document.getElementById("page4").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
   /*console.log(bossNames)
