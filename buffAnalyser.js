@@ -161,59 +161,21 @@ function buffCheck() {
   
   // Functions
   function classColor(idx,alignment) {
-    if (alignment == "right") {
-      try {
-        var who = fightData.friendlies[friendIDs.indexOf(buffEdit[idx].targetID)];
-        var pet = false;
-        var spec = who.type;
-      }
-      catch {
-        try {
-          var who = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(buffEdit[idx].targetID)].petOwner)];
-          var pet = true;
-          var spec = who.type;
-        }
-        catch {
-          try {
-            var who = fightData.friendlies[friendIDs.indexOf(buffEdit[idx].target.id)];
-            var pet = false;
-            var spec = who.type;
-          }
-          catch {
-            var cellString = "<td>" + "Unknown's " + buffEdit[idx].ability.name;
-            return cellString
-          }
-        }
-      }
+    try {
+      var who = fightData.friendlies[friendIDs.indexOf(buffEdit[idx].targetID)];
+      var pet = false;
+      var spec = who.type;
     }
-    else if (alignment == "left") {
+    catch {
       try {
-        var who = fightData.friendlies[friendIDs.indexOf(buffEdit[idx].sourceID)];
-        var pet = false;
+        var who = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(buffEdit[idx].targetID)].petOwner)];
+        var pet = true;
         var spec = who.type;
       }
       catch {
         try {
-          var who = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(buffEdit[idx].sourceID)].petOwner)];
-          var pet = true;
-          var spec = who.type;
-        }
-        catch {
-          var cellString = "<td>" + "Unknown's " + buffEdit[idx].ability.name;
-          return cellString
-        }
-      }
-    }
-    else if (alignment == "center") {
-      try {
-        var who = fightData.friendlies[friendIDs.indexOf(buffEdit[idx].targetID)];
-        var pet = false;
-        var spec = who.type;
-      }
-      catch {
-        try {
-          var who = fightData.friendlies[friendIDs.indexOf(fightData.friendlyPets[petIDs.indexOf(buffEdit[idx].targetID)].petOwner)];
-          var pet = true;
+          var who = fightData.friendlies[friendIDs.indexOf(buffEdit[idx].target.id)];
+          var pet = false;
           var spec = who.type;
         }
         catch {
@@ -223,7 +185,6 @@ function buffCheck() {
       }
     }
       
-    
     var preString = "text-align:" + alignment + ";color:"
     if (spec == "Warrior")
       var colorName = preString + "#C79C6E";
