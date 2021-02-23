@@ -185,7 +185,7 @@ function buffCheck() {
     idx = i;//timestampList.indexOf(uniqueStamps[i]);
     
     for (var j=0; j<bossNames.length; j++) {
-      if (timestampList[i]>bossStarts[j] && timestampList[i]<bossEnds[j] && bossNames[j]!==currentBoss) {
+      if (timestampList[i]>bossStarts[j] && timestampList[i]<bossEnds[j] && bossNames[j]!==currentBoss && (buffEdit[idx].timestamp-currentStart)>(bossEnds[j]-bossStarts[j])) {
         currentBoss = bossNames[j];
         currentStart = bossStarts[j];
         if (i == 0) {
