@@ -127,7 +127,7 @@ function buffCheck() {
     
     if ((buffEdit[idx].timestamp-firstTime)/1000 > 5400)
       break
-    else if ((buffEdit[idx].timestamp-firstTime)/1000 > 2700 && shortBuffs.contains(buffEdit[idx].ability.guid))
+    else if ((buffEdit[idx].timestamp-firstTime)/1000 > 2700 && shortBuffs.contain(buffEdit[idx].ability.guid))
       continue
     
     for (var j=0; j<bossNames.length; j++) {
@@ -174,8 +174,15 @@ function buffCheck() {
           var spec = who.type;
         }
         catch {
-          var cellString = "<td>" + "Unknown's " + buffEdit[idx].ability.name;
-          return cellString
+          try {
+            var who = fightData.friendlies[friendIDs.indexOf(buffEdit[idx].target.id)];
+            var pet = false;
+            var spec = who.type;
+          }
+          catch {
+            var cellString = "<td>" + "Unknown's " + buffEdit[idx].ability.name;
+            return cellString
+          }
         }
       }
     }
