@@ -139,14 +139,14 @@ function buffCheck() {
       for (var j=0; j<deathData.events.length; j++) {
         try {
           if (buffEdit[idx].targetID == deathData.events[j].targetID) {
-          console.log(Math.round(buffEdit[idx].timestamp/1000) + " and " + Math.round(deathData.events[j].timestamp/1000))
+          console.log(Math.round(buffEdit[idx].timestamp/3000) + " and " + Math.round(deathData.events[j].timestamp/3000))
           console.log("-----")}
-          if (buffEdit[idx].targetID == deathData.events[j].targetID && Math.round(buffEdit[idx].timestamp/1000) == Math.round(deathData.events[j].timestamp/1000))
+          if (buffEdit[idx].targetID == deathData.events[j].targetID && Math.round(buffEdit[idx].timestamp/3000) == Math.round(deathData.events[j].timestamp/3000))
             skip = true;
         }
         catch {
           try {
-            if (buffEdit[idx].target.id == deathData.events[j].target.id && Math.round(buffEdit[idx].timestamp/1000) == Math.round(deathData.events[j].timestamp/1000))
+            if (buffEdit[idx].target.id == deathData.events[j].target.id && Math.round(buffEdit[idx].timestamp/3000) == Math.round(deathData.events[j].timestamp/3000))
               skip = true;
           }
           catch {
