@@ -138,15 +138,12 @@ function buffCheck() {
       var skip = false;
       for (var j=0; j<deathData.events.length; j++) {
         try {
-          if (buffEdit[idx].targetID == deathData.events[j].targetID) {
-          console.log(Math.round(buffEdit[idx].timestamp/3000) + " and " + Math.round(deathData.events[j].timestamp/3000))
-          console.log("-----")}
-          if (buffEdit[idx].targetID == deathData.events[j].targetID && Math.round(buffEdit[idx].timestamp/3000) == Math.round(deathData.events[j].timestamp/3000))
+          if (buffEdit[idx].targetID == deathData.events[j].targetID && Math.round(buffEdit[idx].timestamp/5000) == Math.round(deathData.events[j].timestamp/5000))
             skip = true;
         }
         catch {
           try {
-            if (buffEdit[idx].target.id == deathData.events[j].target.id && Math.round(buffEdit[idx].timestamp/3000) == Math.round(deathData.events[j].timestamp/3000))
+            if (buffEdit[idx].target.id == deathData.events[j].target.id && Math.round(buffEdit[idx].timestamp/5000) == Math.round(deathData.events[j].timestamp/5000))
               skip = true;
           }
           catch {
@@ -154,7 +151,7 @@ function buffCheck() {
         }
       }
       if (skip == true)
-        continue
+        //continue
     }
     
     for (var j=0; j<bossNames.length; j++) {
