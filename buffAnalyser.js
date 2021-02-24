@@ -134,6 +134,21 @@ function buffCheck() {
       break
     else if ((buffEdit[idx].timestamp-firstTime)/1000 > 2700 && shortBuffs.includes(buffEdit[idx].ability.guid))
       continue
+    else {
+      var skip = false;
+      for (var j=0; i<deathData.length; j++) {
+        try {
+          if (buffEdit[idx].targetID == deathData.targetID && Math.round(buffEdit[idx].timestamp/1000) == Math.round(deathData.timestamp/1000))
+            skip = true;
+        }
+        catch {
+          if (buffEdit[idx].target.id == deathData.target.id && Math.round(buffEdit[idx].timestamp/1000) == Math.round(deathData.timestamp/1000))
+            skip = true;
+        }
+      }
+      if (skip == true)
+        continue
+    }
     
     for (var j=0; j<bossNames.length; j++) {
       if (timestampList[i]>bossStarts[j] && timestampList[i]<bossEnds[j] && (buffEdit[idx].timestamp-currentStart)>currentDuration) {
