@@ -55,8 +55,8 @@
     <button class="tablink" onclick="openPage('DebuffAnalyser', this, '#838383')" id="defaultOpen">Debuffs Knocked Off</button>
     <button class="tablink" onclick="openPage('DebuffsUsed', this, '#838383')">Debuffs Applied</button>
     <button class="tablink" onclick="openPage('ISBStacks', this, '#838383')">ISB Stack Checker</button>
-    <button class="tablink" onclick="openPage('BuffAnalyser', this, '#838383')">Buffs Knocked Off (WIP)</button>
-    <button class="tablink" onclick="openPage('BuffsUsed', this, '#838383')">Buffs Applied (WIP)</button>
+    <button class="tablink" onclick="openPage('BuffAnalyser', this, '#838383')">Buffs Knocked Off</button>
+    <button class="tablink" onclick="openPage('BuffsUsed', this, '#838383')">(WIP)</button>
     
     <div id="DebuffAnalyser" class="tabcontent">
       <h1>Debuff Analyser Tool <span style="font-size:16px">by Tesram-Mograine</span></h1>
@@ -137,7 +137,31 @@
       <input type="text" id="input5">
       <button id="myButton5" type="button" onclick="startCode5();">Process Report</button>
       <div id="loader5" class="loader"></div>
-      <p id="page5"></p>
+      <div class="row">
+        <div class="column left">
+          <div style=background-color:#666666>
+            <p>Details of what is shown here:</p>
+            <div>
+              This tool scrapes the logs to see whenever the following buffs are lost:<br>
+              - Superior and Normal Armor Potion (Prepops)<br>
+              - Elixir of the Mongoose (Prepop)<br>
+              - Spirit of Zanza<br>
+              - ZG buff<br>
+              - All three DMT buffs<br>
+              - Onyxia/Nefarian buff<br>
+              - Darkmoon Faire Damage buff<br>
+              - Songflower buff<br>
+              - Warchief's Blessing<br>
+              <br>
+              It then checks to see whether the buffs were lost within a few seconds of a player dying, and ignores those instances.
+              In addition, one-hour buffs lost after 45 minutes are ignored, as well as two-hour buffs lost after 90 minutes (Subject to be an option later).
+            </div>
+          </div>
+        </div>
+        <div class="column right">
+          <p id="page5"></p>
+        </div>
+      </div>
     </div>
     
   </body>
