@@ -150,7 +150,7 @@ function buffCheck() {
           }
         }
       }
-      if (skip == true)
+      //if (skip == true)
         //continue
     }
     
