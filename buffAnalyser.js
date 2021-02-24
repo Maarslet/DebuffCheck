@@ -150,8 +150,8 @@ function buffCheck() {
           }
         }
       }
-      //if (skip == true)
-        //continue
+      if (skip == true)
+        continue
     }
     
     for (var j=0; j<bossNames.length; j++) {
