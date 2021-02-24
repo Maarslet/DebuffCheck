@@ -138,6 +138,9 @@ function buffCheck() {
       var skip = false;
       for (var j=0; i<deathData.length; j++) {
         try {
+          console.log(buffEdit[idx].targetID == deathData[j].targetID)
+          console.log(Math.round(buffEdit[idx].timestamp/1000) == Math.round(deathData[j].timestamp/1000))
+          console.log(" ")
           if (buffEdit[idx].targetID == deathData[j].targetID && Math.round(buffEdit[idx].timestamp/1000) == Math.round(deathData[j].timestamp/1000))
             skip = true;
         }
