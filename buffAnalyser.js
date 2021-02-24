@@ -138,11 +138,11 @@ function buffCheck() {
       var skip = false;
       for (var j=0; i<deathData.length; j++) {
         try {
-          if (buffEdit[idx].targetID == deathData.targetID && Math.round(buffEdit[idx].timestamp/1000) == Math.round(deathData.timestamp/1000))
+          if (buffEdit[idx].targetID == deathData[j].targetID && Math.round(buffEdit[idx].timestamp/1000) == Math.round(deathData[j].timestamp/1000))
             skip = true;
         }
         catch {
-          if (buffEdit[idx].target.id == deathData.target.id && Math.round(buffEdit[idx].timestamp/1000) == Math.round(deathData.timestamp/1000))
+          if (buffEdit[idx].target.id == deathData[j].target.id && Math.round(buffEdit[idx].timestamp/1000) == Math.round(deathData[j].timestamp/1000))
             skip = true;
         }
       }
