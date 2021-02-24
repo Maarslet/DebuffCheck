@@ -27,6 +27,11 @@ function buffCheck() {
     fightData.send(null);
     fightData = JSON.parse(fightData.response);
     
+    var deathData = new XMLHttpRequest();
+    deathData.open("Get", baseURL + "/events/deaths/" + logID + "?start=0&end=1000000000&wipes=2" + API, false);
+    deathData.send(null);
+    deathData = JSON.parse(deathData.response);
+    
     var buffData = new XMLHttpRequest();
     buffData.open("Get", baseURL + "/events/buffs/" + logID + "?start=0&end=1000000000&wipes=2" + filter + API, false);
     buffData.send(null);
@@ -46,7 +51,7 @@ function buffCheck() {
     document.getElementById("page4").innerHTML = "Error: " + err.message; 
     return
   }
-  console.log(buffData)
+  console.log(buffData); console.log(deathData);
   var bossIDs = new Array;
   var enemyIDs = new Array;
   var count = 0;
