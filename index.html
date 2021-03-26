@@ -57,6 +57,11 @@
         elmnt.style.backgroundColor = color;
       }
       //document.getElementById("defaultOpen").click(); // Get the element with id="defaultOpen" and click on it
+      $(document).ready( function () {
+        setTimeout(function(){ 
+          document.getElementById("defaultOpen").click();
+          }, 10);
+      } );
     </script> 
     <link rel="stylesheet" href="pageStyle.css">
   </head>
