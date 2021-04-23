@@ -278,10 +278,10 @@ function buffCheck() {
       }
       else 
         console.log(timeAt + ": Error, " + buffEdit[idx].type + " " + buffEdit[idx+1].type + " " + buffEdit[idx+2].type + " " + buffEdit[idx+3].type + " " + buffEdit[idx+4].type)
-    }
+    }*/
     
     else
-       console.log(timeAt + ": Error, " + count) */
+       console.log(timeAt + ": Error, " + count)
   }
   document.getElementById("page4").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
   console.log(bossNames)
