@@ -197,6 +197,8 @@ function buffCheck() {
   var buffOne = "";
   var buffTwo = "";
   var eventHappen = true;
+  var spacePart = "";
+  var bossPart = "";
   output[0] = "<table><tr><th colspan='4' style='text-align:left'>" + "Report ID: " + logID + "</th></tr>";
   count = 0;
   for (var i=0; i<uniqueStamps.length; i++) {
@@ -205,16 +207,18 @@ function buffCheck() {
     for (var j=0; j<bossNames.length; j++) {
       if (uniqueStamps[i]>bossStarts[j] && uniqueStamps[i]<bossEnds[j] && bossNames[j]!==currentBoss) {
         if (eventHappen == false) {
-          output = output.slice(0, output.length - ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>").length);
+          output = output.slice(0, output.length - bossPart.length);
           if (i!==0) {
-            output = output.slice(0, output.length - "<tr><th colspan='4'></th></tr>".length);
+            output = output.slice(0, output.length - spacePart.length);
           }
         }
         currentBoss = bossNames[j];
         currentStart = bossStarts[j];
+        spacePart = ("<tr><th colspan='4'></th></tr>");
+        bossPart = ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>");
         if (i!==0) 
-          output += ("<tr><th colspan='4'></th></tr>")
-        output += ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
+          output += spacePart;
+        output += bossPart;
         eventHappen = false;
       }
     }
