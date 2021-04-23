@@ -226,8 +226,14 @@ function buffCheck() {
     if (count==2) {
       if (buffEdit[idx].type == "removebuff" && buffEdit[idx+1].type == "applybuff") {
         if (buffEdit[idx].ability.name!==buffEdit[idx+1].ability.name)
-          if (buffEdit[idx].targetID == buffEdit[idx+1].targetID)
-            output += (timeAt + buffOne + rb + buffTwo + tdtr);
+          if ((buffEdit[idx].ability.name.includes("Blessing of") * (buffEdit[idx+1].ability.name.includes("Blessing of"))) == false)
+            if ((buffEdit[idx].ability.name.includes("Aspect of") * (buffEdit[idx+1].ability.name.includes("Aspect of"))) == false)
+              if ((buffEdit[idx].ability.name.includes("of the Wild") * (buffEdit[idx+1].ability.name.includes("of the Wild"))) == false)
+                if ((buffEdit[idx].ability.name.includes("Seal of") * (buffEdit[idx+1].ability.name.includes("Seal of"))) == false)
+                  if ((buffEdit[idx].ability.name.includes(" Aura") * (buffEdit[idx+1].ability.name.includes(" Aura"))) == false)
+                    if ((buffEdit[idx].ability.name.includes("Power of the Guardian") * (buffEdit[idx+1].ability.name.includes("Power of the Guardian"))) == false)
+                      if (buffEdit[idx].targetID == buffEdit[idx+1].targetID)
+                        output += (timeAt + buffOne + rb + buffTwo + tdtr);
       }
       else
         console.log(timeAt + ": Error, " + buffEdit[idx].type + " " + buffEdit[idx+1].type) 
