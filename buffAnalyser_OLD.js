@@ -1,4 +1,4 @@
-function buffCheck() {
+function buffCheck2() {
   
   document.getElementsByClassName("loader")[3].style.display = "none";
   
@@ -242,12 +242,12 @@ function buffCheck() {
 }
 
 
-function onlyUnique(value, index, self) {
+function onlyUnique2(value, index, self) {
   return self.indexOf(value) === index;
 }
 
 
-function formatNumber(value) {
+function formatNumber2(value) {
   value = value.toString();
   for (var k=1; k<=5; k++)
     if (value.indexOf(".")<3)
@@ -258,7 +258,7 @@ function formatNumber(value) {
   return value
 }
 
-function formatTime(value) {
+function formatTime2(value) {
   var hours = Math.floor(value/3600);
   var minutes = Math.floor((value/3600-hours)*60);
   if (minutes < 10)
