@@ -196,6 +196,7 @@ function buffCheck() {
   var tdtr = "</td></tr>";
   var buffOne = "";
   var buffTwo = "";
+  var eventHappen = true;
   output[0] = "<table><tr><th colspan='4' style='text-align:left'>" + "Report ID: " + logID + "</th></tr>";
   count = 0;
   for (var i=0; i<uniqueStamps.length; i++) {
@@ -203,13 +204,18 @@ function buffCheck() {
 
     for (var j=0; j<bossNames.length; j++) {
       if (uniqueStamps[i]>bossStarts[j] && uniqueStamps[i]<bossEnds[j] && bossNames[j]!==currentBoss) {
+        if (eventHappen == false) {
+          if (i!==0) {
+            output = output.slice(0, output.length - "<tr><th colspan='4'></th></tr>".length);
+          }
+          output = output.slice(0, output.length - ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>").length);
+        }
         currentBoss = bossNames[j];
         currentStart = bossStarts[j];
         if (i!==0) 
           output += ("<tr><th colspan='4'></th></tr>")
         output += ("<tr><th colspan='4'>" + currentBoss + " (" + Math.round((bossEnds[j]-bossStarts[j])/1000) + "s fight)" + "</th></tr>")
-        //console.log(" ")
-        //console.log("--- " + currentBoss + ", with a duration of " + (bossEnds[j]-bossStarts[j])/1000 + " seconds ---")
+        eventHappen = false;
       }
     }
     
@@ -232,8 +238,10 @@ function buffCheck() {
                 if ((buffEdit[idx].ability.name.includes("Seal of") * (buffEdit[idx+1].ability.name.includes("Seal of"))) == false)
                   if ((buffEdit[idx].ability.name.includes(" Aura") * (buffEdit[idx+1].ability.name.includes(" Aura"))) == false)
                     if ((buffEdit[idx].ability.name.includes("Power of the Guardian") * (buffEdit[idx+1].ability.name.includes("Power of the Guardian"))) == false)
-                      if (buffEdit[idx].targetID == buffEdit[idx+1].targetID)
+                      if (buffEdit[idx].targetID == buffEdit[idx+1].targetID) {
                         output += (timeAt + buffOne + rb + buffTwo + tdtr);
+                        eventHappen = true;
+                      }
       }
       else
         console.log(timeAt + ": Error, " + buffEdit[idx].type + " " + buffEdit[idx+1].type) 
