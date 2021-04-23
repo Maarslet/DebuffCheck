@@ -256,7 +256,7 @@ function buffCheck() {
             output += (timeAt + buffOne + rb + "<td style='text-align:left'>" + buffEdit[idx+1].ability.name + " or " + buffEdit[idx+2].ability.name + tdtr);
       }
       else 
-        console.log(timeAt + ": Error, " + buffEdit[idx].type + " " + buffEdit[idx+1].type + " " + buffEdit[idx+2].type) */
+        console.log(timeAt + ": Error, " + buffEdit[idx].type + " " + buffEdit[idx+1].type + " " + buffEdit[idx+2].type)
     }
     
     else if (count==4) {
@@ -281,7 +281,7 @@ function buffCheck() {
     }
     
     else
-       console.log(timeAt + ": Error, " + count)
+       console.log(timeAt + ": Error, " + count) */
   }
   document.getElementById("page4").innerHTML = output + "<tr> <td><div style='width: 70px'></div></td> <td><div style='width: 180px'></div></td> <td><div style='width: 100px'></div></td> <td><div style='width: 250px'></div></td> </tr></table>";
   console.log(bossNames)
